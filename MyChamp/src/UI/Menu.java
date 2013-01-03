@@ -4,11 +4,14 @@
  */
 package UI;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 /**
  *
- * @author Daniel
+ * @author Mak, Jonas, Daniel og Marco
  */
-public class Menu
+public abstract class Menu
 {
     
 }
