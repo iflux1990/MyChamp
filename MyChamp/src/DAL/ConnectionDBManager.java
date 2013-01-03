@@ -15,6 +15,9 @@ import java.util.Properties;
 public class ConnectionDBManager
 {
 
+    /**
+     *
+     */
     protected SQLServerDataSource dataSource;
 
     public ConnectionDBManager() throws Exception

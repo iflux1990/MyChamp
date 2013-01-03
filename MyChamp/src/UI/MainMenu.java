@@ -14,13 +14,13 @@ public class MainMenu extends Menu
     private static final int EXIT_VALUE = 0;
     
     /**
-     * Constructor, opretter en hovedmenu med titlen "MyTunes" og 
-     * to menupunkter administration og control
+     * Constructor, opretter en hovedmenu med titlen "MyChamps" og 
+     * fem menupunkter 
      */
     public MainMenu()
     {
-        super("MyTunes", "Song Administration", "Playlist Administration",
-                "Control");
+        super("Team Management", "View", "Match Result",
+                "Group Ranking", "Final Ranking");
                 EXIT_OPTION = EXIT_VALUE;
     }
 
@@ -30,33 +30,50 @@ public class MainMenu extends Menu
         switch (option)
         {
             case 1:
-                goToSongMenu();
+                goToTeamManagenment();
                 break;
             case 2:
-                goToPlaylistMenu();
+                goToView();
                 break;
             case 3:
-                goToControlMenu();
+                goToMatchResult();
+                break;
+            case 4:
+                goToGroupRanking();
+                break;
+            case 5:
+                goToFinalRanking();
                 break;
         }
     }
 
-    private void goToSongMenu()
+    private void goToTeamManagenment()
     {
-        new SubAdminSong().run();
+        new TeamManagenment().run();
         clear();
     }
     
-    private void goToPlaylistMenu()
+    private void goToView()
     {
-        new SubPlaylistMenu().run();
+        new View().run();
         clear();
     }
 
-    private void goToControlMenu()
+    private void goToMatchResult()
     {
-        new SubMenuCon().run();
+        new MatchResult().run();
         clear();
     }
-
+    
+    private void goToGroupRanking()
+    {
+        new GroupRanking().run();
+        clear();
+    }
+    
+    private void goToFinalRanking()
+    {
+        new FinaleRanking().run();
+        clear();
+    }
 }
