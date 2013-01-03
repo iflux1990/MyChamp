@@ -6,6 +6,7 @@ package DAL;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.Properties;
 
 /**
@@ -20,7 +21,7 @@ public class ConnectionDBManager
      */
     protected SQLServerDataSource dataSource;
 
-    public ConnectionDBManager() throws Exception
+    public ConnectionDBManager() throws IOException
     {
         dataSource = new SQLServerDataSource();
         
