@@ -4,6 +4,8 @@
  */
 package Application;
 
+import UI.MainMenu;
+
 /**
  *
  * @author Daniel
@@ -16,6 +18,6 @@ public class MyChamp
      */
     public static void main(String[] args)
     {
-        // TODO code application logic here
+         new MainMenu().run();
     }
 }
