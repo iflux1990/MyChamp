@@ -51,6 +51,7 @@ public class TeamManagenment extends Menu
                 break;
             case 4:
                 ListAll();
+                pause();
                 break;
             case EXIT_VALUE:
                 doActionExit();
@@ -60,6 +61,7 @@ public class TeamManagenment extends Menu
     private void AddTeam()
     {
         clear();
+
         System.out.println("Add Team");
         System.out.println();
 
@@ -102,21 +104,12 @@ public class TeamManagenment extends Menu
 
     private void RemoveTeam()
     {
-        clear();
+        ListAll();
+
         System.out.println("Remove team:");
         System.out.println("");
         try
         {
-
-            ArrayList<Team> teams = tmgr.ListAllTeams();
-
-
-//            printTeamHeader();
-            for (Team t : teams)
-            {
-                System.out.println(t);
-            }
-
             System.out.print("Select team by school id: ");
             String school = new Scanner(System.in).nextLine();
 
@@ -141,7 +134,7 @@ public class TeamManagenment extends Menu
             ArrayList<Team> teams = tmgr.ListAllTeams();
 
             clear();
-
+            printTeamHeader();
 
             for (Team t : teams)
             {
@@ -154,6 +147,6 @@ public class TeamManagenment extends Menu
 //            System.out.println(" ERROR - " + e.getMessage());
 
         }
-        pause();
+
     }
 }
