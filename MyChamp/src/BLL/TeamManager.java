@@ -7,6 +7,7 @@ package BLL;
 import BE.Team;
 import DAL.TeamDBManager;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -28,7 +29,7 @@ public class TeamManager
         return tdb.search();
     }
     
-    public ArrayList<Team> ListAllTeams()
+    public ArrayList<Team> ListAllTeams() throws SQLException
     {
         return tdb.listAll();
     }
