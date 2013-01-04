@@ -47,7 +47,7 @@ public class TeamManagenment extends Menu
                 updateTeam();
                 break;
             case 3:
-                RemoveTeam();
+                removeTeam();
                 break;
             case 4: 
                 ListAll();
@@ -69,7 +69,7 @@ public class TeamManagenment extends Menu
             System.out.print("School: ");
             String SchoolName = sc.nextLine();
 
-            System.out.print("Team Captain: : ");
+            System.out.print("Team Captain: ");
             String Captain = sc.nextLine();
 
             System.out.print("Email: ");
