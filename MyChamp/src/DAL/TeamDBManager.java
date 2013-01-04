@@ -5,13 +5,12 @@
 package DAL;
 
 import BE.Team;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -48,5 +47,30 @@ public class TeamDBManager extends ConnectionDBManager
         
         return new Team(id, t);
         
+    }
+
+    public ArrayList<Team> search()
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public ArrayList<Team> listAll()
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public void removeTeam()
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public void getBySchool()
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public Team addTeam(Team t)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 }
