@@ -124,7 +124,7 @@ public class TeamDBManager extends ConnectionDBManager
      */
     public void RemoveTeam(String school) throws SQLException
     {
-        String sql = "DELETE FROM TEAM WHERE Title = ?";
+        String sql = "DELETE FROM TEAM WHERE ID = ?";
 
         Connection con = dataSource.getConnection();
 
