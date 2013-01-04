@@ -19,7 +19,7 @@ public class MainMenu extends Menu
      */
     public MainMenu()
     {
-        super("Team Management", "View", "Match Result",
+        super("Main Menu", "Team Management", "View", "Match Result",
                 "Group Ranking", "Final Ranking");
                 EXIT_OPTION = EXIT_VALUE;
     }
