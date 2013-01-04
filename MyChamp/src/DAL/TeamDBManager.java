@@ -122,14 +122,14 @@ public class TeamDBManager extends ConnectionDBManager
      * @param school
      * @throws SQLException
      */
-    public void RemoveTeam(String school) throws SQLException
+    public void removeTeam(Team t) throws SQLException
     {
         String sql = "DELETE FROM TEAM WHERE Title = ?";
 
         Connection con = dataSource.getConnection();
 
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, school);
+        ps.setString(1, t);
 
         int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)
