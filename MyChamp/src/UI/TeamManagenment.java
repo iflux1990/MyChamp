@@ -4,7 +4,6 @@
  */
 package UI;
 
-import BE.Group;
 import BE.Team;
 import BLL.TeamManager;
 import java.util.ArrayList;
@@ -48,7 +47,7 @@ public class TeamManagenment extends Menu
                 updateTeam();
                 break;
             case 3:
-                doActionSuboption3();
+                RemoveTeam();
                 break;
             case 4: 
                 ListAll();
@@ -114,9 +113,33 @@ public class TeamManagenment extends Menu
         new updateTeam().run();
     }
     
-    private void doActionSuboption3()
+    private void RemoveTeam()
     {
-        System.out.println("Remove Team");
+        clear();
+        System.out.println("Remove team:");
+        System.out.println("");
+        try
+        {
+
+            ArrayList<Team> teams = tmgr.ListAllTeams();
+
+
+//            printTeamHeader();
+            for (Team t : teams)
+            {
+                System.out.println(t);
+            }
+
+            System.out.print("Select team by school: ");
+            String school = new Scanner(System.in).nextLine();
+
+            tmgr.RemoveTeam(t);
+        }
+        catch (Exception ex)
+        {
+            System.out.println(" ERROR - " + ex.getMessage());
+            pause();
+        }
     }
 
     private void doActionExit()
