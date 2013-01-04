@@ -110,7 +110,50 @@ public class TeamManagenment extends Menu
 
     private void updateTeam()
     {
-        new updateTeam().run();
+        clear();
+        System.out.println("Update Team: ");
+        System.out.println("");
+        
+        try
+        {
+
+            ArrayList<Team> teams = tmgr.ListAllTeams();
+
+
+            printTeamHeader();
+            for (Team t : teams)
+            {
+                System.out.println(t);
+            }
+
+            System.out.print("Select School Id: ");
+            int id = new Scanner(System.in).nextInt();
+            Team team = null;
+            for (Team t : teams)
+            {
+                if (t.getTeamId() == id)
+                {
+                    team = t;
+                }
+            }
+            if (team != null)
+            {
+                new UpdateTeam(team).run();
+            }
+            else
+            {
+                System.out.println("Unknown School Id");
+                pause();
+            }
+
+
+        }
+        catch (Exception e)
+        {
+//            System.out.println(" ERROR - " + e.getMessage());
+            e.printStackTrace();
+
+        }
     }
     
     private void RemoveTeam()
@@ -130,7 +173,7 @@ public class TeamManagenment extends Menu
                 System.out.println(t);
             }
 
-            System.out.print("Select team by school: ");
+            System.out.print("Select team by school Id: ");
             String school = new Scanner(System.in).nextLine();
 
             tmgr.RemoveTeam(school);
