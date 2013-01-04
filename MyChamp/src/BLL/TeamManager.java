@@ -53,4 +53,9 @@ public class TeamManager
     {
         tdb.getBySchool();
     }
+    
+    public Team getRandomTeam() throws SQLException
+    {
+        return tdb.getRandomSchool();
+    }
 }

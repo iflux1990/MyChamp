@@ -110,7 +110,7 @@ public class TeamManagenment extends Menu
 
     private void updateTeam()
     {
-        new updateTeam().run();
+        new UpdateTeam().run();
     }
     
     private void RemoveTeam()

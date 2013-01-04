@@ -25,7 +25,6 @@ public class TeamDBManager extends ConnectionDBManager
 
     public TeamDBManager() throws IOException
     {
-        
     }
 
     public Team addTeam(Team t) throws SQLException
@@ -37,7 +36,7 @@ public class TeamDBManager extends ConnectionDBManager
         ps.setString(1, t.getSchoolName());
         ps.setString(2, t.getCaptain());
         ps.setString(3, t.getTeamEmail());
- //       ps.setInt(4, t.getGroup().getGroupId());
+        //       ps.setInt(4, t.getGroup().getGroupId());
 
         int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)
@@ -118,9 +117,9 @@ public class TeamDBManager extends ConnectionDBManager
 
     }
 
-       
     /**
      * Fjerner et team fra databasen efter skolenavn
+     *
      * @param School
      * @throws SQLException
      */
@@ -145,5 +144,28 @@ public class TeamDBManager extends ConnectionDBManager
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-  
+    public Team getRandomSchool() throws SQLException
+    {
+        String sql = "SELECT TOP 1 School FROM Team ORDER BY NEWID()";
+
+        Connection con = dataSource.getConnection();
+
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next())
+        {
+//            int TeamID = rs.getInt("ID");
+            String SchoolName = rs.getString("School");
+            String Captain = rs.getString("TeamCaptain");
+            String TeamEmail = rs.getString("Email");
+            
+            Team t = new Team(-1, SchoolName, Captain, TeamEmail);
+        }
+        
+        return t;
+        
+        
+
+    }
 }
