@@ -133,7 +133,7 @@ public class TeamManagenment extends Menu
             System.out.print("Select team by school: ");
             String school = new Scanner(System.in).nextLine();
 
-            tmgr.RemoveTeam(t);
+            tmgr.RemoveTeam(school);
         }
         catch (Exception ex)
         {
