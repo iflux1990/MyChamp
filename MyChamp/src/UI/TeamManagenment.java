@@ -112,7 +112,7 @@ public class TeamManagenment extends Menu
         new updateTeam().run();
     }
     
-    private void RemoveTeam()
+    private void removeTeam()
     {
         clear();
         System.out.println("Remove team:");
@@ -132,7 +132,7 @@ public class TeamManagenment extends Menu
             System.out.print("Select team by school: ");
             String school = new Scanner(System.in).nextLine();
 
-            tmgr.RemoveTeam(t);
+            tmgr.removeTeam(t);
         }
         catch (Exception ex)
         {
