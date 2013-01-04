@@ -23,8 +23,17 @@ public class TeamManagenment extends Menu
     
     public TeamManagenment()
     {
-        super("Team Managenment", "Add Team", "Update Team", "Remove Team");
+        super("Team Managenment", "Add Team", "Update Team", "Remove Team", "List All");
         EXIT_OPTION = EXIT_VALUE;
+         try
+        {
+            tmgr = new TeamManager();    
+        }
+        catch (Exception ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+            System.exit(2);
+        }
     }
 
     @Override
@@ -43,16 +52,8 @@ public class TeamManagenment extends Menu
                 break;
             case 4: 
                 ListAll();
-            case EXIT_VALUE: doActionExit();
-                try
-        {
-            tmgr = new TeamManager();    
-        }
-        catch (Exception ex)
-        {
-            System.out.println("ERROR - " + ex.getMessage());
-            System.exit(2);
-        }
+                break;
+            case EXIT_VALUE: doActionExit();      
         }
     }
 
@@ -139,7 +140,8 @@ public class TeamManagenment extends Menu
         }
         catch (Exception e)
         {
-            System.out.println(" ERROR - " + e.getMessage());
+            e.printStackTrace();
+//            System.out.println(" ERROR - " + e.getMessage());
 
         }
         pause();
