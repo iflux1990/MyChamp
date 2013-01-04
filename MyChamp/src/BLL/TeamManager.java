@@ -44,9 +44,9 @@ public class TeamManager
         tdb.updateTeam(t);
     }
     
-    public void removeTeam(Team t) throws SQLException
+    public void RemoveTeam(String school) throws SQLException
     {
-        tdb.removeTeam(t);
+        tdb.RemoveTeam(school);
     }
     
     public void getBySchool(String schoolName)
