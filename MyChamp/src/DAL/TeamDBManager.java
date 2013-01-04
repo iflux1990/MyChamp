@@ -121,17 +121,17 @@ public class TeamDBManager extends ConnectionDBManager
        
     /**
      * Fjerner et team fra databasen efter skolenavn
-     * @param school
+     * @param School
      * @throws SQLException
      */
-    public void RemoveTeam(String school) throws SQLException
+    public void RemoveTeam(String SchoolName) throws SQLException
     {
-        String sql = "DELETE FROM TEAM WHERE School = ?";
+        String sql = "DELETE FROM TEAM WHERE ID = ?";
 
         Connection con = dataSource.getConnection();
 
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, school);
+        ps.setString(1, SchoolName);
 
         int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)
@@ -144,4 +144,6 @@ public class TeamDBManager extends ConnectionDBManager
     {
         throw new UnsupportedOperationException("Not yet implemented");
     }
+
+  
 }
