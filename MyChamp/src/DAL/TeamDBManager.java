@@ -26,7 +26,7 @@ public class TeamDBManager extends ConnectionDBManager
     {
     }
 
-    public Team AddTeam(Team t) throws SQLException
+    public Team addTeam(Team t) throws SQLException
     {
         Connection con = dataSource.getConnection();
         String sql = "INSERT INTO Team(School, TeamCaptain, Email, GroupID, Points)"
@@ -35,7 +35,6 @@ public class TeamDBManager extends ConnectionDBManager
         ps.setString(1, t.getSchoolName());
         ps.setString(2, t.getCaptain());
         ps.setString(3, t.getTeamEmail());
-        ps.setInt(4, t.getGroup().getGroupId());
 
         int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)

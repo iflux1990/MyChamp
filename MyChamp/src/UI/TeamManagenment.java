@@ -4,10 +4,11 @@
  */
 package UI;
 
+import BE.Group;
+import BE.Team;
 import BLL.TeamManager;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 /**
  *
@@ -30,7 +31,7 @@ public class TeamManagenment extends Menu
         switch (option)
         {
             case 1:
-                doActionSuboption1();
+                AddTeam();
                 break;
             case 2:
                 updateTeam();
@@ -39,20 +40,68 @@ public class TeamManagenment extends Menu
                 doActionSuboption3();
                 break;
             case EXIT_VALUE: doActionExit();
-        }
-        try
+                try
         {
-            tmgr = new TeamManager();
+            tmgr = new TeamManager();    
         }
-        catch (IOException ex)
+        catch (Exception ex)
         {
-            System.out.println("ERROR - Could not find the Management layer.");
+            System.out.println("ERROR - " + ex.getMessage());
+            System.exit(2);
+        }
         }
     }
 
-    private void doActionSuboption1()
+    private void AddTeam()
     {
+        clear();
         System.out.println("Add Team");
+         System.out.println();
+
+        try
+        {
+            Scanner sc = new Scanner(System.in, "ISO-8859-1");
+
+            System.out.print("School: ");
+            String SchoolName = sc.nextLine();
+
+            System.out.print("Team Captain: : ");
+            String Captain = sc.nextLine();
+
+            System.out.print("Email: ");
+            String TeamEmail = sc.nextLine();
+
+
+//            Artist a = amgr.getArtistByName(artistName);
+//
+//            if (a == null)
+//            {
+//                a = amgr.addArtist(new Artist(-1, artistName));
+//            }
+//
+//            Category c = cmgr.getCategoryByName(categoryName);
+//            if (c == null)
+//            {
+//                c = cmgr.addCategory(new Category(-1, categoryName));
+//            }
+
+            Team team = new Team(-1, SchoolName, Captain, TeamEmail);
+            team = tmgr.addTeam(team);
+
+            System.out.println();
+            System.out.println("Song added with ID : " + team.getTeamId());
+        }
+        catch (InputMismatchException e)
+        {
+            System.out.println("ERROR - Duration must be number");
+        }
+        catch (Exception ex)
+        {
+          ex.printStackTrace();
+//            System.out.println("ERROR - " + ex.getMessage());
+
+        }
+        pause();
     }
 
     private void updateTeam()

@@ -18,19 +18,28 @@ public class Team
     private int GroupId;
     
     
-    public Team(int TeamId, String SchoolName, String Captain, String TeamEmail, Group group)
+    public Team(int TeamId, String SchoolName, String Captain, String TeamEmail)
     {
         this.TeamId = TeamId;
         this.SchoolName = SchoolName;
         this.Captain = Captain;
         this.TeamEmail = TeamEmail;
-        this.group = group;  
+        
     }
     
     public Team(int TeamId, Team t)
     {
-        this(TeamId, t.getSchoolName(), t.getCaptain(), t.getTeamEmail(), t.getGroup());
+        this(TeamId, t.getSchoolName(), t.getCaptain(), t.getTeamEmail());
     }
+//    
+//    public Team(int TeamId, String SchoolName, String Captain, String TeamEmail)
+//    {
+//        this.TeamId = TeamId;
+//        this.SchoolName = SchoolName;
+//        this.Captain = Captain;
+//        this.TeamEmail = TeamEmail;
+//        
+//    }
    
     /**
      * @return the TeamId
@@ -96,14 +105,14 @@ public class Team
         return GroupId;
     }
     
-    public Group getGroup()
-    {
-        return group;
-    }
+//    public Group getGroup()
+//    {
+//        return group;
+//    }
     
     @Override
     public String toString()
     {
-        return String.format("%-5d %-30s %-30s %-10s %-20s", TeamId, SchoolName, Captain, TeamEmail, group);
+        return String.format("%-5d %-30s %-30s %-10s %-20s", TeamId, SchoolName, Captain, TeamEmail);
     }
 }
