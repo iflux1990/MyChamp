@@ -4,6 +4,11 @@
  */
 package UI;
 
+import BLL.TeamManager;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Groggy
@@ -11,6 +16,7 @@ package UI;
 public class TeamManagenment extends Menu
 {
     private static final int EXIT_VALUE = 0;
+    private TeamManager tmgr = null;
     
     public TeamManagenment()
     {
@@ -27,12 +33,20 @@ public class TeamManagenment extends Menu
                 doActionSuboption1();
                 break;
             case 2:
-                doActionSuboption2();
+                updateTeam();
                 break;
             case 3:
                 doActionSuboption3();
                 break;
             case EXIT_VALUE: doActionExit();
+        }
+        try
+        {
+            tmgr = new TeamManager();
+        }
+        catch (IOException ex)
+        {
+            System.out.println("ERROR - Could not find the Management layer.");
         }
     }
 
@@ -42,10 +56,9 @@ public class TeamManagenment extends Menu
         pause();
     }
 
-    private void doActionSuboption2()
+    private void updateTeam()
     {
-        System.out.println("Update Team");
-        pause();
+        new updateTeam().run();
     }
     
     private void doActionSuboption3()
