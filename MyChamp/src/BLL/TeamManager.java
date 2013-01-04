@@ -34,12 +34,17 @@ public class TeamManager
         return tdb.listAll();
     }
     
-    public Team addTeam(Team t)
+    public Team addTeam(Team t) throws SQLException
     {
         return tdb.addTeam(t);
     }
     
-    public void RemoveTeam(String school) throws SQLException
+    public void updateTeam(Team t) throws SQLException
+    {
+        tdb.updateTeam(t);
+    }
+    
+    public void RemoveTeam(int id)
     {
         tdb.RemoveSong(school);
     }
