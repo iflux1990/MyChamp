@@ -44,30 +44,25 @@ public class View extends Menu
     private void doActionSuboption1()
     {
         System.out.println("Total match");
-        pause();
     }
     
     private void doActionSuboption2()
     {
         System.out.println("Group match");
-        pause();
     }
     
     private void doActionSuboption3()
     {
         System.out.println("Team match");
-        pause();
     }
     
     private void doActionSuboption4()
     {
         System.out.println("Finale match");
-        pause();
     }
 
     private void doActionExit()
     {
         System.out.println("You selected to exit.");
-        pause();
     }
 }

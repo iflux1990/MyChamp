@@ -107,18 +107,15 @@ public class TeamManagenment extends Menu
     private void doActionSuboption2()
     {
         System.out.println("Update Team");
-        pause();
     }
     
     private void doActionSuboption3()
     {
         System.out.println("Remove Team");
-        pause();
     }
 
     private void doActionExit()
     {
         System.out.println("You selected to exit.");
-        pause();
     }
 }

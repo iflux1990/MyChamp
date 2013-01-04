@@ -33,13 +33,11 @@ public class FinaleRanking extends Menu
 
     private void doActionSuboption1()
     {
-        System.out.println("Finale Ranking");
-        pause();
+        System.out.println("Finale Ranking");        
     }
 
     private void doActionExit()
     {
         System.out.println("You selected to exit.");
-        pause();
     }
 }
