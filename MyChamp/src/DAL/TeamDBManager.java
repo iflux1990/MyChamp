@@ -27,7 +27,7 @@ public class TeamDBManager extends ConnectionDBManager
     {
     }
 
-    public Team AddTeam(Team t) throws SQLException
+    public Team addTeam(Team t) throws SQLException
     {
         Connection con = dataSource.getConnection();
         String sql = "INSERT INTO Team(School, TeamCaptain, Email, GroupID, Points)"
@@ -105,11 +105,11 @@ public class TeamDBManager extends ConnectionDBManager
             String school = rs.getString("School");
             String teamcaptain = rs.getString("TeamCaptain");
             String email = rs.getString("Email");
-            int groupid = rs.getInt("GroupID");
-            int points = rs.getInt("Points");
+//            int groupid = rs.getInt("GroupID");
+//            int points = rs.getInt("Points");
 
 
-//            Team t = new Team(id, school, teamcaptain, email, new Group(groupid));
+            Team t = new Team(id, school, teamcaptain, email);
             Team.add(t);
         }
         return Team;
