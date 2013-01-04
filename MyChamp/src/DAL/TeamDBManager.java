@@ -4,6 +4,7 @@
  */
 package DAL;
 
+import BE.Group;
 import BE.Team;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
@@ -88,9 +89,32 @@ public class TeamDBManager extends ConnectionDBManager
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    public ArrayList<Team> listAll()
+    public ArrayList<Team> listAll() throws SQLException
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        Connection con = dataSource.getConnection();
+
+        String sql = "SELECT * Team";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+
+
+        ArrayList<Team> Team = new ArrayList<>();
+        while (rs.next())
+        {
+
+            int id = rs.getInt("ID");
+            String school = rs.getString("School");
+            String teamcaptain = rs.getString("TeamCaptain");
+            String email = rs.getString("Email");
+            int groupid = rs.getInt("GroupID");
+            int points = rs.getInt("Points");
+
+
+//            Team t = new Team(id, school, teamcaptain, email, new Group(groupid));
+            Team.add(t);
+        }
+        return Team;
+
     }
 
     public void removeTeam()

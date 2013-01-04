@@ -19,6 +19,12 @@ public class Group
         this.GroupName = GroupName;
         
     }
+    
+    public Group(int GroupId)
+    {
+        this.GroupId = GroupId;
+    }        
+            
 
     /**
      * @return the GroupId

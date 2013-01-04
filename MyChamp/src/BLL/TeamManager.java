@@ -29,7 +29,7 @@ public class TeamManager
         return tdb.search();
     }
     
-    public ArrayList<Team> ListAllTeams()
+    public ArrayList<Team> ListAllTeams() throws SQLException
     {
         return tdb.listAll();
     }

@@ -7,6 +7,7 @@ package UI;
 import BE.Group;
 import BE.Team;
 import BLL.TeamManager;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -16,8 +17,9 @@ import java.util.Scanner;
  */
 public class TeamManagenment extends Menu
 {
+    private TeamManager tmgr;
     private static final int EXIT_VALUE = 0;
-    private TeamManager tmgr = null;
+    
     
     public TeamManagenment()
     {
@@ -39,6 +41,8 @@ public class TeamManagenment extends Menu
             case 3:
                 doActionSuboption3();
                 break;
+            case 4: 
+                ListAll();
             case EXIT_VALUE: doActionExit();
                 try
         {
@@ -117,5 +121,27 @@ public class TeamManagenment extends Menu
     private void doActionExit()
     {
         System.out.println("You selected to exit.");
+    }
+
+    private void ListAll()
+    {
+        try
+        {
+            ArrayList<Team> teams = tmgr.ListAllTeams();
+
+            clear();
+            
+
+            for (Team t : teams)
+            {
+                System.out.println(t);
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(" ERROR - " + e.getMessage());
+
+        }
+        pause();
     }
 }
