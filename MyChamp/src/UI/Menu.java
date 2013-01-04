@@ -94,11 +94,11 @@ public abstract class Menu
         new Scanner(System.in).nextLine();
     }
     
-    protected void printTeamHeader()            //viser ID; Title, Artist... som overskrifter
+     protected void printTeamHeader()            //viser ID; Title, Artist... som overskrifter
     {
         System.out.println();
-        System.out.println(String.format("%-5s %-30s %-30s %-10s %-20s %5s",
-                "ID", "School", "Captain", "Email", "Group", "Points"));
+        System.out.println(String.format("%-5s %-20s %-20s %-20s %-10s %-10s",
+                "ID", "School", "Captain", "Email", "Group", "GroupID"));
         System.out.println();
     }
     
