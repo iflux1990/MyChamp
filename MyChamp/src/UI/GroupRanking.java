@@ -38,18 +38,15 @@ public class GroupRanking extends Menu
     private void doActionSuboption1()
     {
         System.out.println("Group Ranking");
-        pause();
     }
     
     private void doActionSuboption2()
     {
         System.out.println("Team Ranking");
-        pause();
     }
 
     private void doActionExit()
     {
         System.out.println("You selected to exit.");
-        pause();
     }
 }
