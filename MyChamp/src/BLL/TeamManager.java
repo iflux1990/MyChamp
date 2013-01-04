@@ -6,6 +6,7 @@ package BLL;
 
 import BE.Team;
 import DAL.TeamDBManager;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +18,7 @@ public class TeamManager
 
     private TeamDBManager tdb = null;
 
-    public TeamManager()
+    public TeamManager() throws IOException
     {
         tdb = new TeamDBManager();
     }
@@ -34,7 +35,7 @@ public class TeamManager
     
     public Team addTeam(Team t)
     {
-        return tdb.addTeam();
+        return tdb.addTeam(t);
     }
     
     public void RemoveTeam(int id)
@@ -44,6 +45,6 @@ public class TeamManager
     
     public void getBySchool(String schoolName)
     {
-        return tdb.getBySchool();
+        tdb.getBySchool();
     }
 }
