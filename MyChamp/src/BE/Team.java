@@ -15,6 +15,7 @@ public class Team
     private String Captain;
     private String TeamEmail;
     private Group group;
+    private int GroupId;
     
     
     public Team(int TeamId, String SchoolName, String Captain, String TeamEmail, Group group)
@@ -90,10 +91,10 @@ public class Team
     /**
      * @return the GroupId
      */
-//    public int getGroupId()
-//    {
-//        return GroupId;
-//    }
+    public int getGroupId()
+    {
+        return GroupId;
+    }
     
     public Group getGroup()
     {
