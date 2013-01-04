@@ -77,7 +77,7 @@ public class TeamDBManager extends ConnectionDBManager
             int points = rs.getInt("Points");
 
 
-            Team t = new Team(id, school, teamcaptain, email, new Group(groupid));
+//            Team t = new Team(id, school, teamcaptain, email, new Group(groupid));
             Team.add(t);
         }
         return Team;
