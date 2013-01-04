@@ -4,6 +4,11 @@
  */
 package UI;
 
+import BE.Team;
+import BLL.TeamManager;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  *
  * @author Groggy
@@ -30,7 +35,7 @@ public class TeamManagenment extends Menu
                 doActionSuboption2();
                 break;
             case 3:
-                doActionSuboption3();
+                RemoveTeam();
                 break;
             case EXIT_VALUE: doActionExit();
         }
@@ -46,9 +51,33 @@ public class TeamManagenment extends Menu
         System.out.println("Update Team");
     }
     
-    private void doActionSuboption3()
+    private void RemoveTeam()
     {
-        System.out.println("Remove Team");
+        clear();
+        System.out.println("Remove team:");
+        System.out.println("");
+        try
+        {
+
+            ArrayList<Team> teams = tmgr.ListAll();
+
+
+            printTeamHeader();
+            for (Team t : teams)
+            {
+                System.out.println(t);
+            }
+
+            System.out.print("Select team by school: ");
+            String school = new Scanner(System.in).nextLine();
+
+            tmgr.RemoveTeam(school);
+        }
+        catch (Exception ex)
+        {
+            System.out.println(" ERROR - " + ex.getMessage());
+            pause();
+        }
     }
 
     private void doActionExit()
