@@ -12,14 +12,14 @@ import java.util.Scanner;
  *
  * @author Daniel
  */
-public class updateTeam extends Menu
+public class UpdateTeams extends Menu
 {
 
     private static final int EXIT_VALUE = 0;
     private Team t;
     private TeamManager tmgr;
 
-    public updateTeam()
+    public UpdateTeams(Team team)
     {
         super("Update Team MENU",
                 "Update School",
@@ -28,6 +28,7 @@ public class updateTeam extends Menu
                 "Update Group");
 
         EXIT_OPTION = EXIT_VALUE;
+        t = team;
     }
 
     @Override
@@ -47,6 +48,8 @@ public class updateTeam extends Menu
             case 4:
                 updateGroup();
                 break;
+            case EXIT_VALUE:
+                doActionExit();
 
         }
     }
@@ -55,8 +58,8 @@ public class updateTeam extends Menu
     {
         System.out.println();
         System.out.print("New School Name: ");
-        String name = new Scanner(System.in, "ISO-8859-1").nextLine();
-        t.setSchoolName(name);
+        String SchoolName = new Scanner(System.in, "ISO-8859-1").nextLine();
+        t.setSchoolName(SchoolName);
     }
 
     private void updateCaptain()
@@ -81,5 +84,29 @@ public class updateTeam extends Menu
         System.out.print("New Group: ");
         String group = new Scanner(System.in, "ISO-8859-1").nextLine();
 //        t.s(group);
+    }
+
+    private void saveChanges()
+    {
+        try
+        {
+            TeamManager tmgr = new TeamManager();
+            tmgr.updateTeam(t);
+
+        }
+        catch (Exception e)
+        {
+       
+            System.out.println("ERROR - " + e.getMessage());
+            pause();
+        }
+    }
+
+    /*
+     * Exits and saves the changes you've made.
+     */
+    private void doActionExit()
+    {
+        saveChanges();
     }
 }

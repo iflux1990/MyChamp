@@ -19,7 +19,7 @@ public class TeamManager
 
     private TeamDBManager tdb = null;
 
-    public TeamManager() throws IOException
+    public TeamManager() throws SQLException, IOException
     {
         tdb = new TeamDBManager();
     }

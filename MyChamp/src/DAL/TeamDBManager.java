@@ -25,6 +25,7 @@ public class TeamDBManager extends ConnectionDBManager
 
     public TeamDBManager() throws IOException
     {
+        
     }
 
     public Team addTeam(Team t) throws SQLException
@@ -36,6 +37,7 @@ public class TeamDBManager extends ConnectionDBManager
         ps.setString(1, t.getSchoolName());
         ps.setString(2, t.getCaptain());
         ps.setString(3, t.getTeamEmail());
+ //       ps.setInt(4, t.getGroup().getGroupId());
 
         int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)
@@ -55,7 +57,7 @@ public class TeamDBManager extends ConnectionDBManager
     {
         {
 
-            String sql = "UPDATE Team SET School = ?, TeamCaptain = ?, Email = ?, GroupId= ?, WHERE Id = ?";
+            String sql = "UPDATE Team SET School = ?, TeamCaptain = ?, Email = ?, GroupId= 1 WHERE ID = ?";
 
             Connection con;
             try
@@ -71,8 +73,8 @@ public class TeamDBManager extends ConnectionDBManager
             ps.setString(1, t.getSchoolName());
             ps.setString(2, t.getCaptain());
             ps.setString(3, t.getTeamEmail());
-            ps.setInt(4, t.getGroupId());
-            ps.setInt(5, t.getTeamId());
+//            ps.setInt(4, t.getGroupId());
+            ps.setInt(4, t.getTeamId());
 
 
             int affectedRows = ps.executeUpdate();
