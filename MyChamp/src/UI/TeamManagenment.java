@@ -7,6 +7,7 @@ package UI;
 import BE.Group;
 import BE.Team;
 import BLL.TeamManager;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -18,7 +19,7 @@ public class TeamManagenment extends Menu
 {
     private TeamManager tmgr;
     private static final int EXIT_VALUE = 0;
-    private TeamManager tmgr;
+    
     
     public TeamManagenment()
     {
