@@ -57,6 +57,5 @@ public class TeamManagenment extends Menu
     private void doActionExit()
     {
         System.out.println("You selected to exit.");
-        pause();
     }
 }
