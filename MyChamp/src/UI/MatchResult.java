@@ -34,12 +34,10 @@ public class MatchResult extends Menu
     private void doActionSuboption1()
     {
         System.out.println("Record Result");
-        pause();
     }
 
     private void doActionExit()
     {
         System.out.println("You selected to exit.");
-        pause();
     }
 }
