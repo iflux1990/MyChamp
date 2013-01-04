@@ -36,7 +36,7 @@ public class TeamManager
     
     public Team addTeam(Team t) throws SQLException
     {
-        return tdb.addTeam(t);
+        return tdb.AddTeam(t);
     }
     
     public void updateTeam(Team t) throws SQLException
