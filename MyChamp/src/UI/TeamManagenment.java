@@ -130,10 +130,10 @@ public class TeamManagenment extends Menu
                 System.out.println(t);
             }
 
-            System.out.print("Select team by school: ");
+            System.out.print("Select team by Schoolname: ");
             String school = new Scanner(System.in).nextLine();
 
-            tmgr.RemoveTeam(t);
+            tmgr.RemoveTeam(school);
         }
         catch (Exception ex)
         {
