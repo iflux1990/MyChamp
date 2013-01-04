@@ -47,7 +47,7 @@ public class TeamManagenment extends Menu
                 UpdateTeams();
                 break;
             case 3:
-                removeTeam();
+                RemoveTeam();
                 break;
             case 4:
                 ListAll();
