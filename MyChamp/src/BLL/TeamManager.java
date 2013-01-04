@@ -7,6 +7,7 @@ package BLL;
 import BE.Team;
 import DAL.TeamDBManager;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -38,9 +39,9 @@ public class TeamManager
         return tdb.addTeam(t);
     }
     
-    public void RemoveTeam(int id)
+    public void RemoveTeam(String school) throws SQLException
     {
-        tdb.removeTeam();
+        tdb.RemoveSong(school);
     }
     
     public void getBySchool(String schoolName)
