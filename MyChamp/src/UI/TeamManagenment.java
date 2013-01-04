@@ -156,7 +156,7 @@ public class TeamManagenment extends Menu
             System.out.print("Select team by school id: ");
             String school = new Scanner(System.in).nextLine();
 
-            tmgr.RemoveTeam(school);
+            tmgr.removeTeam(school);
         }
         catch (Exception ex)
         {
