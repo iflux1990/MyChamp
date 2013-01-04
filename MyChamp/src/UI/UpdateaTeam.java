@@ -12,14 +12,14 @@ import java.util.Scanner;
  *
  * @author Daniel
  */
-public class updateTeam extends Menu
+public class UpdateaTeam extends Menu
 {
 
     private static final int EXIT_VALUE = 0;
     private Team t;
     private TeamManager tmgr;
 
-    public updateTeam()
+    public UpdateaTeam()
     {
         super("Update Team MENU",
                 "Update School",
