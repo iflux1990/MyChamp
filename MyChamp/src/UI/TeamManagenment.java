@@ -36,7 +36,7 @@ public class TeamManagenment extends Menu
                 AddTeam();
                 break;
             case 2:
-                doActionSuboption2();
+                updateTeam();
                 break;
             case 3:
                 doActionSuboption3();
@@ -108,9 +108,9 @@ public class TeamManagenment extends Menu
         pause();
     }
 
-    private void doActionSuboption2()
+    private void updateTeam()
     {
-        System.out.println("Update Team");
+        new updateTeam().run();
     }
     
     private void doActionSuboption3()
