@@ -4,7 +4,6 @@
  */
 package UI;
 
-import BE.Group;
 import BE.Team;
 import BLL.TeamManager;
 import java.util.ArrayList;
@@ -121,10 +120,10 @@ public class TeamManagenment extends Menu
         try
         {
 
-            ArrayList<Team> teams = tmgr.ListAll();
+            ArrayList<Team> teams = tmgr.ListAllTeams();
 
 
-            printTeamHeader();
+//            printTeamHeader();
             for (Team t : teams)
             {
                 System.out.println(t);
