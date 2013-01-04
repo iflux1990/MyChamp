@@ -17,14 +17,23 @@ import java.util.Scanner;
  */
 public class TeamManagenment extends Menu
 {
-    private TeamManager tmgr;
+
     private static final int EXIT_VALUE = 0;
-    
-    
+    private TeamManager tmgr;
+
     public TeamManagenment()
     {
         super("Team Managenment", "Add Team", "Update Team", "Remove Team");
         EXIT_OPTION = EXIT_VALUE;
+        try
+        {
+            tmgr = new TeamManager();
+        }
+        catch (Exception ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+            System.exit(2);
+        }
     }
 
     @Override
@@ -41,18 +50,11 @@ public class TeamManagenment extends Menu
             case 3:
                 doActionSuboption3();
                 break;
-            case 4: 
+            case 4:
                 ListAll();
-            case EXIT_VALUE: doActionExit();
-                try
-        {
-            tmgr = new TeamManager();    
-        }
-        catch (Exception ex)
-        {
-            System.out.println("ERROR - " + ex.getMessage());
-            System.exit(2);
-        }
+            case EXIT_VALUE:
+                doActionExit();
+
         }
     }
 
@@ -60,7 +62,7 @@ public class TeamManagenment extends Menu
     {
         clear();
         System.out.println("Add Team");
-         System.out.println();
+        System.out.println();
 
         try
         {
@@ -101,7 +103,7 @@ public class TeamManagenment extends Menu
         }
         catch (Exception ex)
         {
-          ex.printStackTrace();
+            ex.printStackTrace();
 //            System.out.println("ERROR - " + ex.getMessage());
 
         }
@@ -112,7 +114,7 @@ public class TeamManagenment extends Menu
     {
         new updateTeam().run();
     }
-    
+
     private void doActionSuboption3()
     {
         System.out.println("Remove Team");
@@ -130,7 +132,7 @@ public class TeamManagenment extends Menu
             ArrayList<Team> teams = tmgr.ListAllTeams();
 
             clear();
-            
+
 
             for (Team t : teams)
             {

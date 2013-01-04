@@ -25,9 +25,10 @@ public class TeamDBManager extends ConnectionDBManager
 
     public TeamDBManager() throws IOException
     {
+        
     }
 
-    public Team AddTeam(Team t) throws SQLException
+    public Team addTeam(Team t) throws SQLException
     {
         Connection con = dataSource.getConnection();
         String sql = "INSERT INTO Team(School, TeamCaptain, Email, GroupID, Points)"
