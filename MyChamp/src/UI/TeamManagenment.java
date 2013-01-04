@@ -16,17 +16,17 @@ import java.util.Scanner;
  */
 public class TeamManagenment extends Menu
 {
+
     private TeamManager tmgr;
     private static final int EXIT_VALUE = 0;
-    
-    
+
     public TeamManagenment()
     {
         super("Team Managenment", "Add Team", "Update Team", "Remove Team", "List All");
         EXIT_OPTION = EXIT_VALUE;
-         try
+        try
         {
-            tmgr = new TeamManager();    
+            tmgr = new TeamManager();
         }
         catch (Exception ex)
         {
@@ -49,10 +49,11 @@ public class TeamManagenment extends Menu
             case 3:
                 RemoveTeam();
                 break;
-            case 4: 
+            case 4:
                 ListAll();
                 break;
-            case EXIT_VALUE: doActionExit();      
+            case EXIT_VALUE:
+                doActionExit();
         }
     }
 
@@ -60,7 +61,7 @@ public class TeamManagenment extends Menu
     {
         clear();
         System.out.println("Add Team");
-         System.out.println();
+        System.out.println();
 
         try
         {
@@ -69,25 +70,11 @@ public class TeamManagenment extends Menu
             System.out.print("School: ");
             String SchoolName = sc.nextLine();
 
-            System.out.print("Team Captain: : ");
+            System.out.print("Team Captain: ");
             String Captain = sc.nextLine();
 
             System.out.print("Email: ");
             String TeamEmail = sc.nextLine();
-
-
-//            Artist a = amgr.getArtistByName(artistName);
-//
-//            if (a == null)
-//            {
-//                a = amgr.addArtist(new Artist(-1, artistName));
-//            }
-//
-//            Category c = cmgr.getCategoryByName(categoryName);
-//            if (c == null)
-//            {
-//                c = cmgr.addCategory(new Category(-1, categoryName));
-//            }
 
             Team team = new Team(-1, SchoolName, Captain, TeamEmail);
             team = tmgr.addTeam(team);
@@ -101,7 +88,7 @@ public class TeamManagenment extends Menu
         }
         catch (Exception ex)
         {
-          ex.printStackTrace();
+            ex.printStackTrace();
 //            System.out.println("ERROR - " + ex.getMessage());
 
         }
@@ -112,7 +99,7 @@ public class TeamManagenment extends Menu
     {
         new updateTeam().run();
     }
-    
+
     private void RemoveTeam()
     {
         clear();
@@ -130,7 +117,7 @@ public class TeamManagenment extends Menu
                 System.out.println(t);
             }
 
-            System.out.print("Select team by school: ");
+            System.out.print("Select team by school id: ");
             String school = new Scanner(System.in).nextLine();
 
             tmgr.RemoveTeam(school);
@@ -154,7 +141,7 @@ public class TeamManagenment extends Menu
             ArrayList<Team> teams = tmgr.ListAllTeams();
 
             clear();
-            
+
 
             for (Team t : teams)
             {
