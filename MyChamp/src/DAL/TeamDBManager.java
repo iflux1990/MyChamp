@@ -25,6 +25,7 @@ public class TeamDBManager extends ConnectionDBManager
 
     public TeamDBManager() throws IOException
     {
+        
     }
 
     public Team addTeam(Team t) throws SQLException
@@ -36,6 +37,7 @@ public class TeamDBManager extends ConnectionDBManager
         ps.setString(1, t.getSchoolName());
         ps.setString(2, t.getCaptain());
         ps.setString(3, t.getTeamEmail());
+ //       ps.setInt(4, t.getGroup().getGroupId());
 
         int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)
