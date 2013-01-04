@@ -44,7 +44,7 @@ public class TeamManagenment extends Menu
                 AddTeam();
                 break;
             case 2:
-                updateTeam();
+                UpdateTeams();
                 break;
             case 3:
                 RemoveTeam();
@@ -97,7 +97,7 @@ public class TeamManagenment extends Menu
         pause();
     }
 
-    private void updateTeam()
+    private void UpdateTeams()
     {
         clear();
         System.out.println("Update Team: ");
@@ -127,7 +127,7 @@ public class TeamManagenment extends Menu
             }
             if (team != null)
             {
-                new UpdateTeam(team).run();
+                new UpdateTeams(team).run();
             }
             else
             {
