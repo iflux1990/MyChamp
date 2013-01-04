@@ -17,7 +17,7 @@ public class TeamManager
 
     private TeamDBManager tdb = null;
 
-    public TeamManager()
+    public TeamManager() throws Exception
     {
         tdb = new TeamDBManager();
     }
