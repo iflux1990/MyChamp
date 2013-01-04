@@ -32,7 +32,7 @@ public class TeamDBManager extends ConnectionDBManager
     {
         Connection con = dataSource.getConnection();
         String sql = "INSERT INTO Team(School, TeamCaptain, Email, GroupID, Points)"
-                + "VALUES(?,?,?,?,0)";
+                + "VALUES(?,?,?,1,0)";
         PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         ps.setString(1, t.getSchoolName());
         ps.setString(2, t.getCaptain());
@@ -94,7 +94,7 @@ public class TeamDBManager extends ConnectionDBManager
     {
         Connection con = dataSource.getConnection();
 
-        String sql = "SELECT * Team";
+        String sql = "SELECT * FROM Team";
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
 
@@ -107,20 +107,37 @@ public class TeamDBManager extends ConnectionDBManager
             String school = rs.getString("School");
             String teamcaptain = rs.getString("TeamCaptain");
             String email = rs.getString("Email");
-            int groupid = rs.getInt("GroupID");
-            int points = rs.getInt("Points");
+//            int groupid = rs.getInt("GroupID");
+//            int points = rs.getInt("Points");
 
 
-//            Team t = new Team(id, school, teamcaptain, email, new Group(groupid));
+            Team t = new Team(id, school, teamcaptain, email);
             Team.add(t);
         }
         return Team;
 
     }
 
-    public void removeTeam()
+       
+    /**
+     * Fjerner et team fra databasen efter skolenavn
+     * @param school
+     * @throws SQLException
+     */
+    public void RemoveTeam(String school) throws SQLException
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        String sql = "DELETE FROM TEAM WHERE Title = ?";
+
+        Connection con = dataSource.getConnection();
+
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, school);
+
+        int affectedRows = ps.executeUpdate();
+        if (affectedRows == 0)
+        {
+            throw new SQLException("Unable to delete Team");
+        }
     }
 
     public void getBySchool()
