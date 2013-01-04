@@ -29,7 +29,7 @@ public class TeamManager
         return tdb.search();
     }
     
-    public ArrayList<Team> ListAllTeams()
+    public ArrayList<Team> ListAllTeams() throws SQLException
     {
         return tdb.listAll();
     }
@@ -37,6 +37,11 @@ public class TeamManager
     public Team addTeam(Team t) throws SQLException
     {
         return tdb.AddTeam(t);
+    }
+    
+    public void updateTeam(Team t) throws SQLException
+    {
+        tdb.updateTeam(t);
     }
     
     public void RemoveTeam(int id)
