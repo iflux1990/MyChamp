@@ -69,8 +69,4 @@ public class TeamDBManager extends ConnectionDBManager
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    public Team addTeam(Team t)
-    {
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
 }
