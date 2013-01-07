@@ -28,4 +28,9 @@ public class GroupManager
     {
         return gdb.listAllGroups();
     }
+    
+     public Group getGroupById(int groupId) throws SQLException
+    {
+        return gdb.getGroupId(groupId);
+    }
 }
