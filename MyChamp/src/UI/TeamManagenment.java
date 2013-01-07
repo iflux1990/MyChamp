@@ -4,8 +4,12 @@
  */
 package UI;
 
+import BE.Group;
 import BE.Team;
+import BLL.GroupManager;
 import BLL.TeamManager;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -18,15 +22,17 @@ public class TeamManagenment extends Menu
 {
 
     private TeamManager tmgr;
+    private GroupManager gmgr;
     private static final int EXIT_VALUE = 0;
 
     public TeamManagenment()
     {
-        super("Team Managenment", "Add Team", "Update Team", "Remove Team", "List All");
+        super("Team Managenment", "Add Team", "Update Team", "Remove Team", "List All", "Sort Teams");
         EXIT_OPTION = EXIT_VALUE;
         try
         {
             tmgr = new TeamManager();
+            gmgr = new GroupManager();
         }
         catch (Exception ex)
         {
@@ -53,6 +59,9 @@ public class TeamManagenment extends Menu
                 ListAll();
                 pause();
                 break;
+            case 5:
+                sortTeams();
+                break;
             case EXIT_VALUE:
                 doActionExit();
         }
@@ -77,12 +86,21 @@ public class TeamManagenment extends Menu
 
             System.out.print("Email: ");
             String TeamEmail = sc.nextLine();
+            
+            System.out.println("Group is set to Unsorted group: ");
+            int groupId = 5;
+            
+            Group g = gmgr.getGroupById(groupId);
+            if (g == null)
+            {
+                System.out.println("fejl..");
+            }
 
-            Team team = new Team(-1, SchoolName, Captain, TeamEmail);
+            Team team = new Team(-1, SchoolName, Captain, TeamEmail, g);
             team = tmgr.addTeam(team);
 
             System.out.println();
-            System.out.println("Song added with ID : " + team.getTeamId());
+            System.out.println("Team added with ID : " + team.getTeamId());
         }
         catch (InputMismatchException e)
         {
@@ -156,7 +174,7 @@ public class TeamManagenment extends Menu
             System.out.print("Select team by school id: ");
             String school = new Scanner(System.in).nextLine();
 
-            tmgr.RemoveTeam(school);
+            tmgr.removeTeam(school);
         }
         catch (Exception ex)
         {
@@ -191,5 +209,21 @@ public class TeamManagenment extends Menu
 
         }
 
+    }
+
+    private void sortTeams()
+    {
+        try
+        {
+            tmgr.sortTeams();
+        }
+        catch (SQLServerException ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+        }
     }
 }

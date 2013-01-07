@@ -10,28 +10,30 @@ package BE;
  */
 public class Team
 {
-    private final int TeamId;
-    private String SchoolName;
-    private String Captain;
-    private String TeamEmail;
-//    private Group group;
+
+    private final int teamId;
+    private String schoolName;
+    private String captain;
+    private String teamEmail;
+    private Group group;
 //    private int GroupId;
-    private int GroupId;
-    
-    
-    public Team(int TeamId, String SchoolName, String Captain, String TeamEmail)
+    private int groupId;
+
+    public Team(int TeamId, String SchoolName, String Captain, String TeamEmail, Group group)
     {
-        this.TeamId = TeamId;
-        this.SchoolName = SchoolName;
-        this.Captain = Captain;
-        this.TeamEmail = TeamEmail;
-        
+        this.teamId = TeamId;
+        this.schoolName = SchoolName;
+        this.captain = Captain;
+        this.teamEmail = TeamEmail;
+        this.group = group;
     }
     
     public Team(int TeamId, Team t)
     {
-        this(TeamId, t.getSchoolName(), t.getCaptain(), t.getTeamEmail());
+        this(TeamId, t.getSchoolName(), t.getCaptain(), t.getTeamEmail(), t.getGroup());
     }
+
+
 //    
 //    public Team(int TeamId, String SchoolName, String Captain, String TeamEmail)
 //    {
@@ -41,13 +43,13 @@ public class Team
 //        this.TeamEmail = TeamEmail;
 //        
 //    }
-   
+
     /**
      * @return the TeamId
      */
     public int getTeamId()
     {
-        return TeamId;
+        return teamId;
     }
 
     /**
@@ -55,7 +57,7 @@ public class Team
      */
     public String getSchoolName()
     {
-        return SchoolName;
+        return schoolName;
     }
 
     /**
@@ -63,7 +65,7 @@ public class Team
      */
     public void setSchoolName(String SchoolName)
     {
-        this.SchoolName = SchoolName;
+        this.schoolName = SchoolName;
     }
 
     /**
@@ -71,7 +73,7 @@ public class Team
      */
     public String getCaptain()
     {
-        return Captain;
+        return captain;
     }
 
     /**
@@ -79,7 +81,7 @@ public class Team
      */
     public void setCaptain(String Captain)
     {
-        this.Captain = Captain;
+        this.captain = Captain;
     }
 
     /**
@@ -87,7 +89,7 @@ public class Team
      */
     public String getTeamEmail()
     {
-        return TeamEmail;
+        return teamEmail;
     }
 
     /**
@@ -95,7 +97,7 @@ public class Team
      */
     public void setTeamEmail(String TeamEmail)
     {
-        this.TeamEmail = TeamEmail;
+        this.teamEmail = TeamEmail;
     }
 
     /**
@@ -103,22 +105,17 @@ public class Team
      */
     public int getGroupId()
     {
-        return GroupId;
+        return groupId;
     }
-    
-//    public Group getGroup()
-//    {
-//        return group;
-//    }
-    
+
+    public Group getGroup()
+    {
+        return group;
+    }
+
     @Override
     public String toString()
     {
-        return String.format("%-5d %-20s %-20s %-20s", TeamId, SchoolName, Captain, TeamEmail);
-    }
-
-    public Object getGroup()
-    {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return String.format("%-5d %-20s %-20s %-20s %-20s", teamId, schoolName, captain, teamEmail, group);
     }
 }
