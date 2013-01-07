@@ -10,7 +10,7 @@ package BE;
  */
 public class Group
 {
-    private final int groupId;
+    private int groupId;
     private String groupName;
     
     public Group(int groupId, String groupName)
@@ -59,5 +59,13 @@ public class Group
     public String toString()
     {
         return String.format(" %-10s", groupName);
+    }
+
+    /**
+     * @param groupId the groupId to set
+     */
+    public void setGroupId(int groupId)
+    {
+        this.groupId = groupId;
     }
 }

@@ -10,6 +10,7 @@ package BE;
  */
 public class Team
 {
+
     private final int teamId;
     private String schoolName;
     private String captain;
@@ -17,8 +18,7 @@ public class Team
     private Group group;
 //    private int GroupId;
     private int groupId;
-    
-    
+
     public Team(int TeamId, String SchoolName, String Captain, String TeamEmail, Group group)
     {
         this.teamId = TeamId;
@@ -32,6 +32,8 @@ public class Team
     {
         this(TeamId, t.getSchoolName(), t.getCaptain(), t.getTeamEmail(), t.getGroup());
     }
+
+
 //    
 //    public Team(int TeamId, String SchoolName, String Captain, String TeamEmail)
 //    {
@@ -41,7 +43,7 @@ public class Team
 //        this.TeamEmail = TeamEmail;
 //        
 //    }
-   
+
     /**
      * @return the TeamId
      */
@@ -105,17 +107,15 @@ public class Team
     {
         return groupId;
     }
-    
+
     public Group getGroup()
     {
         return group;
     }
-    
+
     @Override
     public String toString()
     {
         return String.format("%-5d %-20s %-20s %-20s %-20s", teamId, schoolName, captain, teamEmail, group);
     }
-
-   
 }

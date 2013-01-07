@@ -25,7 +25,6 @@ public class TeamDBManager extends ConnectionDBManager
 
     public TeamDBManager() throws IOException
     {
-        
     }
 
     public Team addTeam(Team t) throws SQLException
@@ -37,7 +36,7 @@ public class TeamDBManager extends ConnectionDBManager
         ps.setString(1, t.getSchoolName());
         ps.setString(2, t.getCaptain());
         ps.setString(3, t.getTeamEmail());
- //       ps.setInt(4, t.getGroup().getGroupId());
+        //       ps.setInt(4, t.getGroup().getGroupId());
 
         int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)
@@ -119,9 +118,9 @@ public class TeamDBManager extends ConnectionDBManager
 
     }
 
-       
     /**
      * Fjerner et team fra databasen efter skolenavn
+     *
      * @param School
      * @throws SQLException
      */
@@ -169,5 +168,55 @@ public class TeamDBManager extends ConnectionDBManager
 
     }
 
-  
+    public Team getRandomSchool() throws SQLException
+    {
+        String sql = "SELECT TOP 1 School FROM Team, [Group] ORDER BY NEWID()";
+
+        Connection con = dataSource.getConnection();
+
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next())
+        {
+//            int TeamID = rs.getInt("ID");
+            String SchoolName = rs.getString("School");
+            String Captain = rs.getString("TeamCaptain");
+            String TeamEmail = rs.getString("Email");
+            String GroupName = rs.getString("GroupName");
+            int GroupID = rs.getInt("ID");
+
+            Team t = new Team(-1, SchoolName, Captain, TeamEmail, new Group(GroupID, GroupName));
+        }
+
+        return t;
+
+
+
+    }
+
+    public ArrayList<Team> GetUnsortedTeams() throws SQLServerException, SQLException
+    {
+        Connection con = dataSource.getConnection();
+
+        String sql = "SELECT * FROM Team, [Group] WHERE GroupID=5 AND Team.GroupID = [Group].ID";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+
+        ArrayList<Team> Team = new ArrayList<>();
+        while (rs.next())
+        {
+            int id = rs.getInt("ID");
+            String school = rs.getString("School");
+            String teamcaptain = rs.getString("TeamCaptain");
+            String email = rs.getString("Email");
+            int groupid = rs.getInt("GroupID");
+            String groupName = rs.getString("GroupName");
+
+            Team team = new Team(id, school, teamcaptain, email, new Group(groupid, groupName));
+            Team.add(team);
+        }
+        return Team;
+    }
+    
 }

@@ -8,6 +8,8 @@ import BE.Group;
 import BE.Team;
 import BLL.GroupManager;
 import BLL.TeamManager;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -25,7 +27,7 @@ public class TeamManagenment extends Menu
 
     public TeamManagenment()
     {
-        super("Team Managenment", "Add Team", "Update Team", "Remove Team", "List All");
+        super("Team Managenment", "Add Team", "Update Team", "Remove Team", "List All", "Sort Teams");
         EXIT_OPTION = EXIT_VALUE;
         try
         {
@@ -56,6 +58,9 @@ public class TeamManagenment extends Menu
             case 4:
                 ListAll();
                 pause();
+                break;
+            case 5:
+                sortTeams();
                 break;
             case EXIT_VALUE:
                 doActionExit();
@@ -204,5 +209,21 @@ public class TeamManagenment extends Menu
 
         }
 
+    }
+
+    private void sortTeams()
+    {
+        try
+        {
+            tmgr.sortTeams();
+        }
+        catch (SQLServerException ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+        }
     }
 }
