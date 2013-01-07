@@ -4,6 +4,7 @@
  */
 package DAL;
 
+import BE.Group;
 import BE.Team;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
@@ -146,7 +147,7 @@ public class TeamDBManager extends ConnectionDBManager
 
     public Team getRandomSchool() throws SQLException
     {
-        String sql = "SELECT TOP 1 School FROM Team ORDER BY NEWID()";
+        String sql = "SELECT TOP 1 School FROM Team, [Group] ORDER BY NEWID()";
 
         Connection con = dataSource.getConnection();
 
@@ -159,8 +160,10 @@ public class TeamDBManager extends ConnectionDBManager
             String SchoolName = rs.getString("School");
             String Captain = rs.getString("TeamCaptain");
             String TeamEmail = rs.getString("Email");
+            String GroupName = rs.getString("GroupName");
+            int GroupID = rs.getInt("ID");
 
-            Team t = new Team(-1, SchoolName, Captain, TeamEmail);
+            Team t = new Team(-1, SchoolName, Captain, TeamEmail, new Group(GroupID, GroupName));
         }
 
         return t;
@@ -173,7 +176,7 @@ public class TeamDBManager extends ConnectionDBManager
     {
         Connection con = dataSource.getConnection();
 
-        String sql = "SELECT * From Team WHERE GroupID=5";
+        String sql = "SELECT * FROM Team, [Group] WHERE GroupID=5 AND Team.GroupID = [Group].ID";
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
 
@@ -184,9 +187,10 @@ public class TeamDBManager extends ConnectionDBManager
             String school = rs.getString("School");
             String teamcaptain = rs.getString("TeamCaptain");
             String email = rs.getString("Email");
-//            int groupid = rs.getInt("GroupID");
+            int groupid = rs.getInt("GroupID");
+            String groupName = rs.getString("GroupName");
 
-            Team team = new Team(id, school, teamcaptain, email);
+            Team team = new Team(id, school, teamcaptain, email, new Group(groupid, groupName));
             Team.add(team);
         }
         return Team;
