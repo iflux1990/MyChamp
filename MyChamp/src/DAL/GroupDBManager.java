@@ -5,7 +5,6 @@
 package DAL;
 
 import BE.Group;
-import BE.Team;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
 import java.sql.Connection;
@@ -25,8 +24,8 @@ public class GroupDBManager extends ConnectionDBManager
     {
     }
 
-    public ArrayList<Group> listAllGroups() throws  SQLException
-            {
+    public ArrayList<Group> listAllGroups() throws SQLException
+    {
         Connection con = dataSource.getConnection();
 
         String sql = "SELECT * FROM Group";

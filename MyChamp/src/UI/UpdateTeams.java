@@ -6,6 +6,8 @@ package UI;
 
 import BE.Team;
 import BLL.TeamManager;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -94,7 +96,7 @@ public class UpdateTeams extends Menu
             tmgr.updateTeam(t);
 
         }
-        catch (Exception e)
+        catch (SQLException | IOException e)
         {
        
             System.out.println("ERROR - " + e.getMessage());

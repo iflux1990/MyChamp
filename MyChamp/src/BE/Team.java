@@ -106,19 +106,17 @@ public class Team
         return GroupId;
     }
     
+
+    
 //    public Group getGroup()
 //    {
 //        return group;
 //    }
     
+    
     @Override
     public String toString()
     {
         return String.format("%-5d %-20s %-20s %-20s", TeamId, SchoolName, Captain, TeamEmail);
-    }
-
-    public Object getGroup()
-    {
-        throw new UnsupportedOperationException("Not yet implemented");
     }
 }

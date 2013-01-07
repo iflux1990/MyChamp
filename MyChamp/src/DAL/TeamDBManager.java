@@ -4,7 +4,6 @@
  */
 package DAL;
 
-import BE.Group;
 import BE.Team;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
@@ -159,13 +158,36 @@ public class TeamDBManager extends ConnectionDBManager
             String SchoolName = rs.getString("School");
             String Captain = rs.getString("TeamCaptain");
             String TeamEmail = rs.getString("Email");
-            
+
             Team t = new Team(-1, SchoolName, Captain, TeamEmail);
         }
-        
-        return t;
-        
-        
 
+        return t;
+
+
+
+    }
+
+    public ArrayList<Team> GetUnsortedTeams() throws SQLServerException, SQLException
+    {
+        Connection con = dataSource.getConnection();
+
+        String sql = "SELECT * From Team WHERE GroupID=5";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+
+        ArrayList<Team> Team = new ArrayList<>();
+        while (rs.next())
+        {
+            int id = rs.getInt("ID");
+            String school = rs.getString("School");
+            String teamcaptain = rs.getString("TeamCaptain");
+            String email = rs.getString("Email");
+//            int groupid = rs.getInt("GroupID");
+
+            Team team = new Team(id, school, teamcaptain, email);
+            Team.add(team);
+        }
+        return Team;
     }
 }
