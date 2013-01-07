@@ -190,9 +190,6 @@ public class TeamDBManager extends ConnectionDBManager
         }
 
         return t;
-
-
-
     }
 
     public ArrayList<Team> GetUnsortedTeams() throws SQLServerException, SQLException
@@ -218,5 +215,6 @@ public class TeamDBManager extends ConnectionDBManager
         }
         return Team;
     }
+      
     
 }
