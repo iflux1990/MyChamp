@@ -4,7 +4,9 @@
  */
 package UI;
 
+import BE.Group;
 import BE.Team;
+import BLL.GroupManager;
 import BLL.TeamManager;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -18,6 +20,7 @@ public class TeamManagenment extends Menu
 {
 
     private TeamManager tmgr;
+    private GroupManager gmgr;
     private static final int EXIT_VALUE = 0;
 
     public TeamManagenment()
@@ -27,6 +30,7 @@ public class TeamManagenment extends Menu
         try
         {
             tmgr = new TeamManager();
+            gmgr = new GroupManager();
         }
         catch (Exception ex)
         {
@@ -77,8 +81,17 @@ public class TeamManagenment extends Menu
 
             System.out.print("Email: ");
             String TeamEmail = sc.nextLine();
+            
+            System.out.println("Group is set to Unsorted group: ");
+            int groupId = 5;
+            
+            Group g = gmgr.getGroupById(groupId);
+            if (g == null)
+            {
+                System.out.println("fejl..");
+            }
 
-            Team team = new Team(-1, SchoolName, Captain, TeamEmail);
+            Team team = new Team(-1, SchoolName, Captain, TeamEmail, g);
             team = tmgr.addTeam(team);
 
             System.out.println();

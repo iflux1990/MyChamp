@@ -51,4 +51,30 @@ public class GroupDBManager extends ConnectionDBManager
         }
         return group;
     }
+    
+     public Group getGroupId(int groupId) throws SQLException
+    {
+        try (Connection con = dataSource.getConnection())
+        {
+            
+            String sql = ("SELECT * FROM [Group] WHERE ID Like ?");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, 5);
+          
+
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next())
+            {
+                String name = rs.getString("GroupName");
+                int Id = rs.getInt("ID");
+
+                Group g = new Group(Id, name);
+                return g;
+            }
+            return null;
+        }
+
+    }
 }
