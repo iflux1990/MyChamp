@@ -19,7 +19,8 @@ import java.util.ArrayList;
  */
 public class GroupDBManager extends ConnectionDBManager
 {
-
+    private Group g;
+    
     public GroupDBManager() throws IOException
     {
     }
@@ -74,6 +75,32 @@ public class GroupDBManager extends ConnectionDBManager
             }
             return null;
         }
-
     }
+     
+     public void updateGroup(int groupId) throws SQLException
+     {
+          {
+
+            String sql = "UPDATE Team SET GroupID = ?";
+
+            Connection con;
+            try
+            {
+                con = dataSource.getConnection();
+            }
+            catch (SQLServerException ex)
+            {
+                throw new SQLException("Unable to connect to server.");
+            }
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, g.getGroupId());
+
+            int affectedRows = ps.executeUpdate();
+            if (affectedRows == 0)
+            {
+                throw new SQLException("Unable to update Group");
+            }
+        }
+     }
 }
