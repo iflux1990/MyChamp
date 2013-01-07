@@ -95,7 +95,7 @@ public class TeamManagenment extends Menu
             team = tmgr.addTeam(team);
 
             System.out.println();
-            System.out.println("Song added with ID : " + team.getTeamId());
+            System.out.println("Team added with ID : " + team.getTeamId());
         }
         catch (InputMismatchException e)
         {
@@ -169,7 +169,7 @@ public class TeamManagenment extends Menu
             System.out.print("Select team by school id: ");
             String school = new Scanner(System.in).nextLine();
 
-            tmgr.RemoveTeam(school);
+            tmgr.removeTeam(school);
         }
         catch (Exception ex)
         {
