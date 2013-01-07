@@ -10,19 +10,24 @@ package BE;
  */
 public class Group
 {
-    private final int GroupId;
-    private String GroupName;
+    private final int groupId;
+    private String groupName;
     
-    public Group(int GroupId, String GroupName)
+    public Group(int groupId, String groupName)
     {
-        this.GroupId = GroupId;
-        this.GroupName = GroupName;
+        this.groupId = groupId;
+        this.groupName = groupName;
+    }
+    
+    public Group(String groupName)
+    {
+      this(-1, groupName);
         
     }
     
-    public Group(int GroupId)
+    public Group(int groupId)
     {
-        this.GroupId = GroupId;
+        this.groupId = groupId;
     }        
             
 
@@ -31,7 +36,7 @@ public class Group
      */
     public int getGroupId()
     {
-        return GroupId;
+        return groupId;
     }
 
     /**
@@ -39,7 +44,7 @@ public class Group
      */
     public String getGroupName()
     {
-        return GroupName;
+        return groupName;
     }
 
     /**
@@ -47,6 +52,12 @@ public class Group
      */
     public void setGroupName(String GroupName)
     {
-        this.GroupName = GroupName;
+        this.groupName = GroupName;
+    }
+    
+     @Override
+    public String toString()
+    {
+        return String.format(" %-10s", groupName);
     }
 }

@@ -26,8 +26,7 @@ public class UpdateTeams extends Menu
         super("Update Team MENU",
                 "Update School",
                 "Update Captain",
-                "Update Mail",
-                "Update Group");
+                "Update Mail");
 
         EXIT_OPTION = EXIT_VALUE;
         t = team;
@@ -46,9 +45,6 @@ public class UpdateTeams extends Menu
                 break;
             case 3:
                 updateMail();
-                break;
-            case 4:
-                updateGroup();
                 break;
             case EXIT_VALUE:
                 doActionExit();
@@ -80,13 +76,7 @@ public class UpdateTeams extends Menu
         t.setTeamEmail(email);
     }
 
-    private void updateGroup()
-    {
-        System.out.println();
-        System.out.print("New Group: ");
-        String group = new Scanner(System.in, "ISO-8859-1").nextLine();
-//        t.s(group);
-    }
+
 
     private void saveChanges()
     {
