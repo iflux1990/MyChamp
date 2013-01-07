@@ -82,7 +82,7 @@ public class TeamManagenment extends Menu
             team = tmgr.addTeam(team);
 
             System.out.println();
-            System.out.println("Song added with ID : " + team.getTeamId());
+            System.out.println("Team added with ID : " + team.getTeamId());
         }
         catch (InputMismatchException e)
         {
