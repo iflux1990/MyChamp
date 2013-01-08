@@ -10,6 +10,8 @@ import DAL.GroupDBManager;
 import DAL.TeamDBManager;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -73,7 +75,9 @@ public class TeamManager
         {
             for (int i = 0; i < tdb.listAll().size(); i++)
             {
-               
+                ArrayList<Team> allTeams = tdb.GetUnsortedTeams();
+                Collections.shuffle(allTeams);
+            
                 for (int j = 1; j < 5; j++)
                 {
                     g.setGroupId(j);
@@ -92,6 +96,7 @@ public class TeamManager
                 for (int o = 13; o < 17; o++)
                 {
                     g.setGroupId(o);
+        
                 }
                 
                 gdb.updateGroup(i);
