@@ -97,7 +97,7 @@ public abstract class Menu
      protected void printTeamHeader()            //viser ID; Title, Artist... som overskrifter
     {
         System.out.println();
-        System.out.println(String.format("%-5s %-20s %-20s %-20s %-10s",
+        System.out.println(String.format("%-5s %-20s %-20s %-30s %-10s",
                 "ID", "School", "Captain", "Email", "Group"));
         System.out.println();
     }
