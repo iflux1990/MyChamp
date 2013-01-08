@@ -102,15 +102,11 @@ public class TeamManagenment extends Menu
             System.out.println();
             System.out.println("Team added with ID : " + team.getTeamId());
         }
-        catch (InputMismatchException e)
-        {
-            System.out.println("ERROR - Duration must be number");
-        }
+        
         catch (Exception ex)
         {
             ex.printStackTrace();
-//            System.out.println("ERROR - " + ex.getMessage());
-
+            System.out.println("ERROR - " + ex.getMessage());
         }
         pause();
     }

@@ -78,7 +78,7 @@ public class TeamManager
             {
                 
                 Collections.shuffle(allTeams);
-   
+                
                 for (int j = 1; j < 5; j++)
                 {
                     g.setGroupId(j);
@@ -108,6 +108,6 @@ public class TeamManager
             System.out.println("Not enough teams to sort");
 
         }  
-//        System.out.println(allTeams);
+        System.out.println(allTeams);
     }
 }

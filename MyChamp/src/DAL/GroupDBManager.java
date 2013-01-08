@@ -46,7 +46,7 @@ public class GroupDBManager extends ConnectionDBManager
 //            int points = rs.getInt("Points");
 
 
-            Group g = new Group(ID, GroupName);
+            Group g1 = new Group(ID, GroupName);
             group.add(g);
         }
         return group;
@@ -70,7 +70,7 @@ public class GroupDBManager extends ConnectionDBManager
                 String name = rs.getString("GroupName");
                 int Id = rs.getInt("ID");
 
-                Group g = new Group(Id, name);
+                Group g1 = new Group(Id, name);
                 return g;
             }
             return null;
