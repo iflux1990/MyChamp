@@ -5,6 +5,7 @@
 package DAL;
 
 import BE.Group;
+import BE.Team;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
 import java.sql.Connection;
@@ -97,6 +98,26 @@ public class GroupDBManager extends ConnectionDBManager
             {
                 throw new SQLException("Unable to update Group");
             }
+        }
+    }
+
+    public void assign(Team t, int g) throws SQLException
+    {
+        String sql = "UPDATE Team SET School = ?, TeamCaptain = ?, Email = ?, GroupId = ? WHERE Id = ?";
+
+        Connection con = dataSource.getConnection();
+
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, t.getSchoolName());
+        ps.setString(2, t.getCaptain());
+        ps.setString(3, t.getTeamEmail());
+        ps.setInt(4, g);
+        ps.setInt(5, t.getTeamId());
+
+        int affectedRows = ps.executeUpdate();
+        if (affectedRows == 0)
+        {
+            throw new SQLException("Unable to insert Team into group");
         }
     }
 }

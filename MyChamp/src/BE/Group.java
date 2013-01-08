@@ -10,26 +10,26 @@ package BE;
  */
 public class Group
 {
+
     private int groupId;
     private String groupName;
-    
+
     public Group(int groupId, String groupName)
     {
         this.groupId = groupId;
         this.groupName = groupName;
     }
-    
+
     public Group(String groupName)
     {
-      this(-1, groupName);
-        
+        this(-1, groupName);
+
     }
-    
+
     public Group(int groupId)
     {
         this.groupId = groupId;
-    }        
-            
+    }
 
     /**
      * @return the GroupId
@@ -54,8 +54,8 @@ public class Group
     {
         this.groupName = GroupName;
     }
-    
-     @Override
+
+    @Override
     public String toString()
     {
         return String.format(" %-10s", groupName);

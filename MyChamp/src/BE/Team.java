@@ -27,13 +27,11 @@ public class Team
         this.teamEmail = TeamEmail;
         this.group = group;
     }
-    
+
     public Team(int TeamId, Team t)
     {
         this(TeamId, t.getSchoolName(), t.getCaptain(), t.getTeamEmail(), t.getGroup());
     }
-    
-   
 
 //    
 //    public Team(int TeamId, String SchoolName, String Captain, String TeamEmail)
@@ -44,7 +42,6 @@ public class Team
 //        this.TeamEmail = TeamEmail;
 //        
 //    }
-
     /**
      * @return the TeamId
      */
@@ -113,8 +110,8 @@ public class Team
     {
         return group;
     }
-    
-     public void setGroupId(int groupId)
+
+    public void setGroupId(int groupId)
     {
         this.groupId = groupId;
     }
