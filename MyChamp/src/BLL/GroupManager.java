@@ -17,19 +17,20 @@ import java.util.ArrayList;
  */
 public class GroupManager
 {
+
     private GroupDBManager gdb = null;
-    
+
     public GroupManager() throws IOException
     {
         gdb = new GroupDBManager();
     }
-    
+
     public ArrayList<Group> ListAllGroups() throws SQLException
     {
         return gdb.listAllGroups();
     }
-    
-     public Group getGroupById(int groupId) throws SQLException
+
+    public Group getGroupById(int groupId) throws SQLException
     {
         return gdb.getGroupId(groupId);
     }

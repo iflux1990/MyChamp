@@ -8,11 +8,9 @@ import BE.Group;
 import BE.Team;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
+import javax.activation.DataSource;
 
 /**
  *
@@ -88,7 +86,6 @@ public class TeamDBManager extends ConnectionDBManager
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    
     public ArrayList<Team> listAll() throws SQLException
     {
         Connection con = dataSource.getConnection();
@@ -111,7 +108,7 @@ public class TeamDBManager extends ConnectionDBManager
 //            int points = rs.getInt("Points");
 
 
-            Team t = new Team(id, school, teamcaptain, email, new Group(GroupId,groupName));
+            Team t = new Team(id, school, teamcaptain, email, new Group(GroupId, groupName));
             Team.add(t);
         }
         return Team;
@@ -144,7 +141,7 @@ public class TeamDBManager extends ConnectionDBManager
     {
         throw new UnsupportedOperationException("Not yet implemented");
     }
-    
+
     public ArrayList<Team> listGroupA() throws SQLException
     {
         Connection con = dataSource.getConnection();
@@ -160,7 +157,7 @@ public class TeamDBManager extends ConnectionDBManager
 
             String GroupName = rs.getString("GroupName");
             String school = rs.getString("School");
-            
+
 //            Team t = new Team(GroupName, school);
 //            Team.add(t);
         }
@@ -215,6 +212,23 @@ public class TeamDBManager extends ConnectionDBManager
         }
         return Team;
     }
-      
-    
+
+    public int Count() throws SQLException
+    {
+        try (Connection con = dataSource.getConnection())
+        {
+            String query = "SELECT COUNT(*) as NumberOfTeams FROM Team";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next())
+            {
+                int count = rs.getInt("NumberOfTeams");
+
+                return count;
+            }
+            return 0;
+        }
+    }
 }
