@@ -74,29 +74,30 @@ public class TeamManager
         {
             for (int i = 0; i < tdb.GetUnsortedTeams().size(); i++)
             {
-                Collections.shuffle(tdb.GetUnsortedTeams());
-
-                for (int j = 1; j < 5; j++)
-                {
-                    g.setGroupId(j);
-                }
-
-                for (int k = 5; k < 9; k++)
-                {
-                    g.setGroupId(k);
-                }
-
-                for (int l = 9; l < 13; l++)
-                {
-                    g.setGroupId(l);
-                }
-
-                for (int o = 13; o < 17; o++)
-                {
-                    g.setGroupId(o);
-                }
-                
-                gdb.updateGroup(i);
+              Collections.shuffle(tdb.GetUnsortedTeams());
+              
+                System.out.println("a" + tdb.GetUnsortedTeams());
+//                for (int j = 1; j < 5; j++)
+//                {
+//                    t.setGroupId(1);
+//                }
+//
+//                for (int k = 5; k < 9; k++)
+//                {
+//                    t.setGroupId(2);
+//                }
+//
+//                for (int l = 9; l < 13; l++)
+//                {
+//                    t.setGroupId(3);
+//                }
+//
+//                for (int o = 13; o < 17; o++)
+//                {
+//                    t.setGroupId(4);
+//                }
+//                
+//                gdb.updateGroup(i);
             }
         }
         else
