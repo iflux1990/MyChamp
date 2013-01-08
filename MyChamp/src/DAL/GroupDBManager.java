@@ -19,8 +19,9 @@ import java.util.ArrayList;
  */
 public class GroupDBManager extends ConnectionDBManager
 {
+
     private Group g;
-    
+
     public GroupDBManager() throws IOException
     {
     }
@@ -40,27 +41,22 @@ public class GroupDBManager extends ConnectionDBManager
 
             int ID = rs.getInt("ID");
             String GroupName = rs.getString("School");
-            String teamcaptain = rs.getString("TeamCaptain");
-            String email = rs.getString("Email");
-//            int groupid = rs.getInt("GroupID");
-//            int points = rs.getInt("Points");
-
 
             Group g = new Group(ID, GroupName);
             group.add(g);
         }
         return group;
     }
-    
-     public Group getGroupId(int groupId) throws SQLException
+
+    public Group getGroupId(int groupId) throws SQLException
     {
         try (Connection con = dataSource.getConnection())
         {
-            
+
             String sql = ("SELECT * FROM [Group] WHERE ID Like ?");
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, 5);
-          
+
 
 
             ResultSet rs = ps.executeQuery();
@@ -76,12 +72,12 @@ public class GroupDBManager extends ConnectionDBManager
             return null;
         }
     }
-     
-     public void updateGroup(int groupId) throws SQLException
-     {
-          {
 
-            String sql = "UPDATE Team SET GroupID = ?";
+    public void updateGroup(int groupId) throws SQLException
+    {
+        {
+
+            String sql = "UPDATE Team SET GroupID = ? WHERE ";
 
             Connection con;
             try
@@ -102,5 +98,5 @@ public class GroupDBManager extends ConnectionDBManager
                 throw new SQLException("Unable to update Group");
             }
         }
-     }
+    }
 }

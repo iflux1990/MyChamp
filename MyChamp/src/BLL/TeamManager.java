@@ -22,6 +22,7 @@ import java.util.Collections;
  */
 public class TeamManager
 {
+
     private Group g;
     private Team t;
     private TeamDBManager tdb = null;
@@ -68,16 +69,17 @@ public class TeamManager
         return tdb.getRandomSchool();
     }
 
-    public void sortTeams() throws SQLServerException, SQLException
+    public void assignGroups() throws SQLServerException, SQLException
     {
-
+        ArrayList<Team> allTeams = tdb.listAll();
         if (tdb.listAll().size() >= 12)
         {
             for (int i = 0; i < tdb.listAll().size(); i++)
             {
-                ArrayList<Team> allTeams = tdb.GetUnsortedTeams();
+
                 Collections.shuffle(allTeams);
-            
+
+
                 for (int j = 1; j < 5; j++)
                 {
                     g.setGroupId(j);
@@ -96,9 +98,9 @@ public class TeamManager
                 for (int o = 13; o < 17; o++)
                 {
                     g.setGroupId(o);
-        
+
                 }
-                
+
                 gdb.updateGroup(i);
             }
         }
@@ -107,6 +109,7 @@ public class TeamManager
             System.out.println("Not enough teams to sort");
 
         }
+        System.out.println(allTeams);
+
     }
-    
 }

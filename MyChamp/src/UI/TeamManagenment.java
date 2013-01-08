@@ -216,7 +216,7 @@ public class TeamManagenment extends Menu
     {
         try
         {
-            tmgr.sortTeams();
+            tmgr.assignGroups();
         }
         catch (SQLServerException ex)
         {
@@ -226,6 +226,7 @@ public class TeamManagenment extends Menu
         {
             System.out.println("ERROR - " + ex.getMessage());
         }
+        pause();
     }
     
     
