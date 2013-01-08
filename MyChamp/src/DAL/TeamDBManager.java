@@ -196,7 +196,7 @@ public class TeamDBManager extends ConnectionDBManager
     {
         Connection con = dataSource.getConnection();
 
-        String sql = "SELECT * FROM Team, [Group] WHERE GroupID=5 AND Team.GroupID = [Group].ID";
+        String sql = "SELECT * FROM Team, [Group] WHERE GroupID=1 AND Team.GroupID = [Group].ID";
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
 
