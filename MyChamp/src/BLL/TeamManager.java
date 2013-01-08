@@ -71,14 +71,14 @@ public class TeamManager
 
     public void sortTeams() throws SQLServerException, SQLException
     {
-
-        if (tdb.GetUnsortedTeams().size() >= 12)
+        ArrayList<Team> allTeams = tdb.listAll();
+        if (tdb.listAll().size() > 12)
         {
-            for (int i = 0; i < tdb.GetUnsortedTeams().size(); i++)
+            for (int i = 0; i < tdb.listAll().size(); i++)
             {
-                ArrayList<Team> allTeams = tdb.GetUnsortedTeams();
+                
                 Collections.shuffle(allTeams);
-            
+   
                 for (int j = 1; j < 5; j++)
                 {
                     g.setGroupId(j);
@@ -107,6 +107,7 @@ public class TeamManager
         {
             System.out.println("Not enough teams to sort");
 
-        }
+        }  
+//        System.out.println(allTeams);
     }
 }
