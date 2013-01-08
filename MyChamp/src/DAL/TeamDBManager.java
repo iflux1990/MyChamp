@@ -146,6 +146,29 @@ public class TeamDBManager extends ConnectionDBManager
     {
         throw new UnsupportedOperationException("Not yet implemented");
     }
+    
+    public ArrayList<Team> listGroupA() throws SQLException
+    {
+        Connection con = dataSource.getConnection();
+
+        String sql = "SELECT GroupName, School FROM Team join [Group] ON GroupID = [Group].ID and GroupID = 1";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+
+
+        ArrayList<Team> Team = new ArrayList<>();
+        while (rs.next())
+        {
+
+            String GroupName = rs.getString("GroupName");
+            String school = rs.getString("School");
+            
+//            Team t = new Team(GroupName, school);
+//            Team.add(t);
+        }
+        return Team;
+
+    }
 
     public Team getRandomSchool() throws SQLException
     {
@@ -169,16 +192,13 @@ public class TeamDBManager extends ConnectionDBManager
         }
 
         return t;
-
-
-
     }
 
     public ArrayList<Team> GetUnsortedTeams() throws SQLServerException, SQLException
     {
         Connection con = dataSource.getConnection();
 
-        String sql = "SELECT * FROM Team, [Group] WHERE GroupID=5 AND Team.GroupID = [Group].ID";
+        String sql = "SELECT * FROM Team, [Group] WHERE GroupID=1 AND Team.GroupID = [Group].ID";
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
 
@@ -197,6 +217,7 @@ public class TeamDBManager extends ConnectionDBManager
         }
         return Team;
     }
+      
     
     
     
