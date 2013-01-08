@@ -8,6 +8,7 @@ import BE.Group;
 import BE.Team;
 import BLL.GroupManager;
 import BLL.TeamManager;
+import DAL.TeamDBManager;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -225,5 +226,28 @@ public class TeamManagenment extends Menu
         {
             System.out.println("ERROR - " + ex.getMessage());
         }
+    }
+    
+     /**
+     * Creates the 16 schools/teams that exists in the Esbjerg area.
+     */
+    private void InsertTheTeams() {
+        TeamManager.newTeam("Bakkeskolen", "Lol Bakkeskolen", "Admin@Bakkeskolen.dk");
+        TeamManager.newTeam("Bakkevejens skole", "Lol Bakkevejens skole", "Admin@Bakkevejens skole.dk");
+        TeamManager.newTeam("Boldesager Skole", "Lol Boldesager Skole", "Admin@Boldesager Skole.dk");
+        TeamManager.newTeam("Bryndum Skole", "Lol Bryndum Skole", "Admin@Bryndum Skole.dk");
+        TeamManager.newTeam("Danmarksgades Skole", "Lol Danmarksgades Skole", "Admin@Danmarksgades Skole.dk");
+        TeamManager.newTeam("Darum Skole", "Lol Darum Skole", "Admin@Darum Skole.dk");
+        TeamManager.newTeam("Egekratskolen", "Lol Egekratskolen", "Admin@Egekratskolen.dk");
+        BLLTeam.newTeam("Fourfeldtskolen", "Lol Fourfeldtskolen", "Admin@Fourfeldtskolen.dk");
+        BLLTeam.newTeam("Gredstedbro Skole", "Lol Gredstedbro Skole", "Admin@Gredstedbro Skole.dk");
+        BLLTeam.newTeam("Hjerting Skole", "Lol Hjerting Skole", "Admin@Hjerting Skole.dk");
+        BLLTeam.newTeam("Kvaglundskolen", "Lol Kvaglundskolen", "Admin@Kvaglundskolen.dk");
+        BLLTeam.newTeam("Nordre skole", "Lol Nordre skole", "Admin@Nordre skole.dk");
+        BLLTeam.newTeam("Norremarkskolen", "Lol Norremarkskolen", "Admin@Norremarkskolen.dk");
+        BLLTeam.newTeam("Praestegaardeskolen", "Lol Praestegaardeskolen", "Admin@Praestegaardeskolen.dk");
+        BLLTeam.newTeam("Roerkjaer Skole", "Lol Roerkjaer Skole", "Admin@Roerkjaer Skole.dk");
+        BLLTeam.newTeam("Skads Skole", "Lol Skads Skole", "Admin@Skads Skole.dk");
+
     }
 }
