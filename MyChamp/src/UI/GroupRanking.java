@@ -18,7 +18,7 @@ public class GroupRanking extends Menu
 {
 
     private static final int EXIT_VALUE = 0;
-    private final MatchManager mmgr;
+    private MatchManager mmgr;
  
     /**
     * Creates the menu for group ranking
@@ -56,14 +56,14 @@ public class GroupRanking extends Menu
 
     private void groupRanking()
     {
-//        try
-//        {
-//            mmgr.scheduleMatches();
-//        }
-//        catch (SQLException ex)
-//        {
-//            ex.printStackTrace();
-//        }
+        try
+        {
+            mmgr.scheduleMatches();
+        }
+        catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        }
     }
     
     private void teamRanking()
