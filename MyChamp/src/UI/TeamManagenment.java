@@ -8,6 +8,7 @@ import BE.Group;
 import BE.Team;
 import BLL.GroupManager;
 import BLL.TeamManager;
+import DAL.TeamDBManager;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -61,6 +62,7 @@ public class TeamManagenment extends Menu
                 break;
             case 5:
                 sortTeams();
+                pause();
                 break;
             case EXIT_VALUE:
                 doActionExit();
@@ -86,10 +88,10 @@ public class TeamManagenment extends Menu
 
             System.out.print("Email: ");
             String TeamEmail = sc.nextLine();
-            
+
             System.out.println("Group is set to Unsorted group: ");
             int groupId = 5;
-            
+
             Group g = gmgr.getGroupById(groupId);
             if (g == null)
             {
@@ -116,7 +118,7 @@ public class TeamManagenment extends Menu
         clear();
         System.out.println("Update Team: ");
         System.out.println("");
-        
+
         try
         {
 
@@ -207,19 +209,52 @@ public class TeamManagenment extends Menu
 
     }
 
+//    private void sortTeams()
+//    {
+//        try
+//        {
+//            tmgr.assignGroups();
+//        }
+//        catch (SQLServerException ex)
+//        {
+//            System.out.println("ERROR - " + ex.getMessage());
+//        }
+//        catch (SQLException ex)
+//        {
+//            System.out.println("ERROR - " + ex.getMessage());
+//        }
+//        pause();
+//    }
     private void sortTeams()
     {
         try
         {
-            tmgr.assignGroups();
+            int counter = tmgr.showNumber();
+            if (counter >= 12 && counter <= 16)
+            {
+                System.out.println("Assign Teams To Groups");
+
+                try
+                {
+                    tmgr.assignGroups();
+                }
+                catch (Exception e)
+                {
+                    System.out.println(" ERROR - " + e.getMessage());
+                }
+            }
+            else if (counter < 12)
+            {
+                System.out.println("Too few teams to organize.");
+            }
+            else if (counter > 16)
+            {
+                System.out.println("Too many teams to organize.");
+            }
         }
-        catch (SQLServerException ex)
+        catch (Exception e)
         {
-            System.out.println("ERROR - " + ex.getMessage());
-        }
-        catch (SQLException ex)
-        {
-            System.out.println("ERROR - " + ex.getMessage());
+            System.out.println("ERROR - " + e.getMessage());
         }
         pause();
     }

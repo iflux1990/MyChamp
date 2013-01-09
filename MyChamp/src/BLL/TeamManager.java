@@ -68,29 +68,25 @@ public class TeamManager
     {
         return tdb.getRandomSchool();
     }
-/**
- * Assigns all the teams into groups 
- * @throws SQLServerException
- * @throws SQLException 
- */
-    public void assignGroups() throws SQLServerException, SQLException
+
+    public int showNumber() throws SQLException
     {
-        ArrayList<Team> allTeams = tdb.listAll();
-        ArrayList<Group> groupA = new ArrayList<>();
-        ArrayList<Group> groupB = new ArrayList<>();
-        ArrayList<Group> groupC = new ArrayList<>();
-        ArrayList<Group> groupD = new ArrayList<>();
-        if (tdb.listAll().size() >= 12)
-        {
-            for (int i = 0; i < tdb.listAll().size(); i++)
-            {
-                
-                Collections.shuffle(allTeams);
-   
-                for (int j = 1; j < 5; j++)
-                {
-                    t.setGroupId(j);
-                }
+
+        return tdb.Count();
+    }
+
+//        ArrayList<Team> allTeams = tdb.listAll();
+//        if (tdb.listAll().size() > 12)
+//        {
+//            for (int i = 0; i < tdb.listAll().size(); i++)
+//            {
+//                
+//                Collections.shuffle(allTeams);
+//   
+//                for (int j = 1; j < 5; j++)
+//                {
+//                    g.setGroupId(j);
+//                }
 //
 //                for (int k = 5; k < 9; k++)
 //                {
@@ -109,13 +105,79 @@ public class TeamManager
 //                }
 //                
 //                gdb.updateGroup(i);
-            }
-        }
-        else
-        {
-            System.out.println("Not enough teams to sort");
+//            }
+//        }
+//        else
+//        {
+//            System.out.println("Not enough teams to sort");
+//
+//        }  
+//        System.out.println(allTeams);
+    public void assignGroups() throws SQLServerException, SQLException
+    {
+        int MaxGroups = 4;
+        int currentGroup = 1;
 
-        }  
-        System.out.println(allTeams);
+        ArrayList<Team> allTeams = tdb.listAll();
+
+        Collections.shuffle(allTeams);
+
+        ArrayList<ArrayList<Team>> Groups = new ArrayList();
+
+        for (int i = 0; i < MaxGroups; i++)
+        {
+            Groups.add(new ArrayList());
+        }
+
+        for (Team t : allTeams)
+        {
+            gdb.assign(t, currentGroup++);
+
+            if (currentGroup > MaxGroups)
+            {
+                currentGroup = 1;
+            }
+            System.out.println("Groups assigned!");
+        }
+
+//        if (tdb.listAll().size() >= 12)
+//        {
+//            for (int i = 0; i < tdb.listAll().size(); i++)
+//            {
+//
+//                Collections.shuffle(allTeams);
+//
+//
+//                for (int j = 1; j < 5; j++)
+//                {
+//                    g.setGroupId(j);
+//                }
+//
+//                for (int k = 5; k < 9; k++)
+//                {
+//                    g.setGroupId(k);
+//                }
+//
+//                for (int l = 9; l < 13; l++)
+//                {
+//                    g.setGroupId(l);
+//                }
+//
+//                for (int o = 13; o < 17; o++)
+//                {
+//                    g.setGroupId(o);
+//
+//                }
+//
+//                gdb.updateGroup(i);
+//            }
+//        }
+//        else
+//        {
+//            System.out.println("Not enough teams to sort");
+//
+//        }
+//        System.out.println(allTeams);
+
     }
 }
