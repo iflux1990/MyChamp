@@ -142,24 +142,28 @@ public class TeamDBManager extends ConnectionDBManager
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    public ArrayList<Team> listGroupA() throws SQLException
+    public ArrayList<Team> listTeamsByGroupId(int groupId) throws SQLException
     {
         Connection con = dataSource.getConnection();
 
-        String sql = "SELECT GroupName, School FROM Team join [Group] ON GroupID = [Group].ID and GroupID = 1";
+        String sql = "SELECT GroupName, School FROM Team join [Group] ON GroupID = [Group].ID and GroupID = ?";
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
+        
+        ps.setInt(1, groupId);
 
 
         ArrayList<Team> Team = new ArrayList<>();
         while (rs.next())
         {
 
-            String GroupName = rs.getString("GroupName");
             String school = rs.getString("School");
+            String captain = rs.getString("TeamCaptain");
+            String email = rs.getString("Email");
+            String groupName = rs.getString("groupName");
 
-//            Team t = new Team(GroupName, school);
-//            Team.add(t);
+            Team t = new Team(-1, school, captain, email, new Group(groupId, groupName));
+            Team.add(t);
         }
         return Team;
 
@@ -189,29 +193,6 @@ public class TeamDBManager extends ConnectionDBManager
         return t;
     }
 
-    public ArrayList<Team> GetUnsortedTeams() throws SQLServerException, SQLException
-    {
-        Connection con = dataSource.getConnection();
-
-        String sql = "SELECT * FROM Team, [Group] WHERE GroupID=1 AND Team.GroupID = [Group].ID";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ResultSet rs = ps.executeQuery();
-
-        ArrayList<Team> Team = new ArrayList<>();
-        while (rs.next())
-        {
-            int id = rs.getInt("ID");
-            String school = rs.getString("School");
-            String teamcaptain = rs.getString("TeamCaptain");
-            String email = rs.getString("Email");
-            int groupid = rs.getInt("GroupID");
-            String groupName = rs.getString("GroupName");
-
-            Team team = new Team(id, school, teamcaptain, email, new Group(groupid, groupName));
-            Team.add(team);
-        }
-        return Team;
-    }
 
     public int Count() throws SQLException
     {
