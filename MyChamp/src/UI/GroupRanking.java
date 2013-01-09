@@ -20,7 +20,11 @@ public class GroupRanking extends Menu
 
     private static final int EXIT_VALUE = 0;
     private MatchManager mmgr;
-    private TeamDBManager tdbmgr;
+ 
+    /**
+    * Creates the menu for group ranking
+    */
+    
     public GroupRanking()
     {
         super("Group Ranking", "Group", "Team");
