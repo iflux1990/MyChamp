@@ -31,15 +31,15 @@ public class MainMenu extends Menu
                             "Group Ranking",
                             "Final Ranking");
                             EXIT_OPTION = EXIT_VALUE;
-        try
-        {
-            tmgr = new TeamManager();
-                    
-        }
-        catch (SQLException | IOException ex)
-        {
-            System.out.println("ERROR - :" + ex.getMessage());
-        }
+//        try
+//        {
+//            tmgr = new TeamManager();
+//                    
+//        }
+//        catch (SQLException | IOException ex)
+//        {
+//            System.out.println("ERROR - :" + ex.getMessage());
+//        }
     }
 
     @Override
