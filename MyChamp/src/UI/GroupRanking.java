@@ -18,7 +18,7 @@ public class GroupRanking extends Menu
 {
 
     private static final int EXIT_VALUE = 0;
-    private final MatchManager mmgr;
+    private MatchManager mmgr;
  
     /**
     * Creates the menu for group ranking
