@@ -8,7 +8,7 @@ import UI.MainMenu;
 
 /**
  * MyChamp - A Football Tournament Management System
- * @authors Daniel, Marco, Mak & Jonas
+ * @author Daniel, Marco, Mak & Jonas
  */
 public class MyChamp
 {

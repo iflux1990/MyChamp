@@ -6,7 +6,6 @@ package BLL;
 
 import BE.Group;
 import DAL.GroupDBManager;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ public class GroupManager
         gdb = new GroupDBManager();
     }
 
-    public ArrayList<Group> ListAllGroups() throws SQLException
+    public ArrayList<Group> listAllGroups() throws SQLException
     {
         return gdb.listAllGroups();
     }

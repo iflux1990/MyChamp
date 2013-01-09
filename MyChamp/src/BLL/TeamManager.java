@@ -34,12 +34,12 @@ public class TeamManager
         mm = new MatchManager();
     }
 
-    public ArrayList<Team> Search()
+    public ArrayList<Team> search()
     {
         return tdb.search();
     }
 
-    public ArrayList<Team> ListAllTeams() throws SQLException
+    public ArrayList<Team> listAllTeams() throws SQLException
     {
         return tdb.listAll();
     }
@@ -56,7 +56,7 @@ public class TeamManager
 
     public void removeTeam(String school) throws SQLException
     {
-        tdb.RemoveTeam(school);
+        tdb.removeTeam(school);
     }
 
     public void getBySchool(String schoolName)
@@ -72,7 +72,7 @@ public class TeamManager
     public int showNumber() throws SQLException
     {
 
-        return tdb.Count();
+        return tdb.count();
     }
 
 //        ArrayList<Team> allTeams = tdb.listAll();
@@ -115,7 +115,7 @@ public class TeamManager
 //        System.out.println(allTeams);
     public void assignGroups() throws SQLServerException, SQLException
     {
-        int MaxGroups = 4;
+        int maxGroups = 4;
         int currentGroup = 1;
 
         ArrayList<Team> allTeams = tdb.listAll();
@@ -124,7 +124,7 @@ public class TeamManager
 
         ArrayList<ArrayList<Team>> Groups = new ArrayList();
 
-        for (int i = 0; i < MaxGroups; i++)
+        for (int i = 0; i < maxGroups; i++)
         {
             Groups.add(new ArrayList());
         }
@@ -133,13 +133,13 @@ public class TeamManager
         {
             gdb.assign(t, currentGroup++);
 
-            if (currentGroup > MaxGroups)
+            if (currentGroup > maxGroups)
             {
                 currentGroup = 1;
             }
 
         }
-        System.out.println("Groups assigned!");
+        System.out.println("Groups assigned");
         
 
     }

@@ -17,7 +17,7 @@ public class ConnectionDBManager
 {
 
     /**
-     * 
+     * Connects to the MyChamp database
      */
     protected SQLServerDataSource dataSource;
 

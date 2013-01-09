@@ -55,8 +55,8 @@ public class UpdateTeams extends Menu
     {
         System.out.println();
         System.out.print("New School Name: ");
-        String SchoolName = new Scanner(System.in, "ISO-8859-1").nextLine();
-        t.setSchoolName(SchoolName);
+        String schoolName = new Scanner(System.in, "ISO-8859-1").nextLine();
+        t.setSchoolName(schoolName);
     }
 
     private void updateCaptain()    //update Captain name
