@@ -18,6 +18,7 @@ public class GroupRanking extends Menu
 {
 
     private static final int EXIT_VALUE = 0;
+    private final MatchManager mmgr;
  
     /**
     * Creates the menu for group ranking
@@ -27,14 +28,14 @@ public class GroupRanking extends Menu
     {
         super("Group Ranking", "Group", "Team");
         EXIT_OPTION = EXIT_VALUE;
-//        try
-//        {
-//            mmgr = new MatchManager();
-//        }
-//        catch (IOException ex)
-//        {
-//            System.out.println("ERROR - " + ex.getMessage());
-//        }
+        try
+        {
+            mmgr = new MatchManager();
+        }
+        catch (IOException ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+        }
     }
     
     @Override
