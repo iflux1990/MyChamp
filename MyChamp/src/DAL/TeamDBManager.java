@@ -10,7 +10,6 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
-import javax.activation.DataSource;
 
 /**
  *
@@ -47,6 +46,38 @@ public class TeamDBManager extends ConnectionDBManager
         int id = keys.getInt(1);
 
         return new Team(id, t);
+
+    }
+
+    public String getTeamById(int teamId) throws SQLException
+    {
+        {
+            Connection con = dataSource.getConnection();
+
+            String sql = "SELECT Team.*, [Group].GroupName FROM Team,[Group] WHERE [Group].ID = Team.GroupID AND Team.ID = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, teamId);
+            ResultSet rs = ps.executeQuery();
+
+
+            if (rs.next())
+            {
+
+                String school = rs.getString("School");
+
+
+//            int points = rs.getInt("Points");
+
+
+                return school;
+            }
+
+
+        }
+        return null;
+
+
 
     }
 
@@ -90,7 +121,7 @@ public class TeamDBManager extends ConnectionDBManager
     {
         Connection con = dataSource.getConnection();
 
-        String sql = "SELECT *, [Group].GroupName FROM Team, [Group] WHERE Team.GroupID = [Group].ID ORDER BY GroupID";
+        String sql = "SELECT *, [Group].GroupName FROM Team, [Group] WHERE Team.GroupID = [Group].ID ORDER BY GroupID , Team.ID";
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
 
@@ -146,7 +177,7 @@ public class TeamDBManager extends ConnectionDBManager
     {
         Connection con = dataSource.getConnection();
 
-        String sql = "SELECT GroupName, School FROM Team join [Group] ON GroupID = [Group].ID and GroupID = ?";
+        String sql = "SELECT Team.*, GroupName FROM Team, [Group] WHERE Team.GroupID = [Group].ID AND Team.GroupID = ?";
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         
@@ -157,12 +188,13 @@ public class TeamDBManager extends ConnectionDBManager
         while (rs.next())
         {
 
+            int teamId = rs.getInt("ID");
             String school = rs.getString("School");
             String captain = rs.getString("TeamCaptain");
             String email = rs.getString("Email");
             String groupName = rs.getString("groupName");
 
-            Team t = new Team(-1, school, captain, email, new Group(groupId, groupName));
+            Team t = new Team(teamId, school, captain, email, new Group(groupId, groupName));
             Team.add(t);
         }
         return Team;
@@ -192,7 +224,6 @@ public class TeamDBManager extends ConnectionDBManager
 
         return t;
     }
-
 
     public int Count() throws SQLException
     {

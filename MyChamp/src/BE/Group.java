@@ -5,8 +5,8 @@
 package BE;
 
 /**
- *
- * @author Daniel
+ * The Business entity of the Group table
+ * @author Daniel, Marco, Mak & Jonas
  */
 public class Group
 {
@@ -14,7 +14,7 @@ public class Group
     private int groupId;
     private String groupName;
 
-    public Group(int groupId, String groupName)
+    public Group(int groupId, String groupName)     //constructor
     {
         this.groupId = groupId;
         this.groupName = groupName;
