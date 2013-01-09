@@ -8,13 +8,13 @@ import UI.MainMenu;
 
 /**
  *
- * @author Daniel
+ * @author Daniel, Marco, Mak & Jonas
  */
 public class MyChamp
 {
 
     /**
-     * @param args the command line arguments
+     * @Starts The program by running MainMenu
      */
     public static void main(String[] args)
     {

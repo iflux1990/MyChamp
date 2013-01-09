@@ -5,14 +5,18 @@
 package UI;
 
 /**
- *
- * @author Groggy
+ * controlling the viewing of the Group Ranking
+ * @author Daniel, Marco, Mak & Jonas
  */
-public class GroupRanking extends Menu
+public class GroupRanking extends Menu  
 {
 
     private static final int EXIT_VALUE = 0;
  
+    /**
+    * Creates the menu for group ranking
+    */
+    
     public GroupRanking()
     {
         super("Group Ranking", "Group", "Team");

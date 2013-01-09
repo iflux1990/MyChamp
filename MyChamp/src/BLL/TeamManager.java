@@ -17,8 +17,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- *
- * @author Daniel
+ * The Business Layer Logic of the Team table
+ * @author Daniel, Marco, Mak & Jonas
  */
 public class TeamManager
 {

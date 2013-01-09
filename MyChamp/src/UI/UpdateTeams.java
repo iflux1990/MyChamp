@@ -11,8 +11,8 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
- *
- * @author Daniel
+ * The update Menu
+ * @author Daniel, Marco, Mak & Jonas
  */
 public class UpdateTeams extends Menu
 {
@@ -38,21 +38,20 @@ public class UpdateTeams extends Menu
         switch (option)
         {
             case 1:
-                updateSchool();
+                updateSchool();     //update school
                 break;
             case 2:
-                updateCaptain();
+                updateCaptain();    //Update Captain   
                 break;
             case 3:
-                updateMail();
+                updateMail();       //Update Email
                 break;
             case EXIT_VALUE:
                 doActionExit();
-
         }
     }
 
-    private void updateSchool()
+    private void updateSchool()     //Update school name
     {
         System.out.println();
         System.out.print("New School Name: ");
@@ -60,7 +59,7 @@ public class UpdateTeams extends Menu
         t.setSchoolName(SchoolName);
     }
 
-    private void updateCaptain()
+    private void updateCaptain()    //update Captain name
     {
         System.out.println();
         System.out.print("New Captain: ");
@@ -68,7 +67,7 @@ public class UpdateTeams extends Menu
         t.setCaptain(captain);
     }
 
-    private void updateMail()
+    private void updateMail()       //Update Email
     {
         System.out.println();
         System.out.print("New E-Mail Adress: ");
@@ -78,7 +77,7 @@ public class UpdateTeams extends Menu
 
 
 
-    private void saveChanges()
+    private void saveChanges()  //Saves the chages
     {
         try
         {

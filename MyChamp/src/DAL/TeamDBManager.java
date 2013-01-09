@@ -90,7 +90,7 @@ public class TeamDBManager extends ConnectionDBManager
     {
         Connection con = dataSource.getConnection();
 
-        String sql = "SELECT *, [Group].GroupName FROM Team, [Group] WHERE Team.GroupID = [Group].ID ORDER BY GroupID";
+        String sql = "SELECT *, [Group].GroupName FROM Team, [Group] WHERE Team.GroupID = [Group].ID ORDER BY GroupID , Team.ID";
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
 
