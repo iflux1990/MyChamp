@@ -5,7 +5,6 @@
 package UI;
 
 import BLL.MatchManager;
-import DAL.TeamDBManager;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -30,7 +29,6 @@ public class GroupRanking extends Menu
         try
         {
             mmgr = new MatchManager();
-            tdbmgr = new TeamDBManager();
         }
         catch (IOException ex)
         {
@@ -58,7 +56,7 @@ public class GroupRanking extends Menu
     {
         try
         {
-            tdbmgr.listTeamsByGroupId(1);
+            mmgr.scheduleMatches();
         }
         catch (SQLException ex)
         {
