@@ -10,8 +10,6 @@ import DAL.GroupDBManager;
 import DAL.TeamDBManager;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,11 +25,13 @@ public class TeamManager
     private Team t;
     private TeamDBManager tdb = null;
     private GroupDBManager gdb;
+    private MatchManager mm;
 
     public TeamManager() throws SQLException, IOException
     {
         tdb = new TeamDBManager();
         gdb = new GroupDBManager();
+        mm = new MatchManager();
     }
 
     public ArrayList<Team> Search()
@@ -140,6 +140,9 @@ public class TeamManager
 
         }
         System.out.println("Groups assigned!");
+        
+
+    }
 //        if (tdb.listAll().size() >= 12)
 //        {
 //            for (int i = 0; i < tdb.listAll().size(); i++)
@@ -178,6 +181,4 @@ public class TeamManager
 //
 //        }
 //        System.out.println(allTeams);
-
-    }
 }

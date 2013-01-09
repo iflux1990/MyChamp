@@ -232,7 +232,7 @@ public class TeamManagenment extends Menu
             int counter = tmgr.showNumber();
             if (counter >= 12 && counter <= 16)
             {
-                System.out.println("Assign Teams To Groups");
+
 
                 try
                 {
