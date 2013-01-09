@@ -21,7 +21,7 @@ public class MatchDBManager extends ConnectionDBManager
     public MatchDBManager() throws IOException
     {
     }
-        public Match addMatches(Match m) throws SQLException
+        public Void addMatches(Match m) throws SQLException
     {
         
         Connection con = dataSource.getConnection();
@@ -35,11 +35,9 @@ public class MatchDBManager extends ConnectionDBManager
         ps.setInt(5, m.getHomeGoals());
         ps.setInt(6, m.getGuestGoals());
         
-        ResultSet keys = ps.getGeneratedKeys();
-        keys.next();
-        int id = keys.getInt(1);
-
-        return new Match(id, m);
+        
+        return null;
+        
     }
     
 }
