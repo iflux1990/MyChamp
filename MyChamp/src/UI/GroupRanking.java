@@ -8,8 +8,6 @@ import BLL.MatchManager;
 import DAL.TeamDBManager;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * controlling the viewing of the Group Ranking
@@ -20,7 +18,8 @@ public class GroupRanking extends Menu
 
     private static final int EXIT_VALUE = 0;
     private MatchManager mmgr;
- 
+    private TeamDBManager tdbmgr;
+    
     /**
     * Creates the menu for group ranking
     */
