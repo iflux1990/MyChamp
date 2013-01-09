@@ -21,11 +21,11 @@ public class MatchDBManager extends ConnectionDBManager
     public MatchDBManager() throws IOException
     {
     }
-        public Void addMatches(Match m) throws SQLException
+        public Match addMatches(Match m) throws SQLException
     {
         
         Connection con = dataSource.getConnection();
-        String sql = "INSERT INTO Match(ID, MatchRound, HomeTeamID, GuestTeamID, isPlayed, HomeGoals, GuestGoals) VALUES (?, ?, ?, ?, ? ,?)";
+        String sql = "INSERT INTO Match(MatchRound, HomeTeamID, GuestTeamID, isPlayed, HomeGoals, GuestGoals) VALUES (?, ?, ?, ?, ? ,?)";
 
         PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         ps.setInt(1, m.getMatchRound());
@@ -35,8 +35,11 @@ public class MatchDBManager extends ConnectionDBManager
         ps.setInt(5, m.getHomeGoals());
         ps.setInt(6, m.getGuestGoals());
         
-        
-        return null;
+        ResultSet keys = ps.getGeneratedKeys();
+        keys.next();
+        int id = keys.getInt(1);
+       
+        return new Match(id, m);
         
     }
     
