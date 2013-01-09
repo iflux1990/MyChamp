@@ -7,8 +7,11 @@ package BLL;
 import BE.Match;
 import BE.Team;
 import DAL.TeamDBManager;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,23 +22,28 @@ public class MatchManager
 
     private TeamDBManager tdb;
 
+    public MatchManager() throws IOException
+    {
+        tdb = new TeamDBManager();
+    }
+
     public void scheduleMatches() throws SQLException
     {
         //Round 1
 
         ArrayList<Team> group1 = tdb.listTeamsByGroupId(1);
-        ArrayList<Team> group2 = tdb.listTeamsByGroupId(2);
-        ArrayList<Team> group3 = tdb.listTeamsByGroupId(3);
-        ArrayList<Team> group4 = tdb.listTeamsByGroupId(4);
+
+        for (int i = 0; i <= 3; i++)
+        {
+            for (int j = 0; j <= 3; i++)
+            {
+                System.out.println(group1.get(i).getSchoolName() + "vs" + group1.get(j).getSchoolName());
+//                Match match = new Match(1, 1, group1.get(i).getTeamId(), group1.get(j).getTeamId());
+            }
+        }
 
 
-        Match match = new Match(1, 1, group1.get(1).getTeamId(), group1.get(2).getTeamId());
-        
-//        new Match(2, 1, homeTeamId, guestTeamId, isPlayed, homeGoals, guestGoals);
-//        new Match(3, 1, homeTeamId, guestTeamId, isPlayed, homeGoals, guestGoals);
-//        new Match(4, 1, homeTeamId, guestTeamId, isPlayed, homeGoals, guestGoals);
-//        new Match(5, 1, homeTeamId, guestTeamId, isPlayed, homeGoals, guestGoals);
-//        new Match(6, 1, homeTeamId, guestTeamId, isPlayed, homeGoals, guestGoals);
-//        new Match(7, 1, homeTeamId, guestTeamId, isPlayed, homeGoals, guestGoals);
+
+
     }
 }

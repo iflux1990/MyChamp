@@ -33,12 +33,9 @@ public class Match
     
     public Match(int Id, int MatchRound, int HomeTeamId, int GuestTeamId)
     {
-        this.Id = Id;
-        this.MatchRound = MatchRound;
-        this.HomeTeamId = HomeTeamId;
-        this.GuestTeamId = GuestTeamId;
-    
+        this(Id, MatchRound, HomeTeamId, GuestTeamId, -1, -1, -1);
     }
+
     /**
      * @return the Id
      */

@@ -4,6 +4,12 @@
  */
 package UI;
 
+import BLL.MatchManager;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Groggy
@@ -12,11 +18,19 @@ public class GroupRanking extends Menu
 {
 
     private static final int EXIT_VALUE = 0;
- 
+    private MatchManager mmgr;
     public GroupRanking()
     {
         super("Group Ranking", "Group", "Team");
         EXIT_OPTION = EXIT_VALUE;
+        try
+        {
+            mmgr = new MatchManager();
+        }
+        catch (IOException ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+        }
     }
     
     @Override
@@ -37,7 +51,14 @@ public class GroupRanking extends Menu
 
     private void doActionSuboption1()
     {
-        System.out.println("Group Ranking");
+        try
+        {
+            mmgr.scheduleMatches();
+        }
+        catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        }
     }
     
     private void doActionSuboption2()
