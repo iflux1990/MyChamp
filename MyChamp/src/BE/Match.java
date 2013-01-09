@@ -5,8 +5,8 @@
 package BE;
 
 /**
- *
- * @author Daniel
+ * The Business entity of the Match table
+ * @author Daniel, Marco, Mak & Jonas
  */
 public class Match
 {

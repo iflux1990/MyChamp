@@ -10,14 +10,14 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- *
- * @author Mak, Jonas, Daniel, Marco
+ * The Data Layer Logic of the Connect manager
+ * @author Daniel, Marco, Mak & Jonas
  */
 public class ConnectionDBManager
 {
 
     /**
-     *
+     * 
      */
     protected SQLServerDataSource dataSource;
 

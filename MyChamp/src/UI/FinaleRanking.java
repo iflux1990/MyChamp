@@ -5,8 +5,8 @@
 package UI;
 
 /**
- *
- * @author Groggy
+ * The UI of the Finale Ranking
+ * @author Daniel, Marco, Mak & Jonas
  */
 public class FinaleRanking extends Menu
 {

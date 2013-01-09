@@ -4,24 +4,17 @@
  */
 package UI;
 
-import BLL.TeamManager;
-import java.io.IOException;
-import java.sql.SQLException;
-
 /**
- * Hovedmenuen
- *
- * @author Mak, Jonas, Daniel og Marco
+ * Head menu of the program
+ * @author Daniel, Marco, Mak & Jonas
  */
 public class MainMenu extends Menu
 {
 
-    private static final int EXIT_VALUE = 0;
-    private TeamManager tmgr;
+    private static final int EXIT_VALUE = 0;    
 
     /**
-     * Constructor, opretter en hovedmenu med titlen "MyChamps" og fem
-     * menupunkter
+     * Constructor, makes a menu with the title "myChamp" and 5 sub menus
      */
     public MainMenu()
     {
@@ -30,16 +23,7 @@ public class MainMenu extends Menu
                             "Match Result",
                             "Group Ranking",
                             "Final Ranking");
-                            EXIT_OPTION = EXIT_VALUE;
-        try
-        {
-            tmgr = new TeamManager();
-                    
-        }
-        catch (SQLException | IOException ex)
-        {
-            System.out.println("ERROR - :" + ex.getMessage());
-        }
+                            EXIT_OPTION = EXIT_VALUE;        
     }
 
     @Override
@@ -48,58 +32,50 @@ public class MainMenu extends Menu
         switch (option)
         {
             case 1:
-                goToTeamManagenment();
+                goToTeamManagenment();      //go to Team Management
                 break;
             case 2:
-                goToView();
+                goToView();                 //go to View
                 break;
             case 3:
-                goToMatchResult();
+                goToMatchResult();          //go to Match Result
                 break;
             case 4:
-                goToGroupRanking();
+                goToGroupRanking();         //go to Group Ranking
                 break;
             case 5:
-                goToFinalRanking();
+                goToFinalRanking();         //go to Finale Ranking
                 break;
         }
     }
 
-    private void goToTeamManagenment()
+    private void goToTeamManagenment()      //runs a new Team Managenment
     {
         new TeamManagenment().run();
         clear();
     }
 
-    private void goToView()
+    private void goToView()                 //runs a new View
     {
         new View().run();
         clear();
     }
 
-    private void goToMatchResult()
+    private void goToMatchResult()          //runs a new Match Result
     {
         new MatchResult().run();
         clear();
     }
 
-    private void goToGroupRanking()
+    private void goToGroupRanking()         //runs a new Group Ranking
     {
         new GroupRanking().run();
         clear();
     }
 
-    private void goToFinalRanking()
+    private void goToFinalRanking()         //runs a new FInale Ranking
     {
         new FinaleRanking().run();
-//        try
-//        {
-//            tmgr.getRandomTeam();
-//        }
-//        catch (SQLException ex)
-//        {
-//            System.out.println("ERROR - " + ex.getMessage());
-//        }
-        
+        clear();
     }
 }

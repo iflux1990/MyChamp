@@ -8,8 +8,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- *
- * @author Groggy
+ * Menu
+ * @author Daniel, Marco, Mak & Jonas
  */
 public abstract class Menu
 {
@@ -18,13 +18,13 @@ public abstract class Menu
     private final String header;
     private final String[] menuItems;
 
-    public Menu(String header, String... menuItems)
+    public Menu(String header, String... menuItems) //constructor
     {
         this.header = header;
         this.menuItems = menuItems;
     }
 
-    public void run()
+    public void run()       //runs and calls showMenu
     {
         boolean done = false;
         while (!done)
@@ -39,7 +39,7 @@ public abstract class Menu
         }
     }
 
-    private void showMenu()
+    private void showMenu()     //shows menu
     {
         clear();
         System.out.println();
@@ -80,7 +80,7 @@ public abstract class Menu
         }
     }
     
-    protected void clear()
+    protected void clear()      //clear by making 50 empty lines
     {
         for (int i = 0; i < 50; i++)
         {
@@ -88,13 +88,13 @@ public abstract class Menu
         }
     }
     
-    protected void pause()
+    protected void pause()      //pauses
     {
         System.out.println("\nPress ENTER to continue...");
         new Scanner(System.in).nextLine();
     }
     
-     protected void printTeamHeader()            //viser ID; Title, Artist... som overskrifter
+     protected void printTeamHeader()            //Prints the Team header
     {
         System.out.println();
         System.out.println(String.format("%-5s %-20s %-20s %-30s %-30s",

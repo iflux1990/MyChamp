@@ -11,14 +11,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author Groggy
+ * controlling the viewing of the Group Ranking
+ * @author Daniel, Marco, Mak & Jonas
  */
-public class GroupRanking extends Menu
+public class GroupRanking extends Menu  
 {
 
     private static final int EXIT_VALUE = 0;
-    private MatchManager mmgr;
+ 
+    /**
+    * Creates the menu for group ranking
+    */
+    
     public GroupRanking()
     {
         super("Group Ranking", "Group", "Team");
