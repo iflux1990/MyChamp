@@ -30,7 +30,15 @@ public class Match
         this.GuestGoals = GuestGoals;
         
     }
-
+    
+    public Match(int Id, int MatchRound, int HomeTeamId, int GuestTeamId)
+    {
+        this.Id = Id;
+        this.MatchRound = MatchRound;
+        this.HomeTeamId = HomeTeamId;
+        this.GuestTeamId = GuestTeamId;
+    
+    }
     /**
      * @return the Id
      */
