@@ -21,10 +21,11 @@ public class TeamManagenment extends Menu
     private TeamManager tmgr;
     private GroupManager gmgr;
     private static final int EXIT_VALUE = 0;
+    
 
     public TeamManagenment()
     {
-        super("Team Managenment", "Add Team", "Update Team", "Remove Team", "List All", "Sort Teams");
+        super("Team Managenment", "Add Team", "Update Team", "Remove Team", "List All", "Sort Teams", "Specific teams in a group");
         EXIT_OPTION = EXIT_VALUE;
         try
         {
@@ -99,12 +100,12 @@ public class TeamManagenment extends Menu
 
             System.out.println();
             System.out.println("Team added with ID : " + team.getTeamId());
-        }
-        
+        }       
         catch (Exception ex)
         {
-            ex.printStackTrace();
+            
             System.out.println("ERROR - " + ex.getMessage());
+
         }
         pause();
     }
@@ -112,7 +113,7 @@ public class TeamManagenment extends Menu
     private void UpdateTeams()  //List all Teams, Select Schhol id to edite
     {
         clear();
-        System.out.println("Update Team: ");
+        System.out.println("Update Team(0 to abort): ");
         System.out.println("");
 
         try
@@ -130,12 +131,17 @@ public class TeamManagenment extends Menu
             System.out.print("Select School Id: ");
             int id = new Scanner(System.in).nextInt();
             Team team = null;
+
             for (Team t : teams)
             {
                 if (t.getTeamId() == id)
                 {
                     team = t;
                 }
+            }
+            if (team == null)
+            {
+                return;
             }
             if (team != null)
             {
@@ -165,8 +171,9 @@ public class TeamManagenment extends Menu
         try
         {
             System.out.print("Select team by school id: ");
-            String school = new Scanner(System.in).nextLine();
 
+            String school = new Scanner(System.in).nextLine();
+            
             tmgr.removeTeam(school);
         }
         catch (Exception ex)
