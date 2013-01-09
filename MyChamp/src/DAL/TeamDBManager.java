@@ -179,10 +179,9 @@ public class TeamDBManager extends ConnectionDBManager
 
         String sql = "SELECT Team.*, GroupName FROM Team, [Group] WHERE Team.GroupID = [Group].ID AND Team.GroupID = ?";
         PreparedStatement ps = con.prepareStatement(sql);
-        ResultSet rs = ps.executeQuery();
+        ps.setInt(1, groupId);
         
-        ps.setInt(1, t.);
-
+        ResultSet rs = ps.executeQuery();
 
         ArrayList<Team> Team = new ArrayList<>();
         while (rs.next())
