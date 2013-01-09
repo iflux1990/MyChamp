@@ -150,7 +150,7 @@ public class TeamDBManager extends ConnectionDBManager
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         
-        ps.setInt(1, groupId);
+        ps.setInt(1, t.);
 
 
         ArrayList<Team> Team = new ArrayList<>();
