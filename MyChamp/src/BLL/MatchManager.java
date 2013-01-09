@@ -62,12 +62,13 @@ public class MatchManager
                     {
                         if (group2.get(i) != group2.get(j))
                         {
-//                      System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
+                      System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
                             Match m = new Match(1, 1, group2.get(i).getTeamId(), group2.get(j).getTeamId());
                             mdb.addMatches(m);
                             
                         }
                     }
+                    System.out.println("");
                 }
             }
             
@@ -80,11 +81,12 @@ public class MatchManager
                     {
                         if (group3.get(i) != group3.get(j))
                         {
-//                      System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
+                      System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
                             Match m = new Match(1, 1, group3.get(i).getTeamId(), group3.get(j).getTeamId());
                             mdb.addMatches(m);
                         }
                     }
+                    System.out.println("");
                 }
             }
             
@@ -97,11 +99,12 @@ public class MatchManager
                     {
                         if (group4.get(i) != group4.get(j))
                         {
-//                      System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
+                      System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
                             Match m = new Match(1, 1, group4.get(i).getTeamId(), group4.get(j).getTeamId());
                             mdb.addMatches(m);
                         }
                     }
+                    System.out.println("");
                 }
             }
         
