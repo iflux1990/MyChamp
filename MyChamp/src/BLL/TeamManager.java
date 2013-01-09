@@ -143,6 +143,7 @@ public class TeamManager
         
 
     }
+}
 //        if (tdb.listAll().size() >= 12)
 //        {
 //            for (int i = 0; i < tdb.listAll().size(); i++)
@@ -181,4 +182,4 @@ public class TeamManager
 //
 //        }
 //        System.out.println(allTeams);
-}
+
