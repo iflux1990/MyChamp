@@ -256,6 +256,6 @@ public class TeamManagenment extends Menu
         {
             System.out.println("ERROR - " + e.getMessage());
         }
-        pause();
+
     }
 }
