@@ -14,14 +14,14 @@ public class Match
     private int matchRound;
     private final int homeTeamId;
     private final int guestTeamId;
-    private int isPlayed;
+    private boolean isPlayed;
     private int homeGoals;
     private int guestGoals;
     private String homeTeam;
     private String guestTeam;
     
     
-    public Match(int Id, int MatchRound, int HomeTeamId, int GuestTeamId, int isPlayed, int HomeGoals, int GuestGoals)
+    public Match(int Id, int MatchRound, int HomeTeamId, int GuestTeamId, boolean isPlayed, int HomeGoals, int GuestGoals)
     {
         this.Id = Id;
         this.matchRound = MatchRound;
@@ -35,7 +35,12 @@ public class Match
     
     public Match(int Id, int MatchRound, int HomeTeamId, int GuestTeamId)
     {
-        this(Id, MatchRound, HomeTeamId, GuestTeamId, -1, -1, -1);
+        this(Id, MatchRound, HomeTeamId, GuestTeamId, false, -1, -1);
+    }
+    
+    public Match(int Id, Match m)
+    {
+        this(Id, m.getMatchRound(), m.getHomeTeamId(), m.getGuestTeamId(), m.getIsPlayed(), m.getHomeGoals(), m.getGuestGoals());
     }
 
     /**
@@ -82,17 +87,17 @@ public class Match
     /**
      * @return the isPlayed
      */
-    public int getIsPlayed()
+    public boolean getIsPlayed()
     {
-        return isPlayed;
+        return false;       
     }
 
     /**
      * @param isPlayed the isPlayed to set
      */
-    public void setIsPlayed(int isPlayed)
+    public void setIsPlayed(boolean isPlayed)
     {
-        this.isPlayed = isPlayed;
+       isPlayed = true;  
     }
 
     /**

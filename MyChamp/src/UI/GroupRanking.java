@@ -39,22 +39,21 @@ public class GroupRanking extends Menu
         switch (option)
         {
             case 1:
-                doActionSuboption1();
+                groupRanking();
                 break;
             case 2:
-                doActionSuboption2();
+                teamRanking();
                 break;
                 
             case EXIT_VALUE: doActionExit();
         }
     }
 
-    private void doActionSuboption1()
+    private void groupRanking()
     {
         try
         {
             mmgr.scheduleMatches();
-            pause();
         }
         catch (SQLException ex)
         {
@@ -62,7 +61,7 @@ public class GroupRanking extends Menu
         }
     }
     
-    private void doActionSuboption2()
+    private void teamRanking()
     {
         System.out.println("Team Ranking");
     }

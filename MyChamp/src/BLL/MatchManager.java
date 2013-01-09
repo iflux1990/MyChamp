@@ -6,6 +6,7 @@ package BLL;
 
 import BE.Match;
 import BE.Team;
+import DAL.MatchDBManager;
 import DAL.TeamDBManager;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -21,10 +22,12 @@ public class MatchManager
     private Match m;
     private TeamDBManager tdb;
     private Team t;
+    private MatchDBManager mdb;
 
     public MatchManager() throws IOException
     {
         tdb = new TeamDBManager();
+        mdb = new MatchDBManager();
     }
 
     public void scheduleMatches() throws SQLException
@@ -43,12 +46,10 @@ public class MatchManager
                         {
 //                      System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
                             Match m = new Match(1, 1, group1.get(i).getTeamId(), group1.get(j).getTeamId());
-                            String homeTeamName = tdb.getTeamById(m.getHomeTeamId());
-                            String guestTeamName = tdb.getTeamById(m.getGuestTeamId());
-
-                            System.out.println(homeTeamName + " vs " + guestTeamName);
+                            mdb.addMatches(m);
                         }
                     }
+                    System.out.println("");
                 }
             }
             
@@ -63,10 +64,8 @@ public class MatchManager
                         {
 //                      System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
                             Match m = new Match(1, 1, group2.get(i).getTeamId(), group2.get(j).getTeamId());
-                            String homeTeamName = tdb.getTeamById(m.getHomeTeamId());
-                            String guestTeamName = tdb.getTeamById(m.getGuestTeamId());
-
-                            System.out.println(homeTeamName + " vs " + guestTeamName);
+                            mdb.addMatches(m);
+                            
                         }
                     }
                 }
@@ -83,10 +82,7 @@ public class MatchManager
                         {
 //                      System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
                             Match m = new Match(1, 1, group3.get(i).getTeamId(), group3.get(j).getTeamId());
-                            String homeTeamName = tdb.getTeamById(m.getHomeTeamId());
-                            String guestTeamName = tdb.getTeamById(m.getGuestTeamId());
-
-                            System.out.println(homeTeamName + " vs " + guestTeamName);
+                            mdb.addMatches(m);
                         }
                     }
                 }
@@ -103,23 +99,11 @@ public class MatchManager
                         {
 //                      System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
                             Match m = new Match(1, 1, group4.get(i).getTeamId(), group4.get(j).getTeamId());
-                            String homeTeamName = tdb.getTeamById(m.getHomeTeamId());
-                            String guestTeamName = tdb.getTeamById(m.getGuestTeamId());
-
-                            System.out.println(homeTeamName + " vs " + guestTeamName);
+                            mdb.addMatches(m);
                         }
                     }
                 }
             }
-
-
-
-
-
-
-
-
-
         
     }
 }
