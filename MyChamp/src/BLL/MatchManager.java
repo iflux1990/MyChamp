@@ -44,7 +44,7 @@ public class MatchManager
                     {
                         if (group1.get(i) != group1.get(j))
                         {
-//                      System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
+                      System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
                             Match m = new Match(1, 1, group1.get(i).getTeamId(), group1.get(j).getTeamId());
                             mdb.addMatches(m);
                         }
