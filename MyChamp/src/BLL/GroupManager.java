@@ -12,8 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
- * @author Daniel
+ * The Business Layer Logic of the Group table
+ * @author Daniel, Marco, Mak & Jonas
  */
 public class GroupManager
 {

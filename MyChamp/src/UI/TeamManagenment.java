@@ -8,16 +8,12 @@ import BE.Group;
 import BE.Team;
 import BLL.GroupManager;
 import BLL.TeamManager;
-import DAL.TeamDBManager;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- *
- * @author Groggy
+ * Menu for the Team Managenment
+ * @author Daniel, Marco, Mak & Jonas
  */
 public class TeamManagenment extends Menu
 {
@@ -49,20 +45,20 @@ public class TeamManagenment extends Menu
         switch (option)
         {
             case 1:
-                AddTeam();
+                AddTeam();      //add Teams
                 break;
             case 2:
-                UpdateTeams();
+                UpdateTeams();  //updates Teams
                 break;
             case 3:
-                RemoveTeam();
+                RemoveTeam();   //removes Team
                 break;
             case 4:
-                ListAll();
+                ListAll();      //list all Teams
                 pause();
                 break;
             case 5:
-                sortTeams();
+                sortTeams();    //sorts all Teams
                 pause();
                 break;
             case EXIT_VALUE:
@@ -70,7 +66,7 @@ public class TeamManagenment extends Menu
         }
     }
 
-    private void AddTeam()
+    private void AddTeam()      //Creates a new team
     {
         clear();
 
@@ -105,20 +101,16 @@ public class TeamManagenment extends Menu
             System.out.println();
             System.out.println("Team added with ID : " + team.getTeamId());
         }
-        catch (InputMismatchException e)
-        {
-            System.out.println("ERROR - Duration must be number");
-        }
+        
         catch (Exception ex)
         {
             ex.printStackTrace();
-//            System.out.println("ERROR - " + ex.getMessage());
-
+            System.out.println("ERROR - " + ex.getMessage());
         }
         pause();
     }
 
-    private void UpdateTeams()
+    private void UpdateTeams()  //List all Teams, Select Schhol id to edite
     {
         clear();
         System.out.println("Update Team(0 to abort): ");
@@ -127,7 +119,7 @@ public class TeamManagenment extends Menu
         try
         {
 
-            ArrayList<Team> teams = tmgr.ListAllTeams();
+            ArrayList<Team> teams = tmgr.ListAllTeams();    //List all teams
 
 
             printTeamHeader();
@@ -161,7 +153,6 @@ public class TeamManagenment extends Menu
                 pause();
             }
 
-
         }
         catch (Exception e)
         {
@@ -171,7 +162,7 @@ public class TeamManagenment extends Menu
         }
     }
 
-    private void RemoveTeam()
+    private void RemoveTeam()   //Lister alle Teams, removes Team by School Id
     {
         ListAll();
 
@@ -197,7 +188,7 @@ public class TeamManagenment extends Menu
         System.out.println("You selected to exit.");
     }
 
-    private void ListAll()
+    private void ListAll()  //Lister all Teams
     {
         try
         {
@@ -236,8 +227,8 @@ public class TeamManagenment extends Menu
 //        }
 //        pause();
 //    }
-    private void sortTeams()
-    {
+    private void sortTeams()    //Counts the number of teams in the tornument, 
+    {                           //if below 12 the tornument cant start, the maxium of Teams are 16
         try
         {
             int counter = tmgr.showNumber();
@@ -254,11 +245,11 @@ public class TeamManagenment extends Menu
                     System.out.println(" ERROR - " + e.getMessage());
                 }
             }
-            else if (counter < 12)
+            else if (counter < 12)  //minimum Teams to start the tornument
             {
                 System.out.println("Too few teams to organize.");
             }
-            else if (counter > 16)
+            else if (counter > 16) //maximum Teams in the tornument
             {
                 System.out.println("Too many teams to organize.");
             }

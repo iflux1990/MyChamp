@@ -5,8 +5,8 @@
 package BE;
 
 /**
- *
- * @author Daniel
+ * The Business entity of the Team table
+ * @author Daniel, Marco, Mak & Jonas
  */
 public class Team
 {
@@ -19,7 +19,7 @@ public class Team
 //    private int GroupId;
     private int groupId;
 
-    public Team(int TeamId, String SchoolName, String Captain, String TeamEmail, Group group)
+    public Team(int TeamId, String SchoolName, String Captain, String TeamEmail, Group group) //Constructor
     {
         this.teamId = TeamId;
         this.schoolName = SchoolName;
@@ -105,12 +105,16 @@ public class Team
     {
         return groupId;
     }
-
+    /**
+     * @return the group
+     */
     public Group getGroup()
     {
         return group;
     }
-
+    /**
+     * @param GroupId the GroupId to set
+     */
     public void setGroupId(int groupId)
     {
         this.groupId = groupId;
@@ -119,6 +123,6 @@ public class Team
     @Override
     public String toString()
     {
-        return String.format("%-5d %-20s %-20s %-30s %-20s", teamId, schoolName, captain, teamEmail, group);
+        return String.format("%-5d %-20s %-20s %-29s %-29s", teamId, schoolName, captain, teamEmail, group);
     }
 }

@@ -5,8 +5,8 @@
 package BE;
 
 /**
- *
- * @author Daniel
+ * The Business entity of the Match table
+ * @author Daniel, Marco, Mak & Jonas
  */
 public class Match
 {
@@ -29,6 +29,11 @@ public class Match
         this.HomeGoals = HomeGoals;
         this.GuestGoals = GuestGoals;
         
+    }
+    
+    public Match(int Id, int MatchRound, int HomeTeamId, int GuestTeamId)
+    {
+        this(Id, MatchRound, HomeTeamId, GuestTeamId, -1, -1, -1);
     }
 
     /**

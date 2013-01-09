@@ -10,15 +10,13 @@ import DAL.GroupDBManager;
 import DAL.TeamDBManager;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- *
- * @author Daniel
+ * The Business Layer Logic of the Team table
+ * @author Daniel, Marco, Mak & Jonas
  */
 public class TeamManager
 {
@@ -27,11 +25,13 @@ public class TeamManager
     private Team t;
     private TeamDBManager tdb = null;
     private GroupDBManager gdb;
+    private MatchManager mm;
 
     public TeamManager() throws SQLException, IOException
     {
         tdb = new TeamDBManager();
         gdb = new GroupDBManager();
+        mm = new MatchManager();
     }
 
     public ArrayList<Team> Search()
@@ -140,6 +140,7 @@ public class TeamManager
 
         }
         System.out.println("Groups assigned!");
+        
 
     }
 }
