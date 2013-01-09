@@ -11,23 +11,25 @@ package BE;
 public class Match
 {
     private final int Id;
-    private int MatchRound;
-    private final int HomeTeamId;
-    private final int GuestTeamId;
+    private int matchRound;
+    private final int homeTeamId;
+    private final int guestTeamId;
     private int isPlayed;
-    private int HomeGoals;
-    private int GuestGoals;
+    private int homeGoals;
+    private int guestGoals;
+    private String homeTeam;
+    private String guestTeam;
     
     
     public Match(int Id, int MatchRound, int HomeTeamId, int GuestTeamId, int isPlayed, int HomeGoals, int GuestGoals)
     {
         this.Id = Id;
-        this.MatchRound = MatchRound;
-        this.HomeTeamId = HomeTeamId;
-        this.GuestTeamId = GuestTeamId;
+        this.matchRound = MatchRound;
+        this.homeTeamId = HomeTeamId;
+        this.guestTeamId = GuestTeamId;
         this.isPlayed = isPlayed;
-        this.HomeGoals = HomeGoals;
-        this.GuestGoals = GuestGoals;
+        this.homeGoals = HomeGoals;
+        this.guestGoals = GuestGoals;
         
     }
     
@@ -43,13 +45,14 @@ public class Match
     {
         return Id;
     }
-
+    
+    
     /**
      * @return the MatchRound
      */
     public int getMatchRound()
     {
-        return MatchRound;
+        return matchRound;
     }
 
     /**
@@ -57,7 +60,7 @@ public class Match
      */
     public void setMatchRound(int MatchRound)
     {
-        this.MatchRound = MatchRound;
+        this.matchRound = MatchRound;
     }
 
     /**
@@ -65,7 +68,7 @@ public class Match
      */
     public int getHomeTeamId()
     {
-        return HomeTeamId;
+        return homeTeamId;
     }
 
     /**
@@ -73,7 +76,7 @@ public class Match
      */
     public int getGuestTeamId()
     {
-        return GuestTeamId;
+        return guestTeamId;
     }
 
     /**
@@ -97,7 +100,7 @@ public class Match
      */
     public int getHomeGoals()
     {
-        return HomeGoals;
+        return homeGoals;
     }
 
     /**
@@ -105,7 +108,7 @@ public class Match
      */
     public void setHomeGoals(int HomeGoals)
     {
-        this.HomeGoals = HomeGoals;
+        this.homeGoals = HomeGoals;
     }
 
     /**
@@ -113,7 +116,7 @@ public class Match
      */
     public int getGuestGoals()
     {
-        return GuestGoals;
+        return guestGoals;
     }
 
     /**
@@ -121,7 +124,13 @@ public class Match
      */
     public void setGuestGoals(int GuestGoals)
     {
-        this.GuestGoals = GuestGoals;
+        this.guestGoals = GuestGoals;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return String.format("%-5d %-10d %-10d", Id, homeTeamId, guestTeamId );
     }
     
 }

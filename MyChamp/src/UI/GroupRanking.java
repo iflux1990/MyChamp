@@ -54,6 +54,7 @@ public class GroupRanking extends Menu
         try
         {
             mmgr.scheduleMatches();
+            pause();
         }
         catch (SQLException ex)
         {
