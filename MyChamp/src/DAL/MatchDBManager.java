@@ -53,7 +53,7 @@ public class MatchDBManager extends ConnectionDBManager
 
     public void removeAllMatches(Match m) throws SQLException
     {
-        String sql = "DELETE FROM Match";
+        String sql = "DELETE FROM Match" + " DBCC CHECKIDENT (Match, RESEED, 0)";
 
         Connection con = dataSource.getConnection();
 
@@ -63,7 +63,7 @@ public class MatchDBManager extends ConnectionDBManager
         int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)
         {
-            throw new SQLException("Unable to delete Match");
+            throw new SQLException();
         }
     }
 

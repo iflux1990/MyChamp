@@ -45,6 +45,7 @@ public class View extends Menu
                 break;
             case 2:
                 removeAllMatches();
+                pause();
                 break;
             case 3:
                 viewSchedule();
@@ -78,7 +79,7 @@ public class View extends Menu
         }
         catch (SQLException ex)
         {
-            ex.printStackTrace();
+            System.out.println("Matches have been removed and Match ID is reset to 0");
         }
     }
     
