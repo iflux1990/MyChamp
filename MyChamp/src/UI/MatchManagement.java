@@ -118,25 +118,25 @@ public class MatchManagement extends Menu
         {
 
             System.out.println("Round 1: ");
-            System.out.printf("%-5s%-15sVS%15s \n","ID", "HomeTeam", "GuestTeam");
+            System.out.printf("%-5s%-20sVS%20s \n","ID", "HomeTeam", "GuestTeam");
             ArrayList<Match> round1 = new ArrayList(mmgr.round1());
             for (int i = 0; i <= 7; i++)
             {
-                System.out.printf("%-5d%-15sVS%15s \n",round1.get(i).getId(), tmgr.getTeamById(round1.get(i).getHomeTeamId()), tmgr.getTeamById(round1.get(i).getGuestTeamId()));
+                System.out.printf("%-5d%-20sVS%20s \n",round1.get(i).getId(), tmgr.getTeamById(round1.get(i).getHomeTeamId()), tmgr.getTeamById(round1.get(i).getGuestTeamId()));
             }
             System.out.println();
             System.out.println("Round 2: ");
             ArrayList<Match> round2 = new ArrayList(mmgr.round2());
             for (int i = 0; i <= 7; i++)
             {
-                System.out.printf("%-5d%-15sVS%15s \n",round2.get(i).getId(), tmgr.getTeamById(round2.get(i).getHomeTeamId()), tmgr.getTeamById(round2.get(i).getGuestTeamId()));
+                System.out.printf("%-5d%-20sVS%20s \n",round2.get(i).getId(), tmgr.getTeamById(round2.get(i).getHomeTeamId()), tmgr.getTeamById(round2.get(i).getGuestTeamId()));
             }
             System.out.println();
             System.out.println("Round 3: ");
             ArrayList<Match> round3 = new ArrayList(mmgr.round3());
             for (int i = 0; i <= 7; i++)
             {
-                System.out.printf("%-5d%-15sVS%15s \n",round3.get(i).getId(), tmgr.getTeamById(round3.get(i).getHomeTeamId()), tmgr.getTeamById(round3.get(i).getGuestTeamId()));
+                System.out.printf("%-5d%-20sVS%20s \n",round3.get(i).getId(), tmgr.getTeamById(round3.get(i).getHomeTeamId()), tmgr.getTeamById(round3.get(i).getGuestTeamId()));
             }
 
             System.out.println();
@@ -144,21 +144,21 @@ public class MatchManagement extends Menu
             ArrayList<Match> round4 = new ArrayList(mmgr.round4());
             for (int i = 0; i <= 7; i++)
             {
-                System.out.printf("%-5d%-15sVS%15s \n",round4.get(i).getId(), tmgr.getTeamById(round4.get(i).getHomeTeamId()), tmgr.getTeamById(round4.get(i).getGuestTeamId()));
+                System.out.printf("%-5d%-20sVS%20s \n",round4.get(i).getId(), tmgr.getTeamById(round4.get(i).getHomeTeamId()), tmgr.getTeamById(round4.get(i).getGuestTeamId()));
             }
             System.out.println();
             System.out.println("Round 5: ");
             ArrayList<Match> round5 = new ArrayList(mmgr.round5());
             for (int i = 0; i <= 7; i++)
             {
-                System.out.printf("%-5d%-15sVS%15s \n",round5.get(i).getId(), tmgr.getTeamById(round5.get(i).getHomeTeamId()), tmgr.getTeamById(round5.get(i).getGuestTeamId()));
+                System.out.printf("%-5d%-20sVS%20s \n",round5.get(i).getId(), tmgr.getTeamById(round5.get(i).getHomeTeamId()), tmgr.getTeamById(round5.get(i).getGuestTeamId()));
             }
             System.out.println();
             System.out.println("Round 6: ");
             ArrayList<Match> round6 = new ArrayList(mmgr.round6());
             for (int i = 0; i <= 7; i++)
             {
-                System.out.printf("%-5d%-15sVS%15s \n",round6.get(i).getId(), tmgr.getTeamById(round6.get(i).getHomeTeamId()), tmgr.getTeamById(round6.get(i).getGuestTeamId()));
+                System.out.printf("%-5d%-20sVS%20s \n",round6.get(i).getId(), tmgr.getTeamById(round6.get(i).getHomeTeamId()), tmgr.getTeamById(round6.get(i).getGuestTeamId()));
             }
         }
         catch (SQLException ex)
