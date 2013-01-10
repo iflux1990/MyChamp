@@ -49,7 +49,7 @@ public class TeamDBManager extends ConnectionDBManager
 
     }
 
-    public String getTeamById(int teamId) throws SQLException
+    public Team getTeamById(int teamId) throws SQLException
     {
         {
             Connection con = dataSource.getConnection();
@@ -65,15 +65,17 @@ public class TeamDBManager extends ConnectionDBManager
             {
 
                 String school = rs.getString("School");
-
+                String teamcaptain = rs.getString("TeamCaptain");
+                String email = rs.getString("TeamEmail");
+                int GroupId = rs.getInt("GroupId");
+                String groupName = rs.getString("GroupName");
+                
 
 //            int points = rs.getInt("Points");
+                Team t = new Team(teamId, school, teamcaptain, email, new Group(GroupId, groupName));
 
-
-                return school;
+                return t;
             }
-
-
         }
         return null;
 
@@ -180,7 +182,7 @@ public class TeamDBManager extends ConnectionDBManager
         String sql = "SELECT Team.*, GroupName FROM Team, [Group] WHERE Team.GroupID = [Group].ID AND Team.GroupID = ?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, groupId);
-        
+
         ResultSet rs = ps.executeQuery();
 
         ArrayList<Team> Team = new ArrayList<>();

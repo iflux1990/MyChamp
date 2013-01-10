@@ -75,7 +75,7 @@ public class TeamManager
         return tdb.count();
     }
     
-    public String getTeamById(int id) throws SQLException
+    public Team getTeamById(int id) throws SQLException
     {
         return tdb.getTeamById(id);
     }
