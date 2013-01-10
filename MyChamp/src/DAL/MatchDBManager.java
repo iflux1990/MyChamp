@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -82,19 +83,36 @@ public class MatchDBManager extends ConnectionDBManager
 
         if (rs.next())
         {
-            
+
             int MatchRound = rs.getInt("MatchRound");
             int HomeTeam = rs.getInt("HomeTeamID");
             int GuestTeam = rs.getInt("GuestTeamID");
             boolean isPlayed = rs.getBoolean("isPlayed");
             int HomeGoals = rs.getInt("HomeGoals");
             int GuestGoals = rs.getInt("GuestGoals");
-            
+
             Match m = new Match(Id, MatchRound, HomeTeam, GuestTeam, isPlayed, HomeGoals, GuestGoals);
             return m;
         }
         return null;
+    }
 
+    public int count() throws SQLException
+    {
+        try (Connection con = dataSource.getConnection())
+        {
+            String query = "SELECT COUNT(*) as NumberOfMatches FROM Match";
 
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next())
+            {
+                int count = rs.getInt("NumberOfMatches");
+
+                return count;
+            }
+            return 0;
+        }
     }
 }

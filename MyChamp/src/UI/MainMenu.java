@@ -35,7 +35,7 @@ public class MainMenu extends Menu
                 goToTeamManagenment();      //go to Team Management
                 break;
             case 2:
-                goToView();                 //go to View
+                goToView();                 //go to MatchManagement
                 break;
             case 3:
                 goToMatchResult();          //go to Match Result
@@ -55,9 +55,9 @@ public class MainMenu extends Menu
         clear();
     }
 
-    private void goToView()                 //runs a new View
+    private void goToView()                 //runs a new MatchManagement
     {
-        new View().run();
+        new MatchManagement().run();
         clear();
     }
 

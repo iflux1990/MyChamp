@@ -31,6 +31,11 @@ public class MatchManager
         tdb = new TeamDBManager();
         mdb = new MatchDBManager();
     }
+    
+    public int NumberOfMatches() throws SQLException
+    {
+        return mdb.count();
+    }
 
     public void scheduleMatches() throws SQLException
     {
