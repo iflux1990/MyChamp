@@ -7,7 +7,7 @@ package Application;
 import UI.MainMenu;
 
 /**
- *
+ * MyChamp - A Football Tournament Management System
  * @author Daniel, Marco, Mak & Jonas
  */
 public class MyChamp

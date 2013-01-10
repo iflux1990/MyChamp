@@ -6,7 +6,7 @@ package UI;
 
 /**
  *
- * @author Groggy
+ * @author Daniel, Marco, Mak & Jonas
  */
 public class View extends Menu
 {

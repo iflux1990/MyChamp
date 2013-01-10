@@ -19,18 +19,31 @@ public class Team
 //    private int GroupId;
     private int groupId;
 
-    public Team(int TeamId, String SchoolName, String Captain, String TeamEmail, Group group) //Constructor
+    /**
+     * Constructor for the Team object
+     * @param teamId
+     * @param schoolName
+     * @param captain
+     * @param teamEmail
+     * @param group
+     */
+    public Team(int teamId, String schoolName, String captain, String teamEmail, Group group) //Constructor
     {
-        this.teamId = TeamId;
-        this.schoolName = SchoolName;
-        this.captain = Captain;
-        this.teamEmail = TeamEmail;
+        this.teamId = teamId;
+        this.schoolName = schoolName;
+        this.captain = captain;
+        this.teamEmail = teamEmail;
         this.group = group;
     }
 
-    public Team(int TeamId, Team t)
+    /**
+     * Constructor for the Team object
+     * @param teamId
+     * @param t
+     */
+    public Team(int teamId, Team t)
     {
-        this(TeamId, t.getSchoolName(), t.getCaptain(), t.getTeamEmail(), t.getGroup());
+        this(teamId, t.getSchoolName(), t.getCaptain(), t.getTeamEmail(), t.getGroup());
     }
     
    
@@ -59,11 +72,11 @@ public class Team
     }
 
     /**
-     * @param SchoolName the SchoolName to set
+     * @param schoolName the SchoolName to set
      */
-    public void setSchoolName(String SchoolName)
+    public void setSchoolName(String schoolName)
     {
-        this.schoolName = SchoolName;
+        this.schoolName = schoolName;
     }
 
     /**
@@ -75,11 +88,11 @@ public class Team
     }
 
     /**
-     * @param Captain the Captain to set
+     * @param captain the Captain to set
      */
-    public void setCaptain(String Captain)
+    public void setCaptain(String captain)
     {
-        this.captain = Captain;
+        this.captain = captain;
     }
 
     /**
@@ -91,11 +104,11 @@ public class Team
     }
 
     /**
-     * @param TeamEmail the TeamEmail to set
+     * @param teamEmail the TeamEmail to set
      */
-    public void setTeamEmail(String TeamEmail)
+    public void setTeamEmail(String teamEmail)
     {
-        this.teamEmail = TeamEmail;
+        this.teamEmail = teamEmail;
     }
 
     /**

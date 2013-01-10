@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Daniel
+ * @author Daniel, Marco, Mak & Jonas
  */
 public class GroupDBManager extends ConnectionDBManager
 {
@@ -41,9 +41,9 @@ public class GroupDBManager extends ConnectionDBManager
         {
 
             int ID = rs.getInt("ID");
-            String GroupName = rs.getString("School");
+            String groupName = rs.getString("School");
 
-            Group g1 = new Group(ID, GroupName);
+            Group g1 = new Group(ID, groupName);
             group.add(g);
         }
         return group;

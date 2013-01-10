@@ -21,23 +21,45 @@ public class Match
     private String guestTeam;
     
     
-    public Match(int Id, int MatchRound, int HomeTeamId, int GuestTeamId, boolean isPlayed, int HomeGoals, int GuestGoals)
+    /**
+     * Constructor for the Match object
+     * @param Id
+     * @param matchRound
+     * @param homeTeamId
+     * @param guestTeamId
+     * @param isPlayed
+     * @param homeGoals
+     * @param guestGoals
+     */
+    public Match(int Id, int matchRound, int homeTeamId, int guestTeamId, boolean isPlayed, int homeGoals, int guestGoals)
     {
         this.Id = Id;
-        this.matchRound = MatchRound;
-        this.homeTeamId = HomeTeamId;
-        this.guestTeamId = GuestTeamId;
+        this.matchRound = matchRound;
+        this.homeTeamId = homeTeamId;
+        this.guestTeamId = guestTeamId;
         this.isPlayed = isPlayed;
-        this.homeGoals = HomeGoals;
-        this.guestGoals = GuestGoals;
+        this.homeGoals = homeGoals;
+        this.guestGoals = guestGoals;
         
     }
     
-    public Match(int Id, int MatchRound, int HomeTeamId, int GuestTeamId)
+    /**
+     * Constructor for the Match object
+     * @param Id
+     * @param matchRound
+     * @param homeTeamId
+     * @param guestTeamId
+     */
+    public Match(int Id, int matchRound, int homeTeamId, int guestTeamId)
     {
-        this(Id, MatchRound, HomeTeamId, GuestTeamId, false, -1, -1);
+        this(Id, matchRound, homeTeamId, guestTeamId, false, -1, -1);
     }
     
+    /**
+     * 
+     * @param Id
+     * @param m
+     */
     public Match(int Id, Match m)
     {
         this(Id, m.getMatchRound(), m.getHomeTeamId(), m.getGuestTeamId(), m.getIsPlayed(), m.getHomeGoals(), m.getGuestGoals());
@@ -61,11 +83,11 @@ public class Match
     }
 
     /**
-     * @param MatchRound the MatchRound to set
+     * @param matchRound the MatchRound to set
      */
-    public void setMatchRound(int MatchRound)
+    public void setMatchRound(int matchRound)
     {
-        this.matchRound = MatchRound;
+        this.matchRound = matchRound;
     }
 
     /**
@@ -109,11 +131,11 @@ public class Match
     }
 
     /**
-     * @param HomeGoals the HomeGoals to set
+     * @param homeGoals the HomeGoals to set
      */
-    public void setHomeGoals(int HomeGoals)
+    public void setHomeGoals(int homeGoals)
     {
-        this.homeGoals = HomeGoals;
+        this.homeGoals = homeGoals;
     }
 
     /**
@@ -125,11 +147,11 @@ public class Match
     }
 
     /**
-     * @param GuestGoals the GuestGoals to set
+     * @param guestGoals the GuestGoals to set
      */
-    public void setGuestGoals(int GuestGoals)
+    public void setGuestGoals(int guestGoals)
     {
-        this.guestGoals = GuestGoals;
+        this.guestGoals = guestGoals;
     }
     
     @Override

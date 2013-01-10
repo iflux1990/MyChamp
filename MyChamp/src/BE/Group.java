@@ -14,18 +14,31 @@ public class Group
     private int groupId;
     private String groupName;
 
-    public Group(int groupId, String groupName)     //constructor
+    /**
+     * Constructor for the Group object
+     * @param groupId
+     * @param groupName
+     */
+    public Group(int groupId, String groupName) 
     {
         this.groupId = groupId;
         this.groupName = groupName;
     }
 
+    /**
+     * Constructor for the Group object
+     * @param groupName
+     */
     public Group(String groupName)
     {
         this(-1, groupName);
 
     }
 
+    /**
+     * Constructor for the Group object
+     * @param groupId
+     */
     public Group(int groupId)
     {
         this.groupId = groupId;
@@ -48,11 +61,11 @@ public class Group
     }
 
     /**
-     * @param GroupName the GroupName to set
+     * @param groupName the GroupName to set
      */
-    public void setGroupName(String GroupName)
+    public void setGroupName(String groupName)
     {
-        this.groupName = GroupName;
+        this.groupName = groupName;
     }
 
     @Override
