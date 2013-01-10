@@ -68,10 +68,7 @@ public class MatchManager
                         mdb.addMatches(m2);
                     }
                     System.out.println("");
-                }
-            }
-        }
-
+                
                     if (group3.get(i) != group3.get(j))
                     {
 //                          System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
@@ -87,9 +84,11 @@ public class MatchManager
                     }
                     System.out.println("");
                 }
-            }
-        }
         System.out.println("Match 1: " + group1.get(0) + " vs " + group1.get(1));
         System.out.println("Match 2: " + group1.get(2) + " vs " + group1.get(3));
-    }
+            }
+        }   
+   }
+    
 }
+      

@@ -27,8 +27,8 @@ public class TeamDBManager extends ConnectionDBManager
     public Team addTeam(Team t) throws SQLException
     {
         Connection con = dataSource.getConnection();
-        String sql = "INSERT INTO Team(School, TeamCaptain, Email, GroupID, Points)"
-                + "VALUES(?,?,?,5,0)";
+        String sql = "INSERT INTO Team(School, TeamCaptain, Email, Points)"
+                + "VALUES(?,?,?,0)";
         PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         ps.setString(1, t.getSchoolName());
         ps.setString(2, t.getCaptain());
@@ -121,7 +121,7 @@ public class TeamDBManager extends ConnectionDBManager
     {
         Connection con = dataSource.getConnection();
 
-        String sql = "SELECT *, [Group].GroupName FROM Team, [Group] WHERE Team.GroupID = [Group].ID ORDER BY GroupID, Team.ID";
+        String sql = "SELECT * FROM Team LEFT JOIN [Group] on Team.GroupID = [Group].ID order by GroupID, Team.ID";
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
 

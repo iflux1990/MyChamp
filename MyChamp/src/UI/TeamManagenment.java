@@ -88,16 +88,9 @@ public class TeamManagenment extends Menu
             
             
 
-            System.out.println("Group is set to Unsorted group: ");
-            int groupId = 5;
+         
 
-            Group g = gmgr.getGroupById(groupId);
-            if (g == null)
-            {
-                System.out.println("fejl..");
-            }
-
-            Team team = new Team(-1, schoolName, captain, TeamEmail, g);
+            Team team = new Team(-1, schoolName, captain, TeamEmail);
             team = tmgr.addTeam(team);
 
             System.out.println();
