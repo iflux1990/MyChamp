@@ -47,14 +47,14 @@ public class Team
     }
     
    
-//    public Team(int TeamId, String SchoolName, String Captain, String TeamEmail)
-//    {
-//        this.teamId = TeamId;
-//        this.schoolName = SchoolName;
-//        this.captain = Captain;
-//        this.teamEmail = TeamEmail;
-//        
-//    }
+    public Team(int TeamId, String SchoolName, String Captain, String TeamEmail)
+    {
+        this.teamId = TeamId;
+        this.schoolName = SchoolName;
+        this.captain = Captain;
+        this.teamEmail = TeamEmail;
+        
+    }
     /**
      * @return the TeamId
      */

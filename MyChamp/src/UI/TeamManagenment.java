@@ -103,7 +103,7 @@ public class TeamManagenment extends Menu
         pause();
     }
 
-    private void UpdateTeams()  //List all Teams, Select School id to edite
+    private void updateTeams()  //List all Teams, Select School id to edite
     {
         clear();
         System.out.println("Update Team: ");
@@ -171,7 +171,8 @@ public class TeamManagenment extends Menu
         }
         catch (Exception ex)
         {
-            System.out.println(" ERROR - " + ex.getMessage());
+//            System.out.println(" ERROR - " + ex.getMessage());
+            ex.printStackTrace();
             pause();
         }
     }
