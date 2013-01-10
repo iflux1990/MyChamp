@@ -4,6 +4,8 @@
  */
 package UI;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Daniel, Marco, Mak & Jonas
@@ -12,11 +14,14 @@ public class MatchResult extends Menu
 {
 
     private static final int EXIT_VALUE = 0;
+    private final MatchManagement mmui;
  
     public MatchResult()
     {
         super("Match Result", "Record Result");
         EXIT_OPTION = EXIT_VALUE;
+        
+        mmui = new MatchManagement();
     }
     
     @Override
@@ -25,15 +30,18 @@ public class MatchResult extends Menu
         switch (option)
         {
             case 1:
-                doActionSuboption1();
+                matchResult();
                 break;
             case EXIT_VALUE: doActionExit();
         }
     }
 
-    private void doActionSuboption1()
+    private void matchResult()
     {
-        System.out.println("Record Result");
+        mmui.viewOpeningRounds();
+        
+        Scanner matchId = new Scanner(System.in, "ISO-8859-1");
+        
     }
 
     private void doActionExit()
