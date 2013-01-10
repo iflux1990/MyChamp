@@ -205,22 +205,7 @@ public class TeamManagenment extends Menu
 
     }
 
-//    private void sortTeams()
-//    {
-//        try
-//        {
-//            tmgr.assignGroups();
-//        }
-//        catch (SQLServerException ex)
-//        {
-//            System.out.println("ERROR - " + ex.getMessage());
-//        }
-//        catch (SQLException ex)
-//        {
-//            System.out.println("ERROR - " + ex.getMessage());
-//        }
-//        pause();
-//    }
+
     private void sortTeams()    //Counts the number of teams in the tornument, 
     {                           //if below 12 the tornument cant start, the maxium of Teams are 16
         try
