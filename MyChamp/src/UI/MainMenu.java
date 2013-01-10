@@ -19,7 +19,7 @@ public class MainMenu extends Menu
     public MainMenu()
     {
         super("Main Menu", "Team Management", 
-                            "View",
+                            "Match Management",
                             "Match Result",
                             "Group Ranking",
                             "Final Ranking");
