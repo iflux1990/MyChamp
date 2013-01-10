@@ -31,6 +31,7 @@ public class View extends Menu
         catch (IOException ex)
         {
             System.out.println("ERROR - " + ex.getMessage());
+            
         }
     }
     
@@ -41,6 +42,7 @@ public class View extends Menu
         {
             case 1:
                 scheduleMatches();
+                pause();
                 break;
             case 2:
                 removeAllMatches();
