@@ -86,7 +86,7 @@ public class TeamManagenment extends Menu
             System.out.print("Email: ");
             String teamEmail = sc.nextLine();
 
-            System.out.println("Group is set to Unsorted group: ");
+           
 
             Team team = new Team(-1, schoolName, captain, teamEmail);
             team = tmgr.addTeam(team);
