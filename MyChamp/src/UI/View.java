@@ -22,7 +22,7 @@ public class View extends Menu
     private MatchManager mmgr;
     private Match m;
     private TeamManager tmgr;
- 
+
     public View()
     {
         super("View", "Schedule Matches", "Remove all Matches", "View match Schedule", "Finale Match");
@@ -37,7 +37,7 @@ public class View extends Menu
             System.out.println("ERROR - " + ex.getMessage());
         }
     }
-    
+
     @Override
     protected void doAction(int option)
     {
@@ -57,8 +57,9 @@ public class View extends Menu
             case 4:
                 doActionSuboption4();
                 break;
-                
-            case EXIT_VALUE: doActionExit();
+
+            case EXIT_VALUE:
+                doActionExit();
         }
     }
 
@@ -73,10 +74,10 @@ public class View extends Menu
             ex.printStackTrace();
         }
     }
-    
+
     private void removeAllMatches()
     {
-         try
+        try
         {
             mmgr.removeAllMatches(m);
         }
@@ -85,53 +86,54 @@ public class View extends Menu
             System.out.println("Matches have been removed and Match ID is reset to 0");
         }
     }
-    
-    private void viewSchedule() 
+
+    private void viewSchedule()
     {
         try
         {
-            
+
             System.out.println("Round 1: ");
-            System.out.println("HomeTeam VS GuestTeam");
+            System.out.printf("%-15sVS%15s \n","HomeTeam","GuestTeam");
             ArrayList<Match> round1 = new ArrayList(mmgr.round1());
-            for(int i = 0; i <= 7; i++)
+            for (int i = 0; i <= 7; i++)
             {
-            System.out.printf("%-8s VS %4s \n", tmgr.getTeamById(round1.get(i).getHomeTeamId()), tmgr.getTeamById(round1.get(i).getGuestTeamId()));
+                System.out.printf("%-15sVS%15s \n", tmgr.getTeamById(round1.get(i).getHomeTeamId()), tmgr.getTeamById(round1.get(i).getGuestTeamId()));
             }
-            
+            System.out.println();
             System.out.println("Round 2: ");
             ArrayList<Match> round2 = new ArrayList(mmgr.round2());
-            for(int i = 0; i <= 7; i++)
+            for (int i = 0; i <= 7; i++)
             {
-            System.out.printf("%-8s VS %4s \n", tmgr.getTeamById(round2.get(i).getHomeTeamId()), tmgr.getTeamById(round2.get(i).getGuestTeamId()));
+                System.out.printf("%-15sVS%15s \n", tmgr.getTeamById(round2.get(i).getHomeTeamId()), tmgr.getTeamById(round2.get(i).getGuestTeamId()));
             }
-            
+            System.out.println();
             System.out.println("Round 3: ");
             ArrayList<Match> round3 = new ArrayList(mmgr.round3());
-            for(int i = 0; i <= 7; i++)
+            for (int i = 0; i <= 7; i++)
             {
-            System.out.printf("%-8s VS %4s \n", tmgr.getTeamById(round3.get(i).getHomeTeamId()), tmgr.getTeamById(round3.get(i).getGuestTeamId()));
+                System.out.printf("%-15sVS%15s \n", tmgr.getTeamById(round3.get(i).getHomeTeamId()), tmgr.getTeamById(round3.get(i).getGuestTeamId()));
             }
             
+            System.out.println();
             System.out.println("Round 4: ");
             ArrayList<Match> round4 = new ArrayList(mmgr.round4());
-            for(int i = 0; i <= 7; i++)
+            for (int i = 0; i <= 7; i++)
             {
-            System.out.printf("%-8s VS %4s \n", tmgr.getTeamById(round4.get(i).getHomeTeamId()), tmgr.getTeamById(round4.get(i).getGuestTeamId()));
+                System.out.printf("%-15sVS%15s \n", tmgr.getTeamById(round4.get(i).getHomeTeamId()), tmgr.getTeamById(round4.get(i).getGuestTeamId()));
             }
-            
-                        System.out.println("Round 5: ");
+            System.out.println();
+            System.out.println("Round 5: ");
             ArrayList<Match> round5 = new ArrayList(mmgr.round5());
-            for(int i = 0; i <= 7; i++)
+            for (int i = 0; i <= 7; i++)
             {
-            System.out.printf("%-8s VS %4s \n", tmgr.getTeamById(round5.get(i).getHomeTeamId()), tmgr.getTeamById(round5.get(i).getGuestTeamId()));
+                System.out.printf("%-15sVS%15s \n", tmgr.getTeamById(round5.get(i).getHomeTeamId()), tmgr.getTeamById(round5.get(i).getGuestTeamId()));
             }
-            
-                        System.out.println("Round 6: ");
+            System.out.println();
+            System.out.println("Round 6: ");
             ArrayList<Match> round6 = new ArrayList(mmgr.round6());
-            for(int i = 0; i <= 7; i++)
+            for (int i = 0; i <= 7; i++)
             {
-            System.out.printf("%-8s VS %4s \n", tmgr.getTeamById(round6.get(i).getHomeTeamId()), tmgr.getTeamById(round6.get(i).getGuestTeamId()));
+                System.out.printf("%-15sVS%15s \n", tmgr.getTeamById(round6.get(i).getHomeTeamId()), tmgr.getTeamById(round6.get(i).getGuestTeamId()));
             }
         }
         catch (SQLException ex)
@@ -139,7 +141,7 @@ public class View extends Menu
             System.out.println("ERROR - " + ex.getMessage());
         }
     }
-    
+
     private void doActionSuboption4()
     {
         System.out.println("Finale match");
