@@ -37,9 +37,9 @@ public class MatchManager
         return mdb.count();
     }
     
-    public Match update(Match m)
+    public void update(Match m) throws SQLException
     {
-        return mdb.update(m);
+        mdb.update(m);
     }
 
     public void scheduleMatches() throws SQLException
