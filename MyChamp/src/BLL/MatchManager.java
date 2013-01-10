@@ -68,7 +68,8 @@ public class MatchManager
                         Match m2 = new Match(1, 1, group2.get(i).getTeamId(), group2.get(j).getTeamId());
                         mdb.addMatches(m2);
                     }
-
+                    System.out.println("");
+                
                     if (group3.get(i) != group3.get(j))
                     {
 //                          System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
@@ -82,10 +83,30 @@ public class MatchManager
                         Match m = new Match(1, 1, group4.get(i).getTeamId(), group4.get(j).getTeamId());
                         mdb.addMatches(m);
                     }
+                    System.out.println("");
                 }
             }
         }
+
+        System.out.println("Match round 1");
+
+        
         System.out.println("Match 1: " + group1.get(0) + " vs " + group1.get(1));
         System.out.println("Match 2: " + group1.get(2) + " vs " + group1.get(3));
+
+        System.out.println("Match 1: " + group2.get(0) + " vs " + group2.get(1));
+        System.out.println("Match 2: " + group2.get(2) + " vs " + group2.get(3));
+
+        System.out.println("Match 1: " + group3.get(0) + " vs " + group3.get(1));
+        System.out.println("Match 2: " + group3.get(2) + " vs " + group3.get(3));
+
+        System.out.println("Match 1: " + group4.get(0) + " vs " + group4.get(1));
+        System.out.println("Match 2: " + group4.get(2) + " vs " + group4.get(3));
+
+        System.out.println("Match round 2");
+
+        System.out.println("Match 1: " + group1.get(2) + " vs " + group1.get(0));
+        System.out.println("Match 1: " + group1.get(1) + " vs " + group1.get(3));
     }
 }
+      

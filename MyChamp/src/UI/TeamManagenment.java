@@ -84,11 +84,13 @@ public class TeamManagenment extends Menu
             String captain = sc.nextLine();
 
             System.out.print("Email: ");
-            String teamEmail = sc.nextLine();
+            String TeamEmail = sc.nextLine();
+            
+            
 
-           
+         
 
-            Team team = new Team(-1, schoolName, captain, teamEmail);
+            Team team = new Team(-1, schoolName, captain, TeamEmail);
             team = tmgr.addTeam(team);
 
             System.out.println();
