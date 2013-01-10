@@ -15,7 +15,7 @@ import java.util.ArrayList;
  *
  * @author Daniel, Marco, Mak & Jonas
  */
-public class View extends Menu
+public class MatchManagement extends Menu
 {
 
     private static final int EXIT_VALUE = 0;
@@ -23,7 +23,7 @@ public class View extends Menu
     private Match m;
     private TeamManager tmgr;
 
-    public View()
+    public MatchManagement()
     {
         super("Match Management",
                 "View match Schedule",
