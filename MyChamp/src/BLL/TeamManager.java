@@ -74,6 +74,11 @@ public class TeamManager
 
         return tdb.count();
     }
+    
+    public String getTeamById(int id) throws SQLException
+    {
+        return tdb.getTeamById(id);
+    }
 
     public void assignGroups() throws SQLServerException, SQLException
     {
