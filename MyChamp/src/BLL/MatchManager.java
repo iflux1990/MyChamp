@@ -84,5 +84,7 @@ public class MatchManager
                 }
             }
         }
+        System.out.println("Match 1: " + group1.get(0) + " vs " + group1.get(1));
+        System.out.println("Match 2: " + group1.get(2) + " vs " + group1.get(3));
     }
 }
