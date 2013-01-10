@@ -78,8 +78,8 @@ public class MatchManager
                     if (group4.get(i) != group4.get(j))
                     {
 //                            System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
-                        Match m = new Match(1, 1, group4.get(i).getTeamId(), group4.get(j).getTeamId());
-                        mdb.addMatches(m);
+                        Match m4 = new Match(1, 1, group4.get(i).getTeamId(), group4.get(j).getTeamId());
+                        mdb.addMatches(m4);
                     }
                 }
             }
