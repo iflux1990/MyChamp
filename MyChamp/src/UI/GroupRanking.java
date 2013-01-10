@@ -57,11 +57,13 @@ public class GroupRanking extends Menu
         try
         {
             mmgr.scheduleMatches();
+           
         }
         catch (SQLException ex)
         {
             ex.printStackTrace();
         }
+        pause();
     }
     
     private void teamRanking()

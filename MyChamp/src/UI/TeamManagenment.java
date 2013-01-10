@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 /**
  * Menu for the Team Managenment
+ *
  * @author Daniel, Marco, Mak & Jonas
  */
 public class TeamManagenment extends Menu
@@ -21,11 +22,10 @@ public class TeamManagenment extends Menu
     private TeamManager tmgr;
     private GroupManager gmgr;
     private static final int EXIT_VALUE = 0;
-    
 
     public TeamManagenment()
     {
-        super("Team Managenment", "Add Team", "Update Team", "Remove Team", "List All", "Sort Teams", "Specific teams in a group");
+        super("Team Managenment", "Add Team", "Update Team", "Remove Team", "List All", "Sort Teams");
         EXIT_OPTION = EXIT_VALUE;
         try
         {
@@ -100,10 +100,10 @@ public class TeamManagenment extends Menu
 
             System.out.println();
             System.out.println("Team added with ID : " + team.getTeamId());
-        }       
+        }
         catch (Exception ex)
         {
-            
+
             System.out.println("ERROR - " + ex.getMessage());
 
         }
@@ -173,7 +173,7 @@ public class TeamManagenment extends Menu
             System.out.print("Select team by school id: ");
 
             String school = new Scanner(System.in).nextLine();
-            
+
             tmgr.removeTeam(school);
         }
         catch (Exception ex)
