@@ -8,6 +8,7 @@ import BE.Match;
 import BLL.MatchManager;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,7 +23,7 @@ public class View extends Menu
  
     public View()
     {
-        super("View", "Schedule Matches", "Remove all Matches", "Team Match", "Finale Match");
+        super("View", "Schedule Matches", "Remove all Matches", "View match Schedule", "Finale Match");
         EXIT_OPTION = EXIT_VALUE;
          try
         {
@@ -46,7 +47,8 @@ public class View extends Menu
                 removeAllMatches();
                 break;
             case 3:
-                doActionSuboption3();
+                viewSchedule();
+                pause();
                 break;
             case 4:
                 doActionSuboption4();
@@ -80,9 +82,17 @@ public class View extends Menu
         }
     }
     
-    private void doActionSuboption3()
+    private void viewSchedule() 
     {
-        System.out.println("Team match");
+        try
+        {
+            ArrayList<Match> round1 = new ArrayList(mmgr.matchSchedule());
+            System.out.println(round1.get(1));
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+        }
     }
     
     private void doActionSuboption4()
