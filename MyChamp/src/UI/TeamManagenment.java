@@ -45,16 +45,16 @@ public class TeamManagenment extends Menu
         switch (option)
         {
             case 1:
-                AddTeam();      //add Teams
+                addTeam();      //add Teams
                 break;
             case 2:
-                UpdateTeams();  //updates Teams
+                updateTeams();  //updates Teams
                 break;
             case 3:
-                RemoveTeam();   //removes Team
+                removeTeam();   //removes Team
                 break;
             case 4:
-                ListAll();      //list all Teams
+                listAll();      //list all Teams
                 pause();
                 break;
             case 5:
@@ -66,7 +66,7 @@ public class TeamManagenment extends Menu
         }
     }
 
-    private void AddTeam()      //Creates a new team
+    private void addTeam()      //Creates a new team
     {
         clear();
 
@@ -78,10 +78,10 @@ public class TeamManagenment extends Menu
             Scanner sc = new Scanner(System.in, "ISO-8859-1");
 
             System.out.print("School: ");
-            String SchoolName = sc.nextLine();
+            String schoolName = sc.nextLine();
 
             System.out.print("Team Captain: ");
-            String Captain = sc.nextLine();
+            String captain = sc.nextLine();
 
             System.out.print("Email: ");
             String TeamEmail = sc.nextLine();
@@ -112,7 +112,7 @@ public class TeamManagenment extends Menu
         pause();
     }
 
-    private void UpdateTeams()  //List all Teams, Select Schhol id to edite
+    private void updateTeams()  //List all Teams, Select Schhol id to edite
     {
         clear();
         System.out.println("Update Team(0 to abort): ");
@@ -121,7 +121,7 @@ public class TeamManagenment extends Menu
         try
         {
 
-            ArrayList<Team> teams = tmgr.ListAllTeams();    //List all teams
+            ArrayList<Team> teams = tmgr.listAllTeams();    //List all teams
 
 
             printTeamHeader();
@@ -164,9 +164,9 @@ public class TeamManagenment extends Menu
         }
     }
 
-    private void RemoveTeam()   //Lister alle Teams, removes Team by School Id
+    private void removeTeam()   //Lister alle Teams, removes Team by School Id
     {
-        ListAll();
+        listAll();
 
         System.out.println("Remove team:");
         System.out.println("");
@@ -190,11 +190,11 @@ public class TeamManagenment extends Menu
         System.out.println("You selected to exit.");
     }
 
-    private void ListAll()  //Lister all Teams
+    private void listAll()  //Lister all Teams
     {
         try
         {
-            ArrayList<Team> teams = tmgr.ListAllTeams();
+            ArrayList<Team> teams = tmgr.listAllTeams();
 
             clear();
             printTeamHeader();

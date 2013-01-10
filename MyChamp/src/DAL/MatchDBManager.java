@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Daniel
+ * @author Daniel, Marco, Mak & Jonas
  */
 public class MatchDBManager extends ConnectionDBManager
 {

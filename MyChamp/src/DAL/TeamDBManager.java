@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Daniel
+ * @author Daniel, Marco, Mak & Jonas
  */
 public class TeamDBManager extends ConnectionDBManager
 {
@@ -152,14 +152,14 @@ public class TeamDBManager extends ConnectionDBManager
      * @param School
      * @throws SQLException
      */
-    public void RemoveTeam(String SchoolName) throws SQLException
+    public void removeTeam(String schoolName) throws SQLException
     {
         String sql = "DELETE FROM TEAM WHERE ID = ?";
 
         Connection con = dataSource.getConnection();
 
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, SchoolName);
+        ps.setString(1, schoolName);
 
         int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)
@@ -224,7 +224,7 @@ public class TeamDBManager extends ConnectionDBManager
         return t;
     }
 
-    public int Count() throws SQLException
+    public int count() throws SQLException
     {
         try (Connection con = dataSource.getConnection())
         {
