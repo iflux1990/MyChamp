@@ -4,6 +4,7 @@
  */
 package BLL;
 
+import BE.Group;
 import BE.Match;
 import BE.Team;
 import DAL.MatchDBManager;

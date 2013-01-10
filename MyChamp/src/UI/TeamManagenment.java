@@ -110,10 +110,10 @@ public class TeamManagenment extends Menu
         pause();
     }
 
-    private void UpdateTeams()  //List all Teams, Select Schhol id to edite
+    private void UpdateTeams()  //List all Teams, Select School id to edite
     {
         clear();
-        System.out.println("Update Team(0 to abort): ");
+        System.out.println("Update Team: ");
         System.out.println("");
 
         try
@@ -128,7 +128,7 @@ public class TeamManagenment extends Menu
                 System.out.println(t);
             }
 
-            System.out.print("Select School Id: ");
+            System.out.print("Select School Id(0 to abort): ");
             int id = new Scanner(System.in).nextInt();
             Team team = null;
 
