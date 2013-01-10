@@ -84,7 +84,25 @@ public class MatchManager
                 }
             }
         }
+
+        System.out.println("Match round 1");
+
+        
         System.out.println("Match 1: " + group1.get(0) + " vs " + group1.get(1));
         System.out.println("Match 2: " + group1.get(2) + " vs " + group1.get(3));
+
+        System.out.println("Match 1: " + group2.get(0) + " vs " + group2.get(1));
+        System.out.println("Match 2: " + group2.get(2) + " vs " + group2.get(3));
+
+        System.out.println("Match 1: " + group3.get(0) + " vs " + group3.get(1));
+        System.out.println("Match 2: " + group3.get(2) + " vs " + group3.get(3));
+
+        System.out.println("Match 1: " + group4.get(0) + " vs " + group4.get(1));
+        System.out.println("Match 2: " + group4.get(2) + " vs " + group4.get(3));
+
+        System.out.println("Match round 2");
+
+        System.out.println("Match 1: " + group1.get(2) + " vs " + group1.get(0));
+        System.out.println("Match 1: " + group1.get(1) + " vs " + group1.get(3));
     }
 }
