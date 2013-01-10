@@ -89,16 +89,19 @@ public class MatchManager
 
         ArrayList<Team> group4 = tdb.listTeamsByGroupId(4);
 
-        for (int i = 0; i <= 3; i++)
+        for (int i = 0; i <= 2; i++)
         {
             {
-                for (int j = 0; j <= 3; j++)
+                if (tdb.count() == 15)
                 {
-                    if (group4.get(i) != group4.get(j))
+                    for (int j = 0; j <= 2; j++)
                     {
+                        if (group4.get(i) != group4.get(j))
+                        {
 //                      System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
-                        Match m = new Match(1, 1, group4.get(i).getTeamId(), group4.get(j).getTeamId());
-                        mdb.addMatches(m);
+                            Match m = new Match(1, 1, group4.get(i).getTeamId(), group4.get(j).getTeamId());
+                            mdb.addMatches(m);
+                        }
                     }
                 }
             }
