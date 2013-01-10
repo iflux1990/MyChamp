@@ -95,7 +95,7 @@ public class TeamManagenment extends Menu
                 System.out.println("fejl..");
             }
 
-            Team team = new Team(-1, SchoolName, Captain, TeamEmail, g);
+            Team team = new Team(-1, SchoolName, Captain, TeamEmail,g);
             team = tmgr.addTeam(team);
 
             System.out.println();

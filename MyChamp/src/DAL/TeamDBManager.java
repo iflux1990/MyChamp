@@ -27,7 +27,7 @@ public class TeamDBManager extends ConnectionDBManager
     public Team addTeam(Team t) throws SQLException
     {
         Connection con = dataSource.getConnection();
-        String sql = "INSERT INTO Team(School, TeamCaptain, Email, GroupID, Points)"
+        String sql = "INSERT INTO Team(School, TeamCaptain, Email,GroupID, Points)"
                 + "VALUES(?,?,?,5,0)";
         PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         ps.setString(1, t.getSchoolName());

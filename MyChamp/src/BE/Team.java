@@ -33,13 +33,13 @@ public class Team
         this(TeamId, t.getSchoolName(), t.getCaptain(), t.getTeamEmail(), t.getGroup());
     }
     
-//    
+   
 //    public Team(int TeamId, String SchoolName, String Captain, String TeamEmail)
 //    {
-//        this.TeamId = TeamId;
-//        this.SchoolName = SchoolName;
-//        this.Captain = Captain;
-//        this.TeamEmail = TeamEmail;
+//        this.teamId = TeamId;
+//        this.schoolName = SchoolName;
+//        this.captain = Captain;
+//        this.teamEmail = TeamEmail;
 //        
 //    }
     /**
