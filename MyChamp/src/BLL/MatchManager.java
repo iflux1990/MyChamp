@@ -72,9 +72,9 @@ public class MatchManager
                     {
 //                      System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
                         Match m1 = new Match(1, k, group1.get(i).getTeamId(), group1.get(j).getTeamId());
-                        mdb.addMatches(m1);                               
+                        mdb.addMatches(m1);
                     }
-                    
+
 
                     if (group2.get(i) != group2.get(j))
                     {
@@ -83,7 +83,7 @@ public class MatchManager
                         mdb.addMatches(m2);
 
                     }
-                   
+
 
                     if (group3.get(i) != group3.get(j))
                     {
@@ -92,49 +92,66 @@ public class MatchManager
                         mdb.addMatches(m3);
 
                     }
-                    
+
                     if (group4.get(i) != group4.get(j))
                     {
 //                            System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
                         Match m = new Match(1, k, group4.get(i).getTeamId(), group4.get(j).getTeamId());
                         mdb.addMatches(m);
                     }
-                   k++;
+                    k++;
                 }
             }
-            
+
         }
-
-        System.out.println("Match round 1");
-
-
-        System.out.println("Match 1: " + group1.get(0) + " vs " + group1.get(1));
-        System.out.println("Match 2: " + group1.get(2) + " vs " + group1.get(3));
-
-        System.out.println("Match 1: " + group2.get(0) + " vs " + group2.get(1));
-        System.out.println("Match 2: " + group2.get(2) + " vs " + group2.get(3));
-
-        System.out.println("Match 1: " + group3.get(0) + " vs " + group3.get(1));
-        System.out.println("Match 2: " + group3.get(2) + " vs " + group3.get(3));
-
-        System.out.println("Match 1: " + group4.get(0) + " vs " + group4.get(1));
-        System.out.println("Match 2: " + group4.get(2) + " vs " + group4.get(3));
-
-        System.out.println("Match round 2");
-
-        System.out.println("Match 1: " + group1.get(2) + " vs " + group1.get(0));
-        System.out.println("Match 1: " + group1.get(1) + " vs " + group1.get(3));
     }
+//        System.out.println("Match round 1");
+//
+//
+//        System.out.println("Match 1: " + group1.get(0) + " vs " + group1.get(1));
+//        System.out.println("Match 2: " + group1.get(2) + " vs " + group1.get(3));
+//
+//        System.out.println("Match 1: " + group2.get(0) + " vs " + group2.get(1));
+//        System.out.println("Match 2: " + group2.get(2) + " vs " + group2.get(3));
+//
+//        System.out.println("Match 1: " + group3.get(0) + " vs " + group3.get(1));
+//        System.out.println("Match 2: " + group3.get(2) + " vs " + group3.get(3));
+//
+//        System.out.println("Match 1: " + group4.get(0) + " vs " + group4.get(1));
+//        System.out.println("Match 2: " + group4.get(2) + " vs " + group4.get(3));
+//
+//        System.out.println("Match round 2");
+//
+//        System.out.println("Match 1: " + group1.get(2) + " vs " + group1.get(0));
+//        System.out.println("Match 1: " + group1.get(1) + " vs " + group1.get(3));
     
-     public void removeAllMatches(Match m) throws SQLException
+
+    public void removeAllMatches(Match m) throws SQLException
     {
         mdb.removeAllMatches(m);
     }
-    
+
     public Match getMatchById(int Id) throws SQLException
     {
         return mdb.getMatchById(Id);
     }
-            
+    
+    public ArrayList<Match> matchSchedule() throws SQLException
+    {
+        ArrayList<Match> round1 = new ArrayList();
+        
+        round1.add(mdb.getMatchById(1));
+        round1.add(mdb.getMatchById(33));
+        round1.add(mdb.getMatchById(2));
+        round1.add(mdb.getMatchById(34));
+        round1.add(mdb.getMatchById(7));
+        round1.add(mdb.getMatchById(23));
+        round1.add(mdb.getMatchById(4));
+        round1.add(mdb.getMatchById(36));
+        
+        return round1;
+        
+        
+        
+    }
 }
-      
