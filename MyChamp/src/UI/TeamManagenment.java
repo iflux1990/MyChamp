@@ -25,7 +25,7 @@ public class TeamManagenment extends Menu
 
     public TeamManagenment()
     {
-        super("Team Managenment", "Add Team", "Update Team", "Remove Team", "List All", "Sort Teams", "Specific teams in a group");
+        super("Team Managenment", "Add Team", "Update Team", "Remove Team", "List All", "Sort Teams");
         EXIT_OPTION = EXIT_VALUE;
         try
         {
@@ -85,17 +85,19 @@ public class TeamManagenment extends Menu
 
             System.out.print("Email: ");
             String TeamEmail = sc.nextLine();
+            
+            
 
-            System.out.println("Group is set to Unsorted group: ");
-            int groupId = 5;
+//            System.out.println("Group is set to Unsorted group: ");
+//            int groupId = 5;
 
-            Group g = gmgr.getGroupById(groupId);
-            if (g == null)
-            {
-                System.out.println("fejl..");
-            }
+//            Group g = gmgr.getGroupById(groupId);
+//            if (g == null)
+//            {
+//                System.out.println("fejl..");
+//            }
 
-            Team team = new Team(-1, SchoolName, Captain, TeamEmail, g);
+            Team team = new Team(-1, SchoolName, Captain, TeamEmail);
             team = tmgr.addTeam(team);
 
             System.out.println();

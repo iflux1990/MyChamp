@@ -19,18 +19,18 @@ public class Team
 //    private int GroupId;
     private int groupId;
 
-    public Team(int TeamId, String SchoolName, String Captain, String TeamEmail, Group group) //Constructor
+    public Team(int TeamId, String SchoolName, String Captain, String TeamEmail) //Constructor
     {
         this.teamId = TeamId;
         this.schoolName = SchoolName;
         this.captain = Captain;
         this.teamEmail = TeamEmail;
-        this.group = group;
+//        this.group = group;
     }
 
     public Team(int TeamId, Team t)
     {
-        this(TeamId, t.getSchoolName(), t.getCaptain(), t.getTeamEmail(), t.getGroup());
+        this(TeamId, t.getSchoolName(), t.getCaptain(), t.getTeamEmail());
     }
 
 //    
