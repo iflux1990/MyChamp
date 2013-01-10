@@ -74,6 +74,11 @@ public class TeamManager
 
         return tdb.count();
     }
+    
+    public String getTeamById(int id) throws SQLException
+    {
+        return tdb.getTeamById(id);
+    }
 
 //        ArrayList<Team> allTeams = tdb.listAll();
 //        if (tdb.listAll().size() > 12)

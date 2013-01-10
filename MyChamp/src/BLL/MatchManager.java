@@ -69,16 +69,14 @@ public class MatchManager
                 for (int j = 0; j < numberPerTeam; j++)
                 {
                     if (group1.get(i) != group1.get(j))
-                    {
-//                      System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
-                        Match m1 = new Match(1,-1, group1.get(i).getTeamId(), group1.get(j).getTeamId());
-                        mdb.addMatches(m1);                               
+                    {                       
+                        Match m1 = new Match(1, -1, group1.get(i).getTeamId(), group1.get(j).getTeamId());
+                        mdb.addMatches(m1);
                     }
 
 
                     if (group2.get(i) != group2.get(j))
                     {
-//                           System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
                         Match m2 = new Match(1, -1, group2.get(i).getTeamId(), group2.get(j).getTeamId());
                         mdb.addMatches(m2);
 
@@ -87,7 +85,7 @@ public class MatchManager
 
                     if (group3.get(i) != group3.get(j))
                     {
-//                          System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
+
                         Match m3 = new Match(1, -1, group3.get(i).getTeamId(), group3.get(j).getTeamId());
                         mdb.addMatches(m3);
 
@@ -95,36 +93,15 @@ public class MatchManager
 
                     if (group4.get(i) != group4.get(j))
                     {
-//                            System.out.println(group1.get(i).getSchoolName() + " vs " + group1.get(j).getSchoolName());
                         Match m = new Match(1, -1, group4.get(i).getTeamId(), group4.get(j).getTeamId());
                         mdb.addMatches(m);
                     }
-                   
+
                 }
             }
 
         }
     }
-//        System.out.println("Match round 1");
-//
-//
-//        System.out.println("Match 1: " + group1.get(0) + " vs " + group1.get(1));
-//        System.out.println("Match 2: " + group1.get(2) + " vs " + group1.get(3));
-//
-//        System.out.println("Match 1: " + group2.get(0) + " vs " + group2.get(1));
-//        System.out.println("Match 2: " + group2.get(2) + " vs " + group2.get(3));
-//
-//        System.out.println("Match 1: " + group3.get(0) + " vs " + group3.get(1));
-//        System.out.println("Match 2: " + group3.get(2) + " vs " + group3.get(3));
-//
-//        System.out.println("Match 1: " + group4.get(0) + " vs " + group4.get(1));
-//        System.out.println("Match 2: " + group4.get(2) + " vs " + group4.get(3));
-//
-//        System.out.println("Match round 2");
-//
-//        System.out.println("Match 1: " + group1.get(2) + " vs " + group1.get(0));
-//        System.out.println("Match 1: " + group1.get(1) + " vs " + group1.get(3));
-    
 
     public void removeAllMatches(Match m) throws SQLException
     {
@@ -135,23 +112,95 @@ public class MatchManager
     {
         return mdb.getMatchById(Id);
     }
-    
-    public ArrayList<Match> matchSchedule() throws SQLException
+
+    public ArrayList<Match> round1() throws SQLException
     {
         ArrayList<Match> round1 = new ArrayList();
-        
+
         round1.add(mdb.getMatchById(1));
         round1.add(mdb.getMatchById(33));
         round1.add(mdb.getMatchById(2));
         round1.add(mdb.getMatchById(34));
-        round1.add(mdb.getMatchById(7));
-        round1.add(mdb.getMatchById(23));
+        round1.add(mdb.getMatchById(3));
+        round1.add(mdb.getMatchById(35));
         round1.add(mdb.getMatchById(4));
         round1.add(mdb.getMatchById(36));
-        
+
         return round1;
-        
-        
-        
+    }
+
+    public ArrayList<Match> round2() throws SQLException
+    {
+        ArrayList<Match> round2 = new ArrayList();
+        round2.add(mdb.getMatchById(25));
+        round2.add(mdb.getMatchById(41));
+        round2.add(mdb.getMatchById(26));
+        round2.add(mdb.getMatchById(42));
+        round2.add(mdb.getMatchById(27));
+        round2.add(mdb.getMatchById(43));
+        round2.add(mdb.getMatchById(28));
+        round2.add(mdb.getMatchById(44));
+
+        return round2;
+    }
+
+    public ArrayList<Match> round3() throws SQLException
+    {
+        ArrayList<Match> round3 = new ArrayList();
+        round3.add(mdb.getMatchById(13));
+        round3.add(mdb.getMatchById(45));
+        round3.add(mdb.getMatchById(14));
+        round3.add(mdb.getMatchById(46));
+        round3.add(mdb.getMatchById(15));
+        round3.add(mdb.getMatchById(47));
+        round3.add(mdb.getMatchById(16));
+        round3.add(mdb.getMatchById(48));
+
+        return round3;
+    }
+
+    public ArrayList<Match> round4() throws SQLException
+    {
+        ArrayList<Match> round4 = new ArrayList();
+        round4.add(mdb.getMatchById(5));
+        round4.add(mdb.getMatchById(21));
+        round4.add(mdb.getMatchById(6));
+        round4.add(mdb.getMatchById(22));
+        round4.add(mdb.getMatchById(7));
+        round4.add(mdb.getMatchById(23));
+        round4.add(mdb.getMatchById(8));
+        round4.add(mdb.getMatchById(24));
+
+        return round4;
+    }
+
+    public ArrayList<Match> round5() throws SQLException
+    {
+        ArrayList<Match> round5 = new ArrayList();
+        round5.add(mdb.getMatchById(17));
+        round5.add(mdb.getMatchById(37));
+        round5.add(mdb.getMatchById(18));
+        round5.add(mdb.getMatchById(38));
+        round5.add(mdb.getMatchById(19));
+        round5.add(mdb.getMatchById(39));
+        round5.add(mdb.getMatchById(20));
+        round5.add(mdb.getMatchById(40));
+
+        return round5;
+    }
+    
+        public ArrayList<Match> round6() throws SQLException
+    {
+        ArrayList<Match> round6 = new ArrayList();
+        round6.add(mdb.getMatchById(29));
+        round6.add(mdb.getMatchById(9));
+        round6.add(mdb.getMatchById(30));
+        round6.add(mdb.getMatchById(10));
+        round6.add(mdb.getMatchById(31));
+        round6.add(mdb.getMatchById(11));
+        round6.add(mdb.getMatchById(32));
+        round6.add(mdb.getMatchById(12));
+
+        return round6;
     }
 }
