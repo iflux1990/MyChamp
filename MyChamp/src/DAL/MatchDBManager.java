@@ -115,4 +115,23 @@ public class MatchDBManager extends ConnectionDBManager
             return 0;
         }
     }
+    
+    public void update(Match m) throws SQLException
+    {
+         String sql = "UPDATE Match SET HomeGoals = ?, GuestGoals = ?, IsPlayed = ? WHERE ID = ?";
+         
+          Connection con = dataSource.getConnection();
+
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, m.getHomeGoals());
+        ps.setInt(2, m.getGuestGoals());
+        ps.setBoolean(3, m.getIsPlayed());
+        ps.setInt(4, m.getId());
+        
+          int affectedRows = ps.executeUpdate();
+        if (affectedRows == 0)
+        {
+            throw new SQLException("Unable to update Match");
+        }
+    }
 }
