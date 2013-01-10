@@ -34,11 +34,6 @@ public class TeamManager
         mm = new MatchManager();
     }
 
-    public ArrayList<Team> search()
-    {
-        return tdb.search();
-    }
-
     public ArrayList<Team> listAllTeams() throws SQLException
     {
         return tdb.listAll();

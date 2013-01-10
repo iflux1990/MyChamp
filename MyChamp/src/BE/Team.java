@@ -154,4 +154,9 @@ public class Team
     {
         return String.format("%-5d %-20s %-20s %-29s %-29s", teamId, schoolName, captain, teamEmail, group);
     }
+
+    public int getPoints()
+    {
+        return points;
+    }
 }

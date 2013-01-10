@@ -60,19 +60,16 @@ public class TeamDBManager extends ConnectionDBManager
             ps.setInt(1, teamId);
             ResultSet rs = ps.executeQuery();
 
-
             if (rs.next())
             {
-
                 String school = rs.getString("School");
                 String teamcaptain = rs.getString("TeamCaptain");
-                String email = rs.getString("TeamEmail");
+                String email = rs.getString("Email");
                 int GroupId = rs.getInt("GroupId");
-                String groupName = rs.getString("GroupName");
+                String groupName = rs.getString("GroupName");                
+                int points = rs.getInt("Points");
                 
-
-//            int points = rs.getInt("Points");
-                Team t = new Team(teamId, school, teamcaptain, email, new Group(GroupId, groupName));
+                Team t = new Team(teamId, school, teamcaptain, email, new Group(GroupId, groupName), points);
 
                 return t;
             }
@@ -87,7 +84,7 @@ public class TeamDBManager extends ConnectionDBManager
     {
         {
 
-            String sql = "UPDATE Team SET School = ?, TeamCaptain = ?, Email = ? WHERE ID = ?";
+            String sql = "UPDATE Team SET School = ?, TeamCaptain = ?, Email = ?, Points WHERE ID = ?";
 
             Connection con;
             try
@@ -103,20 +100,16 @@ public class TeamDBManager extends ConnectionDBManager
             ps.setString(1, t.getSchoolName());
             ps.setString(2, t.getCaptain());
             ps.setString(3, t.getTeamEmail());
-            ps.setInt(4, t.getTeamId());
+            ps.setInt(4, t.getPoints());
+            ps.setInt(5, t.getTeamId());
 
 
             int affectedRows = ps.executeUpdate();
             if (affectedRows == 0)
             {
-                throw new SQLException("Unable to update Song");
+                throw new SQLException("Unable to update Team");
             }
         }
-    }
-
-    public ArrayList<Team> search()
-    {
-        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     public ArrayList<Team> listAll() throws SQLException
