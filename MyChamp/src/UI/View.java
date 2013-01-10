@@ -25,7 +25,12 @@ public class View extends Menu
 
     public View()
     {
-        super("View", "Schedule Matches", "Remove all Matches", "View match Schedule", "Finale Match");
+        super("Match Management",
+                "View match Schedule",
+                "Finale Match",
+                "Schedule Matches",
+                "Dummy",
+                "Remove all Matches");
         EXIT_OPTION = EXIT_VALUE;
         try
         {
@@ -65,14 +70,23 @@ public class View extends Menu
 
     private void scheduleMatches()
     {
+
         try
         {
-            mmgr.scheduleMatches();
+            if (mmgr.NumberOfMatches() == 0)
+            {
+                mmgr.scheduleMatches();
+            }
+            else
+            {
+                System.out.println("You allready have scheduled matches");
+            }
         }
         catch (SQLException ex)
         {
-            ex.printStackTrace();
+            System.out.println("ERROR - " + ex.getMessage());
         }
+        pause();
     }
 
     private void removeAllMatches()
@@ -93,7 +107,7 @@ public class View extends Menu
         {
 
             System.out.println("Round 1: ");
-            System.out.printf("%-15sVS%15s \n","HomeTeam","GuestTeam");
+            System.out.printf("%-15sVS%15s \n", "HomeTeam", "GuestTeam");
             ArrayList<Match> round1 = new ArrayList(mmgr.round1());
             for (int i = 0; i <= 7; i++)
             {
@@ -113,7 +127,7 @@ public class View extends Menu
             {
                 System.out.printf("%-15sVS%15s \n", tmgr.getTeamById(round3.get(i).getHomeTeamId()), tmgr.getTeamById(round3.get(i).getGuestTeamId()));
             }
-            
+
             System.out.println();
             System.out.println("Round 4: ");
             ArrayList<Match> round4 = new ArrayList(mmgr.round4());
