@@ -49,7 +49,22 @@ public class MatchDBManager extends ConnectionDBManager
         int Id = keys.getInt(1);
 
         return new Match(Id, m);
+    }
 
+    public void removeAllMatches(Match m) throws SQLException
+    {
+        String sql = "DELETE FROM Match";
+
+        Connection con = dataSource.getConnection();
+
+        PreparedStatement ps = con.prepareStatement(sql);
+
+
+        int affectedRows = ps.executeUpdate();
+        if (affectedRows == 0)
+        {
+            throw new SQLException("Unable to delete Match");
+        }
     }
 
     public Match getMatchById(int Id) throws SQLException

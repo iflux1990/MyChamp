@@ -4,6 +4,11 @@
  */
 package UI;
 
+import BE.Match;
+import BLL.MatchManager;
+import java.io.IOException;
+import java.sql.SQLException;
+
 /**
  *
  * @author Daniel, Marco, Mak & Jonas
@@ -12,11 +17,21 @@ public class View extends Menu
 {
 
     private static final int EXIT_VALUE = 0;
+    private MatchManager mmgr;
+    private Match m;
  
     public View()
     {
-        super("View", "Total Match", "Group Match", "Team Match", "Finale Match");
+        super("View", "Schedule Matches", "Remove all Matches", "Team Match", "Finale Match");
         EXIT_OPTION = EXIT_VALUE;
+         try
+        {
+            mmgr = new MatchManager();
+        }
+        catch (IOException ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+        }
     }
     
     @Override
@@ -25,10 +40,10 @@ public class View extends Menu
         switch (option)
         {
             case 1:
-                doActionSuboption1();
+                scheduleMatches();
                 break;
             case 2:
-                doActionSuboption2();
+                removeAllMatches();
                 break;
             case 3:
                 doActionSuboption3();
@@ -41,14 +56,28 @@ public class View extends Menu
         }
     }
 
-    private void doActionSuboption1()
+    private void scheduleMatches()
     {
-        System.out.println("Total match");
+        try
+        {
+            mmgr.scheduleMatches();
+        }
+        catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        }
     }
     
-    private void doActionSuboption2()
+    private void removeAllMatches()
     {
-        System.out.println("Group match");
+         try
+        {
+            mmgr.removeAllMatches(m);
+        }
+        catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        }
     }
     
     private void doActionSuboption3()
