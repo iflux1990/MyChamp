@@ -6,6 +6,7 @@ package DAL;
 
 import BE.Match;
 import BE.Team;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -40,7 +41,7 @@ public class MatchDBManager extends ConnectionDBManager
         int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)
         {
-            throw new SQLException("Unable to add Song");
+            throw new SQLException("Unable to add Match");
         }
 
         ResultSet keys = ps.getGeneratedKeys();
@@ -48,6 +49,37 @@ public class MatchDBManager extends ConnectionDBManager
         int Id = keys.getInt(1);
 
         return new Match(Id, m);
+
+    }
+
+    public Match getMatchById(int Id) throws SQLException
+    {
+        Connection con = dataSource.getConnection();
+
+
+        String sql = ("SELECT * FROM Match WHERE ID Like ?");
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, Id);
+
+
+
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next())
+        {
+            
+            int MatchRound = rs.getInt("MatchRound");
+            int HomeTeam = rs.getInt("HomeTeamID");
+            int GuestTeam = rs.getInt("GuestTeamID");
+            boolean isPlayed = rs.getBoolean("isPlayed");
+            int HomeGoals = rs.getInt("HomeGoals");
+            int GuestGoals = rs.getInt("GuestGoals");
+            
+            Match m = new Match(Id, MatchRound, HomeTeam, GuestTeam, isPlayed, HomeGoals, GuestGoals);
+            return m;
+        }
+        return null;
+
 
     }
 }
