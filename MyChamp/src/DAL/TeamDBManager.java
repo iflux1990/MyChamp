@@ -28,7 +28,7 @@ public class TeamDBManager extends ConnectionDBManager
     {
         Connection con = dataSource.getConnection();
         String sql = "INSERT INTO Team(School, TeamCaptain, Email, GroupID, Points)"
-                + "VALUES(?,?,?,?,0)";
+                + "VALUES(?,?,?,5,0)";
         PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         ps.setString(1, t.getSchoolName());
         ps.setString(2, t.getCaptain());
