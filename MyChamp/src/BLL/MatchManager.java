@@ -52,27 +52,6 @@ public class MatchManager
         ArrayList<Team> group2 = tdb.listTeamsByGroupId(2);
         ArrayList<Team> group3 = tdb.listTeamsByGroupId(3);
         ArrayList<Team> group4 = tdb.listTeamsByGroupId(4);
-        if (group1.size() == 3)
-        {
-            numberPerTeam = 3;
-        }
-
-        if (group2.size() == 3)
-        {
-            numberPerTeam = 3;
-        }
-
-        if (group3.size() == 3)
-        {
-            numberPerTeam = 3;
-        }
-
-        if (group4.size() == 3)
-        {
-            numberPerTeam = 3;
-        }
-
-
         for (int i = 0; i < numberPerTeam; i++)
         {
             {

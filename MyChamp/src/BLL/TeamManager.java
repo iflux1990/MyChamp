@@ -25,13 +25,13 @@ public class TeamManager
     private Team t;
     private TeamDBManager tdb = null;
     private GroupDBManager gdb;
-    private MatchManager mm;
+    private MatchManager mmgr;
 
     public TeamManager() throws SQLException, IOException
     {
         tdb = new TeamDBManager();
         gdb = new GroupDBManager();
-        mm = new MatchManager();
+        mmgr = new MatchManager();
     }
 
     public ArrayList<Team> listAllTeams() throws SQLException
@@ -65,6 +65,11 @@ public class TeamManager
         return tdb.getTeamById(id);
     }
     
+    public void resetPoints() throws SQLException
+    {
+        tdb.resetPoints();
+    }
+    
     public void assignGroups() throws SQLServerException, SQLException
     {
         int maxGroups = 4;
@@ -75,6 +80,11 @@ public class TeamManager
         Collections.shuffle(allTeams);
 
         ArrayList<ArrayList<Team>> Groups = new ArrayList();
+        
+        for(int i = tdb.listAll().size(); i < 16; i++)
+        {
+             addTeam(new Team(-1,"No One","Fake","Not to be counted"));
+        }
 
         for (int i = 0; i < maxGroups; i++)
         {
@@ -96,42 +106,3 @@ public class TeamManager
 
     }
 }
-//        if (tdb.listAll().size() >= 12)
-//        {
-//            for (int i = 0; i < tdb.listAll().size(); i++)
-//            {
-//
-//                Collections.shuffle(allTeams);
-//
-//
-//                for (int j = 1; j < 5; j++)
-//                {
-//                    g.setGroupId(j);
-//                }
-//
-//                for (int k = 5; k < 9; k++)
-//                {
-//                    g.setGroupId(k);
-//                }
-//
-//                for (int l = 9; l < 13; l++)
-//                {
-//                    g.setGroupId(l);
-//                }
-//
-//                for (int o = 13; o < 17; o++)
-//                {
-//                    g.setGroupId(o);
-//
-//                }
-//
-//                gdb.updateGroup(i);
-//            }
-//        }
-//        else
-//        {
-//            System.out.println("Not enough teams to sort");
-//
-//        }
-//        System.out.println(allTeams);
-

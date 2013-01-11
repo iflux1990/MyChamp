@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 /**
  * Menu for the Team Managenment
+ *
  * @author Daniel, Marco, Mak & Jonas
  */
 public class TeamManagenment extends Menu
@@ -21,7 +22,6 @@ public class TeamManagenment extends Menu
     private TeamManager tmgr;
     private GroupManager gmgr;
     private static final int EXIT_VALUE = 0;
-    
 
     public TeamManagenment()
     {
@@ -85,20 +85,17 @@ public class TeamManagenment extends Menu
 
             System.out.print("Email: ");
             String TeamEmail = sc.nextLine();
-            
-            
 
-         
 
             Team team = new Team(-1, schoolName, captain, TeamEmail);
             team = tmgr.addTeam(team);
 
             System.out.println();
             System.out.println("Team added with ID : " + team.getTeamId());
-        }       
+        }
         catch (Exception ex)
         {
-            
+
             System.out.println("ERROR - " + ex.getMessage());
 
         }
@@ -165,10 +162,10 @@ public class TeamManagenment extends Menu
         System.out.println("");
         try
         {
-            
+
             System.out.print("Select team by school name or ID: ");
             String school = new Scanner(System.in).nextLine();
-            
+
             tmgr.removeTeam(school);
         }
         catch (Exception ex)
@@ -206,22 +203,6 @@ public class TeamManagenment extends Menu
 
     }
 
-//    private void sortTeams()
-//    {
-//        try
-//        {
-//            tmgr.assignGroups();
-//        }
-//        catch (SQLServerException ex)
-//        {
-//            System.out.println("ERROR - " + ex.getMessage());
-//        }
-//        catch (SQLException ex)
-//        {
-//            System.out.println("ERROR - " + ex.getMessage());
-//        }
-//        pause();
-//    }
     private void sortTeams()    //Counts the number of teams in the tornument, 
     {                           //if below 12 the tornument cant start, the maxium of Teams are 16
         try

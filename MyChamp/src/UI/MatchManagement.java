@@ -88,6 +88,7 @@ public class MatchManagement extends Menu
             if (mmgr.NumberOfMatches() == 0)
             {
                 mmgr.scheduleMatches();
+                System.out.println(mmgr.NumberOfMatches() + "Have been added.");
             }
             else
             {
@@ -98,6 +99,7 @@ public class MatchManagement extends Menu
         {
             System.out.println("ERROR - " + ex.getMessage());
         }
+
         pause();
     }
 
@@ -106,6 +108,7 @@ public class MatchManagement extends Menu
         try
         {
             mmgr.removeAllMatches(m);
+            tmgr.resetPoints();
         }
         catch (SQLException ex)
         {
@@ -120,7 +123,7 @@ public class MatchManagement extends Menu
             System.out.println("Round 1: ");
             System.out.printf("%-5s%-20sVS%20s \n", "ID", "HomeTeam", "GuestTeam");
             ArrayList<Match> round1 = new ArrayList(mmgr.round1());
-            for (int i = 0; i <= 7; i++)
+            for (int i = 0; i < round1.size(); i++)
             {
                 if (round1.get(i).getIsPlayed() == false)
                 {

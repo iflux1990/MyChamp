@@ -111,6 +111,16 @@ public class TeamDBManager extends ConnectionDBManager
             }
         }
     }
+    
+    public void resetPoints() throws SQLException
+    {
+        Connection con = dataSource.getConnection();
+        
+        String sql = "UPDATE Team SET Points = 0";
+        PreparedStatement ps = con.prepareStatement(sql);
+        
+        
+    }
 
     public ArrayList<Team> listAll() throws SQLException
     {
@@ -149,7 +159,7 @@ public class TeamDBManager extends ConnectionDBManager
      */
     public void removeTeam(String schoolName) throws SQLException
     {
-        String sql = "DELETE FROM TEAM WHERE school OR ID = ?";
+        String sql = "DELETE FROM TEAM WHERE ID = ?";
 
         Connection con = dataSource.getConnection();
 
