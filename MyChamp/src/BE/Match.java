@@ -69,7 +69,7 @@ public class Match
      */
     public Match(int Id, Match m)
     {
-        this(Id, m.getMatchRound(), m.getHomeTeamId(), m.getGuestTeamId(), m.getIsPlayed(), m.getHomeGoals(), m.getGuestGoals());
+        this(Id, m.getMatchRound(), m.getHomeTeamId(), m.getGuestTeamId(), m.isIsPlayed(), m.getHomeGoals(), m.getGuestGoals());
     }
 
     /**
@@ -113,21 +113,6 @@ public class Match
         return guestTeamId;
     }
 
-    /**
-     * @return the isPlayed
-     */
-    public boolean getIsPlayed()
-    {
-        return false;       
-    }
-
-    /**
-     * @param isPlayed the isPlayed to set
-     */
-    public void setIsPlayed(boolean isPlayed)
-    {
-       isPlayed = true;  
-    }
 
     /**
      * @return the HomeGoals
@@ -175,6 +160,22 @@ public class Match
             System.out.println("ERROR - "+ ex.getMessage());
         }
         return null;
+    }
+
+    /**
+     * @return the isPlayed
+     */
+    public boolean isIsPlayed()
+    {
+        return isPlayed;
+    }
+
+    /**
+     * @param isPlayed the isPlayed to set
+     */
+    public void setIsPlayed(boolean isPlayed)
+    {
+        this.isPlayed = isPlayed;
     }
     
 }

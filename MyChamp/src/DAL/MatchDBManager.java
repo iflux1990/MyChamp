@@ -35,7 +35,7 @@ public class MatchDBManager extends ConnectionDBManager
         ps.setInt(1, m.getMatchRound());
         ps.setInt(2, m.getHomeTeamId());
         ps.setInt(3, m.getGuestTeamId());
-        ps.setBoolean(4, m.getIsPlayed());
+        ps.setBoolean(4, m.isIsPlayed());
         ps.setInt(5, m.getHomeGoals());
         ps.setInt(6, m.getGuestGoals());
 
@@ -157,7 +157,7 @@ public class MatchDBManager extends ConnectionDBManager
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, m.getHomeGoals());
         ps.setInt(2, m.getGuestGoals());
-        ps.setBoolean(3, m.getIsPlayed());
+        ps.setBoolean(3, m.isIsPlayed());
         ps.setInt(4, m.getId());
         
           int affectedRows = ps.executeUpdate();
