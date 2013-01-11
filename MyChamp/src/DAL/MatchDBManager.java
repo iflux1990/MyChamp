@@ -5,8 +5,6 @@
 package DAL;
 
 import BE.Match;
-import BE.Team;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -67,6 +65,8 @@ public class MatchDBManager extends ConnectionDBManager
             throw new SQLException();
         }
     }
+    
+    
 
     public Match getMatchById(int Id) throws SQLException
     {
@@ -96,24 +96,17 @@ public class MatchDBManager extends ConnectionDBManager
         }
         return null;
     }
-    
-//    public Match getMatchByTeams(int homeTeamId, int guestTeamId) throws SQLException
-//    {
-//                Connection con = dataSource.getConnection();
-//
-//
-//        String sql = ("SELECT * FROM Match WHERE HomeTeamID LIKE ? AND GuestTeamID LIKE ?");
-//        PreparedStatement ps = con.prepareStatement(sql);
-//        ps.setInt(1, homeTeamId);
-//        ps.setInt(2, guestTeamId)
-//        
 
-
+    public Match getMatchByTeams(int homeTeamId,int guestTeamId) throws SQLException
+    {
+        Connection con = dataSource.getConnection();
+        
         String sql = ("SELECT * FROM Match WHERE HomeTeamID LIKE ? AND GuestTeamID LIKE ?");
         PreparedStatement ps = con.prepareStatement(sql);
+
         ps.setInt(1, homeTeamId);
         ps.setInt(2, guestTeamId);
-        
+
         ResultSet rs = ps.executeQuery();
 
         if (rs.next())
@@ -129,8 +122,9 @@ public class MatchDBManager extends ConnectionDBManager
             Match m = new Match(MatchRound, HomeTeam, GuestTeam, isPlayed, HomeGoals, GuestGoals);
             return m;
         }
+
         return null;
-        
+
     }
 
     public int count() throws SQLException
@@ -151,20 +145,20 @@ public class MatchDBManager extends ConnectionDBManager
             return 0;
         }
     }
-    
+
     public void update(Match m) throws SQLException
     {
-         String sql = "UPDATE Match SET HomeGoals = ?, GuestGoals = ?, IsPlayed = ? WHERE ID = ?";
-         
-          Connection con = dataSource.getConnection();
+        String sql = "UPDATE Match SET HomeGoals = ?, GuestGoals = ?, IsPlayed = ? WHERE ID = ?";
+
+        Connection con = dataSource.getConnection();
 
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, m.getHomeGoals());
         ps.setInt(2, m.getGuestGoals());
         ps.setBoolean(3, m.isIsPlayed());
         ps.setInt(4, m.getId());
-        
-          int affectedRows = ps.executeUpdate();
+
+        int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)
         {
             throw new SQLException("Unable to update Match");

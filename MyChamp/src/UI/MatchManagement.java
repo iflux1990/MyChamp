@@ -10,6 +10,8 @@ import BLL.TeamManager;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -200,7 +202,14 @@ public class MatchManagement extends Menu
 
     private void dummyMethod()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        try
+        {
+            mmgr.scheduleQuaterFinals();
+        }
+        catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        }
     }
 
     private void viewQuarterfinals()

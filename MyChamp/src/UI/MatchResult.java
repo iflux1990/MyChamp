@@ -54,6 +54,7 @@ public class MatchResult extends Menu
                 break;
             case 2:
                 viewResults();
+                break;
             case EXIT_VALUE:
                 doActionExit();
         }
@@ -93,9 +94,6 @@ public class MatchResult extends Menu
             System.out.println("Guestteam scored: ");
             int guestGoals = sc.nextInt();
             m.setGuestGoals(guestGoals);
-
-
-
 
 
             if (homeGoals < guestGoals)

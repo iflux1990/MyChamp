@@ -66,9 +66,9 @@ public class TeamDBManager extends ConnectionDBManager
                 String teamcaptain = rs.getString("TeamCaptain");
                 String email = rs.getString("Email");
                 int GroupId = rs.getInt("GroupId");
-                String groupName = rs.getString("GroupName");                
+                String groupName = rs.getString("GroupName");
                 int points = rs.getInt("Points");
-                
+
                 Team t = new Team(teamId, school, teamcaptain, email, new Group(GroupId, groupName), points);
 
                 return t;
@@ -76,7 +76,38 @@ public class TeamDBManager extends ConnectionDBManager
         }
         return null;
     }
+
+    public ArrayList<Team> getWinnerSecond(int groupId) throws SQLException
+    {
+        {
+            Connection con = dataSource.getConnection();
+
+            String sql = "SELECT TOP 2 * FROM Team, [Group] WHERE Team.GroupID = [Group].ID AND [Group].ID = ? ORDER BY Team.Points";
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, groupId);
+            ResultSet rs = ps.executeQuery();
+
+            ArrayList<Team> Team = new ArrayList<>();
+            while (rs.next())
+            {
+                int teamId = rs.getInt("ID");
+                String school = rs.getString("School");
+                String teamcaptain = rs.getString("TeamCaptain");
+                String email = rs.getString("Email");
+                int GroupId = rs.getInt("GroupId");
+                String groupName = rs.getString("GroupName");
+                int points = rs.getInt("Points");
+
+                Team t = new Team(teamId, school, teamcaptain, email, new Group(GroupId, groupName), points);
+                Team.add(t);              
+            }
+            return Team;
+        }
+    }
     
+    
+
     public Team getTeamByName(String teamName) throws SQLException
     {
         {
@@ -95,9 +126,9 @@ public class TeamDBManager extends ConnectionDBManager
                 String teamcaptain = rs.getString("TeamCaptain");
                 String email = rs.getString("Email");
                 int GroupId = rs.getInt("GroupId");
-                String groupName = rs.getString("GroupName");                
+                String groupName = rs.getString("GroupName");
                 int points = rs.getInt("Points");
-                
+
                 Team t = new Team(teamId, school, teamcaptain, email, new Group(GroupId, groupName), points);
 
                 return t;
@@ -137,15 +168,15 @@ public class TeamDBManager extends ConnectionDBManager
             }
         }
     }
-    
+
     public void resetPoints() throws SQLException
     {
         Connection con = dataSource.getConnection();
-        
+
         String sql = "UPDATE Team SET Points = 0";
         PreparedStatement ps = con.prepareStatement(sql);
-        
-        
+
+
     }
 
     public ArrayList<Team> listAll() throws SQLException
@@ -199,7 +230,7 @@ public class TeamDBManager extends ConnectionDBManager
         }
     }
 
-    public ArrayList<Team> listTeamsByGroupId(int groupId) throws SQLException
+    public ArrayList<Team> getTeamsByGroupId(int groupId) throws SQLException
     {
         Connection con = dataSource.getConnection();
 
