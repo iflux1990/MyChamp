@@ -114,22 +114,6 @@ public class Match
     }
 
     /**
-     * @return the isPlayed
-     */
-    public boolean getIsPlayed()
-    {
-        return false;       
-    }
-
-    /**
-     * @param isPlayed the isPlayed to set
-     */
-    public void setIsPlayed(boolean isPlayed)
-    {
-       isPlayed = true;  
-    }
-
-    /**
      * @return the HomeGoals
      */
     public int getHomeGoals()
@@ -175,6 +159,22 @@ public class Match
             System.out.println("ERROR - "+ ex.getMessage());
         }
         return null;
+    }
+
+    /**
+     * @return the isPlayed
+     */
+    public boolean getIsPlayed()
+    {
+        return isPlayed;
+    }
+
+    /**
+     * @param isPlayed the isPlayed to set
+     */
+    public void setIsPlayed(boolean isPlayed)
+    {
+        this.isPlayed = isPlayed;
     }
     
 }

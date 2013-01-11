@@ -68,45 +68,49 @@ public class MatchResult extends Menu
 
             Scanner sc = new Scanner(System.in, "ISO-8859-1");
 
-            System.out.println("Match id: ");
+            System.out.println("Match id(0 to back out): ");
             int matchId = sc.nextInt();
 
             m = mmgr.getMatchById(matchId);
 
+            if (matchId == 0)
+            {
+                return;
+            }
 
             System.out.println("Hometeam scored: ");
-            int homeGoals = sc.nextInt();    
+            int homeGoals = sc.nextInt();
             m.setHomeGoals(homeGoals);
-           
+
 
             System.out.println("Guestteam scored: ");
             int guestGoals = sc.nextInt();
             m.setGuestGoals(guestGoals);
-            
-                 
-            
+
+
+
 
 
             if (homeGoals < guestGoals)
             {
                 Team tguest = tmgr.getTeamById(m.getGuestTeamId());
-                tguest.setPoints(3);          
+                tguest.setPoints(3);
             }
             else if (homeGoals == guestGoals)
             {
                 Team thome = tmgr.getTeamById(m.getHomeTeamId());
                 Team tguest = tmgr.getTeamById(m.getGuestTeamId());
                 tguest.setPoints(1);
-                thome.setPoints(1);            
+                thome.setPoints(1);
             }
             else
             {
                 Team thome = tmgr.getTeamById(m.getHomeTeamId());
                 thome.setPoints(3);
             }
-               m.setIsPlayed(true);
-                 mmgr.update(m);
-            
+            m.setIsPlayed(true);
+            mmgr.update(m);
+
 //
 //            if (m.getId() == matchId)
 //            {
@@ -122,10 +126,10 @@ public class MatchResult extends Menu
             System.out.println("ERROR - " + ex.getMessage());
         }
     }
-    
+
     private void viewResults()
     {
-         try
+        try
         {
             System.out.println("Round 1: ");
             System.out.printf("%-5s%-20sVS%20s%15s \n", "ID", "HomeTeam", "GuestTeam", "Goals");
@@ -134,11 +138,10 @@ public class MatchResult extends Menu
             {
                 if (round1.get(i).getIsPlayed() == true)
                 {
-                    System.out.printf("%-5d%-20sVS%20s%11d-%1d \n", round1.get(i).getId(), tmgr.getTeamById(round1.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round1.get(i).getGuestTeamId()).getSchoolName(),round1.get(i).getHomeGoals(), round1.get(i).getGuestGoals());
+                    System.out.printf("%-5d%-20sVS%20s%11d-%1d \n", round1.get(i).getId(), tmgr.getTeamById(round1.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round1.get(i).getGuestTeamId()).getSchoolName(), round1.get(i).getHomeGoals(), round1.get(i).getGuestGoals());
                 }
                 else
                 {
-                    
                 }
             }
             System.out.println();
