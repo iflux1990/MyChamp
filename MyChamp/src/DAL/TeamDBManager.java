@@ -141,7 +141,7 @@ public class TeamDBManager extends ConnectionDBManager
     {
         {
 
-            String sql = "UPDATE Team SET School = ?, TeamCaptain = ?, Email = ?, Points WHERE ID = ?";
+            String sql = "UPDATE Team SET School = ?, TeamCaptain = ?, Email = ?, Points = ? WHERE ID = ?";
 
             Connection con;
             try

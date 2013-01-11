@@ -17,7 +17,7 @@ public class Team
     private String teamEmail;
     private Group group;
     private int groupId;
-    private int points;
+    private int points = 0;
 
     /**
      * Constructor for the Team object
@@ -56,16 +56,16 @@ public class Team
     {
         this(teamId, t.getSchoolName(), t.getCaptain(), t.getTeamEmail(), t.getGroup());
     }
-
     
-    public Team(int teamId, String schoolName, String captain, String teamEmail)
+   
+    public Team(int TeamId, String SchoolName, String Captain, String TeamEmail)
     {
-        this.teamId = teamId;
-        this.schoolName = schoolName;
-        this.captain = captain;
-        this.teamEmail = teamEmail;
+        this.teamId = TeamId;
+        this.schoolName = SchoolName;
+        this.captain = Captain;
+        this.teamEmail = TeamEmail;
+        
     }
-    
     /**
      * @return the TeamId
      */
@@ -144,9 +144,13 @@ public class Team
         this.groupId = groupId;
     }
     
-    public void setPoints(int points)
+    public void addPoints(int p)
     {
-        this.points = points;
+        this.points =+ p;
+    }
+    public void setPoints(int p)
+    {
+        points += p;
     }
 
     @Override

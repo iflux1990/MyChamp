@@ -56,14 +56,8 @@ public class GroupRanking extends Menu
 
     private void groupRanking()
     {
-        try
-        {
-            mmgr.scheduleMatches();
-        }
-        catch (SQLException ex)
-        {
-            ex.printStackTrace();
-        }
+       
+        pause();
     }
     
     private void teamRanking()
