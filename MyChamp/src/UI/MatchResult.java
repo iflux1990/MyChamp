@@ -102,6 +102,8 @@ public class MatchResult extends Menu
             {
                 Team tguest = tmgr.getTeamById(m.getGuestTeamId());
                 tguest.setPoints(3);
+                tmgr.updateTeam(tguest);
+               
             }
             else if (homeGoals == guestGoals)
             {
@@ -109,12 +111,20 @@ public class MatchResult extends Menu
                 Team tguest = tmgr.getTeamById(m.getGuestTeamId());
                 tguest.setPoints(1);
                 thome.setPoints(1);
+                tmgr.updateTeam(tguest);
+                tmgr.updateTeam(thome);
+
+                
             }
             else
             {
                 Team thome = tmgr.getTeamById(m.getHomeTeamId());
                 thome.setPoints(3);
+                tmgr.updateTeam(thome);
+
+                
             }
+
             m.setIsPlayed(true);
             mmgr.update(m);
 
@@ -212,4 +222,7 @@ public class MatchResult extends Menu
     {
         System.out.println("You selected to exit.");
     }
+    
+  
+    
 }

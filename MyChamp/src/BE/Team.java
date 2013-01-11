@@ -17,7 +17,7 @@ public class Team
     private String teamEmail;
     private Group group;
     private int groupId;
-    private int points;
+    private int points = 0;
 
     /**
      * Constructor for the Team object
@@ -144,9 +144,13 @@ public class Team
         this.groupId = groupId;
     }
     
-    public void setPoints(int points)
+    public void addPoints(int p)
     {
-        this.points = points;
+        this.points =+ p;
+    }
+    public void setPoints(int p)
+    {
+        points += p;
     }
 
     @Override

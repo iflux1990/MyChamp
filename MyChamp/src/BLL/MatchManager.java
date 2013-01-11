@@ -112,14 +112,14 @@ public class MatchManager
     {
         ArrayList<Match> round1 = new ArrayList();
 
-        round1.add(mdb.getMatchById(1));
-        round1.add(mdb.getMatchById(33));
-        round1.add(mdb.getMatchById(2));
-        round1.add(mdb.getMatchById(34));
-        round1.add(mdb.getMatchById(3));
-        round1.add(mdb.getMatchById(35));
-        round1.add(mdb.getMatchById(4));
-        round1.add(mdb.getMatchById(36));
+        round1.add(mdb.getMatchById(29));
+        round1.add(mdb.getMatchById(9));
+        round1.add(mdb.getMatchById(30));
+        round1.add(mdb.getMatchById(10));
+        round1.add(mdb.getMatchById(31));
+        round1.add(mdb.getMatchById(11));
+        round1.add(mdb.getMatchById(32));
+        round1.add(mdb.getMatchById(12));
 
         return round1;
     }
@@ -187,14 +187,15 @@ public class MatchManager
         public ArrayList<Match> round6() throws SQLException
     {
         ArrayList<Match> round6 = new ArrayList();
-        round6.add(mdb.getMatchById(29));
-        round6.add(mdb.getMatchById(9));
-        round6.add(mdb.getMatchById(30));
-        round6.add(mdb.getMatchById(10));
-        round6.add(mdb.getMatchById(31));
-        round6.add(mdb.getMatchById(11));
-        round6.add(mdb.getMatchById(32));
-        round6.add(mdb.getMatchById(12));
+
+        round6.add(mdb.getMatchById(1));
+        round6.add(mdb.getMatchById(33));
+        round6.add(mdb.getMatchById(2));
+        round6.add(mdb.getMatchById(34));
+        round6.add(mdb.getMatchById(3));
+        round6.add(mdb.getMatchById(35));
+        round6.add(mdb.getMatchById(4));
+        round6.add(mdb.getMatchById(36));
 
         return round6;
     }
