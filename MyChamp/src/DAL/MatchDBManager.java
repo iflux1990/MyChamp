@@ -97,37 +97,37 @@ public class MatchDBManager extends ConnectionDBManager
         return null;
     }
     
-    public Match getMatchByTeams(int homeTeamId, int guestTeamId) throws SQLException
-    {
-                Connection con = dataSource.getConnection();
+//    public Match getMatchByTeams(int homeTeamId, int guestTeamId) throws SQLException
+//    {
+//                Connection con = dataSource.getConnection();
+//
+//
+//        String sql = ("SELECT * FROM Match WHERE HomeTeamID LIKE ? AND GuestTeamID LIKE ?");
+//        PreparedStatement ps = con.prepareStatement(sql);
+//        ps.setInt(1, homeTeamId);
+//        ps.setInt(2, guestTeamId)
+//        
 
 
-        String sql = ("SELECT * FROM Match WHERE HomeTeamID LIKE ? AND GuestTeamID LIKE ?");
-        PreparedStatement ps = con.prepareStatement(sql);
-        ps.setInt(1, homeTeamId);
-        ps.setInt(2, guestTeamId)
-        
-
-
-
-        ResultSet rs = ps.executeQuery();
-
-        if (rs.next())
-        {
-
-            int MatchRound = rs.getInt("MatchRound");
-            int HomeTeam = rs.getInt("HomeTeamID");
-            int GuestTeam = rs.getInt("GuestTeamID");
-            boolean isPlayed = rs.getBoolean("isPlayed");
-            int HomeGoals = rs.getInt("HomeGoals");
-            int GuestGoals = rs.getInt("GuestGoals");
-
-            Match m = new Match(Id, MatchRound, HomeTeam, GuestTeam, isPlayed, HomeGoals, GuestGoals);
-            return m;
-        }
-        return null;
-        
-    }
+//
+//        ResultSet rs = ps.executeQuery();
+//
+//        if (rs.next())
+//        {
+//
+//            int MatchRound = rs.getInt("MatchRound");
+//            int HomeTeam = rs.getInt("HomeTeamID");
+//            int GuestTeam = rs.getInt("GuestTeamID");
+//            boolean isPlayed = rs.getBoolean("isPlayed");
+//            int HomeGoals = rs.getInt("HomeGoals");
+//            int GuestGoals = rs.getInt("GuestGoals");
+//
+//            Match m = new Match(Id, MatchRound, HomeTeam, GuestTeam, isPlayed, HomeGoals, GuestGoals);
+//            return m;
+//        }
+//        return null;
+//        
+//    }
 
     public int count() throws SQLException
     {
