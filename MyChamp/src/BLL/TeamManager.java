@@ -70,6 +70,11 @@ public class TeamManager
         tdb.resetPoints();
     }
     
+    public Team getTeamByName(String teamName) throws SQLException
+    {
+        return tdb.getTeamByName(teamName);
+    }
+    
     public void assignGroups() throws SQLServerException, SQLException
     {
         int maxGroups = 4;

@@ -35,7 +35,7 @@ public class MatchDBManager extends ConnectionDBManager
         ps.setInt(1, m.getMatchRound());
         ps.setInt(2, m.getHomeTeamId());
         ps.setInt(3, m.getGuestTeamId());
-        ps.setBoolean(4, m.getIsPlayed());
+        ps.setBoolean(4, m.isIsPlayed());
         ps.setInt(5, m.getHomeGoals());
         ps.setInt(6, m.getGuestGoals());
 
@@ -105,11 +105,8 @@ public class MatchDBManager extends ConnectionDBManager
         String sql = ("SELECT * FROM Match WHERE HomeTeamID LIKE ? AND GuestTeamID LIKE ?");
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, homeTeamId);
-        ps.setInt(2, guestTeamId)
+        ps.setInt(2, guestTeamId);
         
-
-
-
         ResultSet rs = ps.executeQuery();
 
         if (rs.next())
@@ -122,7 +119,7 @@ public class MatchDBManager extends ConnectionDBManager
             int HomeGoals = rs.getInt("HomeGoals");
             int GuestGoals = rs.getInt("GuestGoals");
 
-            Match m = new Match(Id, MatchRound, HomeTeam, GuestTeam, isPlayed, HomeGoals, GuestGoals);
+            Match m = new Match(MatchRound, HomeTeam, GuestTeam, isPlayed, HomeGoals, GuestGoals);
             return m;
         }
         return null;
@@ -157,7 +154,7 @@ public class MatchDBManager extends ConnectionDBManager
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, m.getHomeGoals());
         ps.setInt(2, m.getGuestGoals());
-        ps.setBoolean(3, m.getIsPlayed());
+        ps.setBoolean(3, m.isIsPlayed());
         ps.setInt(4, m.getId());
         
           int affectedRows = ps.executeUpdate();
