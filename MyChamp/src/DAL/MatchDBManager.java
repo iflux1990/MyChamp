@@ -97,9 +97,16 @@ public class MatchDBManager extends ConnectionDBManager
         return null;
     }
     
-    public Match getMatchByTeams(int homeTeamId, int guestTeamId) throws SQLException
-    {
-                Connection con = dataSource.getConnection();
+//    public Match getMatchByTeams(int homeTeamId, int guestTeamId) throws SQLException
+//    {
+//                Connection con = dataSource.getConnection();
+//
+//
+//        String sql = ("SELECT * FROM Match WHERE HomeTeamID LIKE ? AND GuestTeamID LIKE ?");
+//        PreparedStatement ps = con.prepareStatement(sql);
+//        ps.setInt(1, homeTeamId);
+//        ps.setInt(2, guestTeamId)
+//        
 
 
         String sql = ("SELECT * FROM Match WHERE HomeTeamID LIKE ? AND GuestTeamID LIKE ?");

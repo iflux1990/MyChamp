@@ -10,6 +10,7 @@ import BLL.MatchManager;
 import BLL.TeamManager;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -28,7 +29,7 @@ public class MatchResult extends Menu
 
     public MatchResult()
     {
-        super("Match Result", "Record Result");
+        super("Match Result", "Record Result", "View Results");
         EXIT_OPTION = EXIT_VALUE;
 
         mmui = new MatchManagement();
@@ -51,6 +52,8 @@ public class MatchResult extends Menu
             case 1:
                 matchResult();
                 break;
+            case 2:
+                viewResults();
             case EXIT_VALUE:
                 doActionExit();
         }
@@ -86,9 +89,13 @@ public class MatchResult extends Menu
             int homeGoals = sc.nextInt();
             m.setHomeGoals(homeGoals);
 
+
             System.out.println("Guestteam scored: ");
             int guestGoals = sc.nextInt();
             m.setGuestGoals(guestGoals);
+
+
+
 
 
             if (homeGoals < guestGoals)
@@ -98,7 +105,6 @@ public class MatchResult extends Menu
             }
             else if (homeGoals == guestGoals)
             {
-
                 Team thome = tmgr.getTeamById(m.getHomeTeamId());
                 Team tguest = tmgr.getTeamById(m.getGuestTeamId());
                 tguest.setPoints(1);
@@ -108,9 +114,7 @@ public class MatchResult extends Menu
             {
                 Team thome = tmgr.getTeamById(m.getHomeTeamId());
                 thome.setPoints(3);
-
             }
-
             m.setIsPlayed(true);
             mmgr.update(m);
 
@@ -119,6 +123,7 @@ public class MatchResult extends Menu
         {
             System.out.println("ERROR - " + ex.getMessage());
         }
+        pause();
     }
 
     private void doActionExit()
