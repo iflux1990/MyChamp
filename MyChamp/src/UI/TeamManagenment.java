@@ -85,10 +85,7 @@ public class TeamManagenment extends Menu
 
             System.out.print("Email: ");
             String TeamEmail = sc.nextLine();
-            
-            
 
-         
 
             Team team = new Team(-1, schoolName, captain, TeamEmail);
             team = tmgr.addTeam(team);
@@ -165,8 +162,8 @@ public class TeamManagenment extends Menu
         System.out.println("");
         try
         {
-            System.out.print("Select team by school id: ");
 
+            System.out.print("Select team by school name or ID: ");
             String school = new Scanner(System.in).nextLine();
 
             tmgr.removeTeam(school);
@@ -206,7 +203,6 @@ public class TeamManagenment extends Menu
         }
 
     }
-
 
     private void sortTeams()    //Counts the number of teams in the tornument, 
     {                           //if below 12 the tornument cant start, the maxium of Teams are 16

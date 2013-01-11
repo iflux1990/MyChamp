@@ -4,6 +4,12 @@
  */
 package BE;
 
+import DAL.TeamDBManager;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * The Business entity of the Match table
  * @author Daniel, Marco, Mak & Jonas
@@ -19,6 +25,7 @@ public class Match
     private int guestGoals;
     private String homeTeam;
     private String guestTeam;
+    private TeamDBManager tdb;
     
     
     /**
@@ -157,7 +164,17 @@ public class Match
     @Override
     public String toString()
     {
-        return String.format("%-5d %-10d %-10d", Id, homeTeamId, guestTeamId );
+        
+        try
+        {
+            tdb = new TeamDBManager();
+            return String.format("%-5d%-20sVS%20s \n", getId(), tdb.getTeamById(homeTeamId).getSchoolName(), tdb.getTeamById(guestTeamId).getSchoolName());
+        }
+        catch (SQLException | IOException ex)
+        {
+            System.out.println("ERROR - "+ ex.getMessage());
+        }
+        return null;
     }
     
 }

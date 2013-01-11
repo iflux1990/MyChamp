@@ -16,8 +16,8 @@ public class Team
     private String captain;
     private String teamEmail;
     private Group group;
-//    private int GroupId;
     private int groupId;
+    private int points;
 
     /**
      * Constructor for the Team object
@@ -27,6 +27,17 @@ public class Team
      * @param teamEmail
      * @param group
      */
+    public Team(int teamId, String schoolName, String captain, String teamEmail, Group group, int points)
+    {
+        this.teamId = teamId;
+        this.schoolName = schoolName;
+        this.captain = captain;
+        this.teamEmail = teamEmail;
+        this.group = group;
+        this.points = points;
+        
+    }    
+    
     public Team(int teamId, String schoolName, String captain, String teamEmail, Group group) //Constructor
     {
         this.teamId = teamId;
@@ -132,10 +143,20 @@ public class Team
     {
         this.groupId = groupId;
     }
+    
+    public void setPoints(int points)
+    {
+        this.points = points;
+    }
 
     @Override
     public String toString()
     {
         return String.format("%-5d %-20s %-20s %-29s %-29s", teamId, schoolName, captain, teamEmail, group);
+    }
+
+    public int getPoints()
+    {
+        return points;
     }
 }

@@ -49,7 +49,7 @@ public class TeamDBManager extends ConnectionDBManager
 
     }
 
-    public String getTeamById(int teamId) throws SQLException
+    public Team getTeamById(int teamId) throws SQLException
     {
         {
             Connection con = dataSource.getConnection();
@@ -60,20 +60,19 @@ public class TeamDBManager extends ConnectionDBManager
             ps.setInt(1, teamId);
             ResultSet rs = ps.executeQuery();
 
-
             if (rs.next())
             {
-
                 String school = rs.getString("School");
+                String teamcaptain = rs.getString("TeamCaptain");
+                String email = rs.getString("Email");
+                int GroupId = rs.getInt("GroupId");
+                String groupName = rs.getString("GroupName");                
+                int points = rs.getInt("Points");
+                
+                Team t = new Team(teamId, school, teamcaptain, email, new Group(GroupId, groupName), points);
 
-
-//            int points = rs.getInt("Points");
-
-
-                return school;
+                return t;
             }
-
-
         }
         return null;
 
@@ -85,7 +84,7 @@ public class TeamDBManager extends ConnectionDBManager
     {
         {
 
-            String sql = "UPDATE Team SET School = ?, TeamCaptain = ?, Email = ? WHERE ID = ?";
+            String sql = "UPDATE Team SET School = ?, TeamCaptain = ?, Email = ?, Points WHERE ID = ?";
 
             Connection con;
             try
@@ -101,20 +100,26 @@ public class TeamDBManager extends ConnectionDBManager
             ps.setString(1, t.getSchoolName());
             ps.setString(2, t.getCaptain());
             ps.setString(3, t.getTeamEmail());
-            ps.setInt(4, t.getTeamId());
+            ps.setInt(4, t.getPoints());
+            ps.setInt(5, t.getTeamId());
 
 
             int affectedRows = ps.executeUpdate();
             if (affectedRows == 0)
             {
-                throw new SQLException("Unable to update Song");
+                throw new SQLException("Unable to update Team");
             }
         }
     }
-
-    public ArrayList<Team> search()
+    
+    public void resetPoints() throws SQLException
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        Connection con = dataSource.getConnection();
+        
+        String sql = "UPDATE Team SET Points = 0";
+        PreparedStatement ps = con.prepareStatement(sql);
+        
+        
     }
 
     public ArrayList<Team> listAll() throws SQLException
@@ -136,10 +141,10 @@ public class TeamDBManager extends ConnectionDBManager
             String groupName = rs.getString("GroupName");
             String email = rs.getString("Email");
             int GroupId = rs.getInt("GroupID");
-//            int points = rs.getInt("Points");
+            int points = rs.getInt("Points");
 
 
-            Team t = new Team(id, school, teamcaptain, email, new Group(GroupId, groupName));
+            Team t = new Team(id, school, teamcaptain, email, new Group(GroupId, groupName), points);
             Team.add(t);
         }
         return Team;
@@ -168,11 +173,6 @@ public class TeamDBManager extends ConnectionDBManager
         }
     }
 
-    public void getBySchool()
-    {
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-
     public ArrayList<Team> listTeamsByGroupId(int groupId) throws SQLException
     {
         Connection con = dataSource.getConnection();
@@ -180,7 +180,7 @@ public class TeamDBManager extends ConnectionDBManager
         String sql = "SELECT Team.*, GroupName FROM Team, [Group] WHERE Team.GroupID = [Group].ID AND Team.GroupID = ?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, groupId);
-        
+
         ResultSet rs = ps.executeQuery();
 
         ArrayList<Team> Team = new ArrayList<>();
@@ -198,30 +198,6 @@ public class TeamDBManager extends ConnectionDBManager
         }
         return Team;
 
-    }
-
-    public Team getRandomSchool() throws SQLException
-    {
-        String sql = "SELECT TOP 1 School FROM Team, [Group] ORDER BY NEWID()";
-
-        Connection con = dataSource.getConnection();
-
-        PreparedStatement ps = con.prepareStatement(sql);
-        ResultSet rs = ps.executeQuery();
-
-        if (rs.next())
-        {
-//            int TeamID = rs.getInt("ID");
-            String SchoolName = rs.getString("School");
-            String Captain = rs.getString("TeamCaptain");
-            String TeamEmail = rs.getString("Email");
-            String GroupName = rs.getString("GroupName");
-            int GroupID = rs.getInt("ID");
-
-            Team t = new Team(-1, SchoolName, Captain, TeamEmail, new Group(GroupID, GroupName));
-        }
-
-        return t;
     }
 
     public int count() throws SQLException

@@ -25,18 +25,13 @@ public class TeamManager
     private Team t;
     private TeamDBManager tdb = null;
     private GroupDBManager gdb;
-    private MatchManager mm;
+    private MatchManager mmgr;
 
     public TeamManager() throws SQLException, IOException
     {
         tdb = new TeamDBManager();
         gdb = new GroupDBManager();
-        mm = new MatchManager();
-    }
-
-    public ArrayList<Team> search()
-    {
-        return tdb.search();
+        mmgr = new MatchManager();
     }
 
     public ArrayList<Team> listAllTeams() throws SQLException
@@ -59,27 +54,22 @@ public class TeamManager
         tdb.removeTeam(school);
     }
 
-    public void getBySchool(String schoolName)
-    {
-        tdb.getBySchool();
-    }
-
-    public Team getRandomTeam() throws SQLException
-    {
-        return tdb.getRandomSchool();
-    }
-
     public int showNumber() throws SQLException
     {
 
         return tdb.count();
     }
     
-    public String getTeamById(int id) throws SQLException
+    public Team getTeamById(int id) throws SQLException
     {
         return tdb.getTeamById(id);
     }
-
+    
+    public void resetPoints() throws SQLException
+    {
+        tdb.resetPoints();
+    }
+    
     public void assignGroups() throws SQLServerException, SQLException
     {
         int maxGroups = 4;
@@ -90,6 +80,11 @@ public class TeamManager
         Collections.shuffle(allTeams);
 
         ArrayList<ArrayList<Team>> Groups = new ArrayList();
+        
+        for(int i = tdb.listAll().size(); i < 16; i++)
+        {
+             addTeam(new Team(-1,"No One","Fake","Not to be counted"));
+        }
 
         for (int i = 0; i < maxGroups; i++)
         {
