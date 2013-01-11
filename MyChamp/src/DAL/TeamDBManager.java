@@ -75,9 +75,35 @@ public class TeamDBManager extends ConnectionDBManager
             }
         }
         return null;
+    }
+    
+    public Team getTeamByName(String teamName) throws SQLException
+    {
+        {
+            Connection con = dataSource.getConnection();
 
+            String sql = "SELECT Team.*, [Group].GroupName FROM Team,[Group] WHERE [Group].ID = Team.GroupID AND Team.School = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
 
+            ps.setString(1, teamName);
+            ResultSet rs = ps.executeQuery();
 
+            if (rs.next())
+            {
+                int teamId = rs.getInt("ID");
+                String school = rs.getString("School");
+                String teamcaptain = rs.getString("TeamCaptain");
+                String email = rs.getString("Email");
+                int GroupId = rs.getInt("GroupId");
+                String groupName = rs.getString("GroupName");                
+                int points = rs.getInt("Points");
+                
+                Team t = new Team(teamId, school, teamcaptain, email, new Group(GroupId, groupName), points);
+
+                return t;
+            }
+        }
+        return null;
     }
 
     public void updateTeam(Team t) throws SQLException

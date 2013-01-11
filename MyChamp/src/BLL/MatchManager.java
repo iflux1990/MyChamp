@@ -41,6 +41,11 @@ public class MatchManager
     {
         mdb.update(m);
     }
+    
+    public Match getMatchByTeams(int homeTeamId, int guestTeamId) throws SQLException
+    {
+        return mdb.getMatchByTeams(homeTeamId, guestTeamId);
+    }
 
     public void scheduleMatches() throws SQLException
     {

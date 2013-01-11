@@ -12,10 +12,12 @@ import java.util.logging.Logger;
 
 /**
  * The Business entity of the Match table
+ *
  * @author Daniel, Marco, Mak & Jonas
  */
 public class Match
 {
+
     private final int Id;
     private int matchRound;
     private final int homeTeamId;
@@ -26,10 +28,10 @@ public class Match
     private String homeTeam;
     private String guestTeam;
     private TeamDBManager tdb;
-    
-    
+
     /**
      * Constructor for the Match object
+     *
      * @param Id
      * @param matchRound
      * @param homeTeamId
@@ -47,11 +49,18 @@ public class Match
         this.isPlayed = isPlayed;
         this.homeGoals = homeGoals;
         this.guestGoals = guestGoals;
-        
+
     }
-    
+
+    public Match(int matchRound, int homeTeamId, int guestTeamId, boolean isPlayed, int homeGoals, int guestGoals)
+    {
+        this(-1, matchRound, homeTeamId, guestTeamId, isPlayed, homeGoals, guestGoals);
+
+    }
+
     /**
      * Constructor for the Match object
+     *
      * @param Id
      * @param matchRound
      * @param homeTeamId
@@ -61,9 +70,9 @@ public class Match
     {
         this(Id, matchRound, homeTeamId, guestTeamId, false, -1, -1);
     }
-    
+
     /**
-     * 
+     *
      * @param Id
      * @param m
      */
@@ -79,8 +88,7 @@ public class Match
     {
         return Id;
     }
-    
-    
+
     /**
      * @return the MatchRound
      */
@@ -145,11 +153,11 @@ public class Match
     {
         this.guestGoals = guestGoals;
     }
-    
+
     @Override
     public String toString()
     {
-        
+
         try
         {
             tdb = new TeamDBManager();
@@ -157,7 +165,7 @@ public class Match
         }
         catch (SQLException | IOException ex)
         {
-            System.out.println("ERROR - "+ ex.getMessage());
+            System.out.println("ERROR - " + ex.getMessage());
         }
         return null;
     }
@@ -177,5 +185,4 @@ public class Match
     {
         this.isPlayed = isPlayed;
     }
-    
 }

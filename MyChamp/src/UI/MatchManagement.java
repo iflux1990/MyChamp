@@ -210,7 +210,6 @@ public class MatchManagement extends Menu
         {
             System.out.println("ERROR - " + ex.getMessage());
         }
-        pause();
     }
 
     private void doActionExit()

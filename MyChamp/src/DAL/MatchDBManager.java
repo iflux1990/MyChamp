@@ -109,25 +109,29 @@ public class MatchDBManager extends ConnectionDBManager
 //        
 
 
-//
-//        ResultSet rs = ps.executeQuery();
-//
-//        if (rs.next())
-//        {
-//
-//            int MatchRound = rs.getInt("MatchRound");
-//            int HomeTeam = rs.getInt("HomeTeamID");
-//            int GuestTeam = rs.getInt("GuestTeamID");
-//            boolean isPlayed = rs.getBoolean("isPlayed");
-//            int HomeGoals = rs.getInt("HomeGoals");
-//            int GuestGoals = rs.getInt("GuestGoals");
-//
-//            Match m = new Match(Id, MatchRound, HomeTeam, GuestTeam, isPlayed, HomeGoals, GuestGoals);
-//            return m;
-//        }
-//        return null;
-//        
-//    }
+        String sql = ("SELECT * FROM Match WHERE HomeTeamID LIKE ? AND GuestTeamID LIKE ?");
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, homeTeamId);
+        ps.setInt(2, guestTeamId);
+        
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next())
+        {
+
+            int MatchRound = rs.getInt("MatchRound");
+            int HomeTeam = rs.getInt("HomeTeamID");
+            int GuestTeam = rs.getInt("GuestTeamID");
+            boolean isPlayed = rs.getBoolean("isPlayed");
+            int HomeGoals = rs.getInt("HomeGoals");
+            int GuestGoals = rs.getInt("GuestGoals");
+
+            Match m = new Match(MatchRound, HomeTeam, GuestTeam, isPlayed, HomeGoals, GuestGoals);
+            return m;
+        }
+        return null;
+        
+    }
 
     public int count() throws SQLException
     {

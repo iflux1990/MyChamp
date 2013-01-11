@@ -68,12 +68,23 @@ public class MatchResult extends Menu
 
             Scanner sc = new Scanner(System.in, "ISO-8859-1");
 
-            System.out.println("Match id: ");
-            int matchId = sc.nextInt();
-
-            m = mmgr.getMatchById(matchId);
-
-
+            System.out.println("Match id or the two teams playing seperated by \":\" (HomeTeam:GuestTeam) :");
+            if (sc.hasNextInt() == true)
+            {
+                int matchId = sc.nextInt();
+                m = mmgr.getMatchById(matchId);
+            }
+            else
+            {
+                String matchteams = sc.nextLine();
+                String[] ss = matchteams.split(":");
+                
+                Team team1 = tmgr.getTeamByName(ss[0]);
+                Team team2 = tmgr.getTeamByName(ss[1]);
+                
+                m = mmgr.getMatchByTeams(team1.getTeamId(),team2.getTeamId());
+            }
+            
             System.out.println("Hometeam scored: ");
             int homeGoals = sc.nextInt();
             m.setHomeGoals(homeGoals);
