@@ -213,12 +213,25 @@ public class MatchManager
 
     public void updateMatchRounds() throws SQLException
     {
-        for (int t = 1; t < 6; t++)
+        for (int i = 0; i < 8; i++)
         {
-            for (int i = 0; i < 8; i++)
-            {
-                round1().get(i).setMatchRound(t);
-            }
+            round1().get(i).setMatchRound(1);
+            mdb.update(round1().get(i));
+            
+            round2().get(i).setMatchRound(2);
+            mdb.update(round2().get(i));
+            
+            round3().get(i).setMatchRound(3);
+            mdb.update(round3().get(i));
+            
+            round4().get(i).setMatchRound(4);
+            mdb.update(round4().get(i));
+            
+            round5().get(i).setMatchRound(5);
+            mdb.update(round5().get(i));
+            
+            round6().get(i).setMatchRound(6);
+            mdb.update(round6().get(i));
         }
     }
 }
