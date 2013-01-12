@@ -86,6 +86,7 @@ public class MatchManagement extends Menu
             {
                 mmgr.scheduleMatches();
                 System.out.println(mmgr.NumberOfMatches() + " Have been added.");
+                mmgr.updateMatchRounds();
             }
             else
             {

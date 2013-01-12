@@ -65,8 +65,6 @@ public class MatchDBManager extends ConnectionDBManager
             throw new SQLException();
         }
     }
-    
-    
 
     public Match getMatchById(int Id) throws SQLException
     {
@@ -97,10 +95,10 @@ public class MatchDBManager extends ConnectionDBManager
         return null;
     }
 
-    public Match getMatchByTeams(int homeTeamId,int guestTeamId) throws SQLException
+    public Match getMatchByTeams(int homeTeamId, int guestTeamId) throws SQLException
     {
         Connection con = dataSource.getConnection();
-        
+
         String sql = ("SELECT * FROM Match WHERE HomeTeamID LIKE ? AND GuestTeamID LIKE ?");
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -148,15 +146,16 @@ public class MatchDBManager extends ConnectionDBManager
 
     public void update(Match m) throws SQLException
     {
-        String sql = "UPDATE Match SET HomeGoals = ?, GuestGoals = ?, IsPlayed = ? WHERE ID = ?";
+        String sql = "UPDATE Match SET MatchRound = ?, HomeGoals = ?, GuestGoals = ?, IsPlayed = ? WHERE ID = ?";
 
         Connection con = dataSource.getConnection();
 
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setInt(1, m.getHomeGoals());
-        ps.setInt(2, m.getGuestGoals());
-        ps.setBoolean(3, m.isIsPlayed());
-        ps.setInt(4, m.getId());
+        ps.setInt(1, m.getMatchRound());
+        ps.setInt(2, m.getHomeGoals());
+        ps.setInt(3, m.getGuestGoals());
+        ps.setBoolean(4, m.isIsPlayed());
+        ps.setInt(5, m.getId());
 
         int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)

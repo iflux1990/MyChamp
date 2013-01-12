@@ -98,14 +98,14 @@ public class MatchManager
 
     public void scheduleQuaterFinals() throws SQLException
     {
-            Match quarterFinal1 = new Match(49,7,tdb.getWinnerSecond(1).get(0).getTeamId(),tdb.getWinnerSecond(2).get(1).getTeamId());
-            mdb.addMatches(quarterFinal1);
-            Match quarterFinal2 = new Match(50,7,tdb.getWinnerSecond(2).get(0).getTeamId(),tdb.getWinnerSecond(1).get(1).getTeamId());
-            mdb.addMatches(quarterFinal2);
-            Match quarterFinal3 = new Match(51,7,tdb.getWinnerSecond(3).get(0).getTeamId(),tdb.getWinnerSecond(4).get(1).getTeamId());
-            mdb.addMatches(quarterFinal3);
-            Match quarterFinal4 = new Match(52,7,tdb.getWinnerSecond(4).get(0).getTeamId(),tdb.getWinnerSecond(3).get(1).getTeamId());
-            mdb.addMatches(quarterFinal4);
+        Match quarterFinal1 = new Match(49, 7, tdb.getWinnerSecond(1).get(0).getTeamId(), tdb.getWinnerSecond(2).get(1).getTeamId());
+        mdb.addMatches(quarterFinal1);
+        Match quarterFinal2 = new Match(50, 7, tdb.getWinnerSecond(2).get(0).getTeamId(), tdb.getWinnerSecond(1).get(1).getTeamId());
+        mdb.addMatches(quarterFinal2);
+        Match quarterFinal3 = new Match(51, 7, tdb.getWinnerSecond(3).get(0).getTeamId(), tdb.getWinnerSecond(4).get(1).getTeamId());
+        mdb.addMatches(quarterFinal3);
+        Match quarterFinal4 = new Match(52, 7, tdb.getWinnerSecond(4).get(0).getTeamId(), tdb.getWinnerSecond(3).get(1).getTeamId());
+        mdb.addMatches(quarterFinal4);
     }
 
     public void removeAllMatches(Match m) throws SQLException
@@ -131,8 +131,8 @@ public class MatchManager
         round1.add(mdb.getMatchById(32));
         round1.add(mdb.getMatchById(12));
 
-        
-        
+
+
         return round1;
     }
 
@@ -209,5 +209,16 @@ public class MatchManager
         round6.add(mdb.getMatchById(36));
 
         return round6;
+    }
+
+    public void updateMatchRounds() throws SQLException
+    {
+        for (int t = 1; t < 6; t++)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                round1().get(i).setMatchRound(t);
+            }
+        }
     }
 }
