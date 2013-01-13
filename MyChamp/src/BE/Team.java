@@ -146,7 +146,7 @@ public class Team
     
     public void addPoints(int p)
     {
-        this.points =+ p;
+        this.points = points + p;
     }
     public void setPoints(int p)
     {

@@ -118,7 +118,7 @@ public class MatchResult extends Menu
             else
             {
                 Team thome = tmgr.getTeamById(m.getHomeTeamId());
-                thome.addPoints(+3);
+                thome.addPoints(3);
                 tmgr.updateTeam(thome);
 
                 
