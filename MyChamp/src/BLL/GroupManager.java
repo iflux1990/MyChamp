@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class GroupManager
 {
 
-    private GroupDBManager gdb = null;
+    private GroupDBManager gdb;
 
     public GroupManager() throws IOException
     {

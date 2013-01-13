@@ -4,12 +4,17 @@
  */
 package UI;
 
+import BE.Group;
 import BE.Match;
+import BLL.GroupManager;
 import BLL.MatchManager;
 import BLL.TeamManager;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,7 +26,9 @@ public class viewSchedules extends Menu
     private static final int EXIT_VALUE = 0;
      private MatchManager mmgr;
     private Match m;
+    private Group g;
     private TeamManager tmgr;
+    private GroupManager gmgr;
 
     public viewSchedules()
     {
@@ -34,6 +41,7 @@ public class viewSchedules extends Menu
         {
             mmgr = new MatchManager();
             tmgr = new TeamManager();
+            gmgr = new GroupManager();
         }
         catch (IOException | SQLException ex)
         {
@@ -48,6 +56,7 @@ public class viewSchedules extends Menu
         {
             case 1:
                 totalSchedule();
+                pause();
                 break;
             case 2:
                 groupSchedule();
@@ -158,7 +167,24 @@ public class viewSchedules extends Menu
 
     private void groupSchedule()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        try
+        { 
+            System.out.printf("%-10s%-5s \n","Group ID","Group Name");
+            Scanner sc = new Scanner(System.in, "ISO-8859-1");
+            for(int i = 0; i <= gmgr.listAllGroups().size()-1; i++)
+            {
+            System.out.printf("%-10s%-5s \n",gmgr.listAllGroups().get(i).getGroupId(), gmgr.listAllGroups().get(i).getGroupName());
+            }
+            System.out.println("Select the group to view the group's schedule");
+            int groupId = sc.nextInt();
+            
+            Group group = new Group(groupId);
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+        }
+        System.out.println("Enter Group 1");
     }
 
     private void finalSchedule()

@@ -31,22 +31,22 @@ public class GroupDBManager extends ConnectionDBManager
     {
         Connection con = dataSource.getConnection();
 
-        String sql = "SELECT * FROM Group";
+        String sql = "SELECT * FROM [Group]";
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
 
 
-        ArrayList<Group> group = new ArrayList<>();
+        ArrayList<Group> Group = new ArrayList<>();
         while (rs.next())
         {
 
             int ID = rs.getInt("ID");
-            String groupName = rs.getString("School");
+            String groupName = rs.getString("GroupName");
 
             Group g1 = new Group(ID, groupName);
-            group.add(g);
+            Group.add(g1);
         }
-        return group;
+        return Group;
     }
 
     public Group getGroupId(int groupId) throws SQLException

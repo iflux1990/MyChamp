@@ -20,6 +20,7 @@ public class MainMenu extends Menu
     {
         super("Main Menu", "Team Management", 
                             "Match Management",
+                            "View Schedules",
                             "Match Result",
                             "Group Ranking",
                             "Final Ranking");
@@ -38,12 +39,14 @@ public class MainMenu extends Menu
                 goToView();                 //go to MatchManagement
                 break;
             case 3:
+                goToViewSchedules();
+            case 4:
                 goToMatchResult();          //go to Match Result
                 break;
-            case 4:
+            case 5:
                 goToGroupRanking();         //go to Group Ranking
                 break;
-            case 5:
+            case 6:
                 goToFinalRanking();         //go to Finale Ranking
                 break;
         }
@@ -73,9 +76,15 @@ public class MainMenu extends Menu
         clear();
     }
 
-    private void goToFinalRanking()         //runs a new FInale Ranking
+    private void goToFinalRanking()         //runs a new Finale Ranking
     {
         new FinaleRanking().run();
+        clear();
+    }
+
+    private void goToViewSchedules()        //runs a new View Schedules
+    {
+        new viewSchedules().run();
         clear();
     }
 }
