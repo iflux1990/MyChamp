@@ -106,6 +106,35 @@ public class TeamDBManager extends ConnectionDBManager
         }
     }
     
+    public ArrayList<Team> getWinnerSecondSemi(int groupId) throws SQLException
+    {
+        {
+            Connection con = dataSource.getConnection();
+
+            String sql = "SELECT TOP 1 * FROM Match, Team WHERE Match.ID IN (53, 54) ORDER BY Team.Points";
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, groupId);
+            ResultSet rs = ps.executeQuery();
+
+            ArrayList<Team> Team = new ArrayList<>();
+            while (rs.next())
+            {
+                int teamId = rs.getInt("ID");
+                String school = rs.getString("School");
+                String teamcaptain = rs.getString("TeamCaptain");
+                String email = rs.getString("Email");
+                int GroupId = rs.getInt("GroupId");
+                String groupName = rs.getString("GroupName");
+                int points = rs.getInt("Points");
+
+                Team t = new Team(teamId, school, teamcaptain, email, new Group(GroupId, groupName), points);
+                Team.add(t);              
+            }
+            return Team;
+        }
+    }
+    
     
 
     public Team getTeamByName(String teamName) throws SQLException
