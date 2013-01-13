@@ -32,7 +32,11 @@ public class MatchManager
         tdb = new TeamDBManager();
         mdb = new MatchDBManager();
     }
-
+/**
+ * 
+ * @return
+ * @throws SQLException 
+ */
     public int NumberOfMatches() throws SQLException
     {
         return mdb.count();
@@ -47,7 +51,11 @@ public class MatchManager
     {
         return mdb.getMatchByTeams(homeTeamId, guestTeamId);
     }
-
+/**
+ * 
+ * @throws SQLException 
+ */
+    
     public void scheduleMatches() throws SQLException
     {
 
@@ -95,7 +103,10 @@ public class MatchManager
             }
         }
     }
-
+/**
+ * Schedules the Quater final round
+ * @throws SQLException 
+ */
     public void scheduleQuaterFinals() throws SQLException
     {
         Match quarterFinal1 = new Match(49, 7, tdb.getWinnerSecond(1).get(0).getTeamId(), tdb.getWinnerSecond(2).get(1).getTeamId());
