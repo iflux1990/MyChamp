@@ -32,39 +32,47 @@ public class MatchManager
         tdb = new TeamDBManager();
         mdb = new MatchDBManager();
     }
-    
+/**
+ * 
+ * @return
+ * @throws SQLException 
+ */
     public int NumberOfMatches() throws SQLException
     {
         return mdb.count();
     }
-    
+
     public void update(Match m) throws SQLException
     {
         mdb.update(m);
     }
-    
+
     public Match getMatchByTeams(int homeTeamId, int guestTeamId) throws SQLException
     {
         return mdb.getMatchByTeams(homeTeamId, guestTeamId);
     }
-
+/**
+ * 
+ * @throws SQLException 
+ */
+    
     public void scheduleMatches() throws SQLException
     {
 
         //Round 1
 
 
-        ArrayList<Team> group1 = tdb.listTeamsByGroupId(1);
-        ArrayList<Team> group2 = tdb.listTeamsByGroupId(2);
-        ArrayList<Team> group3 = tdb.listTeamsByGroupId(3);
-        ArrayList<Team> group4 = tdb.listTeamsByGroupId(4);
+        ArrayList<Team> group1 = tdb.getTeamsByGroupId(1);
+        ArrayList<Team> group2 = tdb.getTeamsByGroupId(2);
+        ArrayList<Team> group3 = tdb.getTeamsByGroupId(3);
+        ArrayList<Team> group4 = tdb.getTeamsByGroupId(4);
         for (int i = 0; i < numberPerTeam; i++)
         {
             {
                 for (int j = 0; j < numberPerTeam; j++)
                 {
                     if (group1.get(i) != group1.get(j))
-                    {                       
+                    {
                         Match m1 = new Match(1, -1, group1.get(i).getTeamId(), group1.get(j).getTeamId());
                         mdb.addMatches(m1);
                     }
@@ -91,11 +99,32 @@ public class MatchManager
                         Match m = new Match(1, -1, group4.get(i).getTeamId(), group4.get(j).getTeamId());
                         mdb.addMatches(m);
                     }
-
                 }
             }
-
         }
+    }
+/**
+ * Schedules the Quater final round
+ * @throws SQLException 
+ */
+    public void scheduleQuaterFinals() throws SQLException
+    {
+        Match quarterFinal1 = new Match(49, 7, tdb.getWinnerSecond(1).get(0).getTeamId(), tdb.getWinnerSecond(2).get(1).getTeamId());
+        mdb.addMatches(quarterFinal1);
+        Match quarterFinal2 = new Match(50, 7, tdb.getWinnerSecond(2).get(0).getTeamId(), tdb.getWinnerSecond(1).get(1).getTeamId());
+        mdb.addMatches(quarterFinal2);
+        Match quarterFinal3 = new Match(51, 7, tdb.getWinnerSecond(3).get(0).getTeamId(), tdb.getWinnerSecond(4).get(1).getTeamId());
+        mdb.addMatches(quarterFinal3);
+        Match quarterFinal4 = new Match(52, 7, tdb.getWinnerSecond(4).get(0).getTeamId(), tdb.getWinnerSecond(3).get(1).getTeamId());
+        mdb.addMatches(quarterFinal4);
+    }
+    
+    public void scheduleSemiFinals() throws SQLException
+    {
+        Match semiFinal1 = new Match(53, 8, tdb.getWinnerSecondSemi(1).get(0).getTeamId(), tdb.getWinnerSecondSemi(2).get(1).getTeamId());
+        mdb.addMatches(semiFinal1);
+        Match semiFinal2 = new Match(54, 8, tdb.getWinnerSecondSemi(2).get(0).getTeamId(), tdb.getWinnerSecondSemi(1).get(1).getTeamId());
+        mdb.addMatches(semiFinal2);        
     }
 
     public void removeAllMatches(Match m) throws SQLException
@@ -120,6 +149,8 @@ public class MatchManager
         round1.add(mdb.getMatchById(11));
         round1.add(mdb.getMatchById(32));
         round1.add(mdb.getMatchById(12));
+
+
 
         return round1;
     }
@@ -183,11 +214,10 @@ public class MatchManager
 
         return round5;
     }
-    
-        public ArrayList<Match> round6() throws SQLException
+
+    public ArrayList<Match> round6() throws SQLException
     {
         ArrayList<Match> round6 = new ArrayList();
-
         round6.add(mdb.getMatchById(1));
         round6.add(mdb.getMatchById(33));
         round6.add(mdb.getMatchById(2));
@@ -198,5 +228,29 @@ public class MatchManager
         round6.add(mdb.getMatchById(36));
 
         return round6;
+    }
+
+    public void updateMatchRounds() throws SQLException
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            round1().get(i).setMatchRound(1);
+            mdb.update(round1().get(i));
+            
+            round2().get(i).setMatchRound(2);
+            mdb.update(round2().get(i));
+            
+            round3().get(i).setMatchRound(3);
+            mdb.update(round3().get(i));
+            
+            round4().get(i).setMatchRound(4);
+            mdb.update(round4().get(i));
+            
+            round5().get(i).setMatchRound(5);
+            mdb.update(round5().get(i));
+            
+            round6().get(i).setMatchRound(6);
+            mdb.update(round6().get(i));
+        }
     }
 }

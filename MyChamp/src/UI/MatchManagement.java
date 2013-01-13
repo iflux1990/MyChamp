@@ -10,6 +10,8 @@ import BLL.TeamManager;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,11 +28,10 @@ public class MatchManagement extends Menu
     public MatchManagement()
     {
         super("Match Management",
-                "Opening rounds",
-                "Quarter finals",
-                "Semi finales",
-                "Final Match",
-                "Schedule Matches",
+                "Schedule Opening rounds",
+                "Schedule Quarter Finals",
+                "Schedule Semi Finals",
+                "Schedule Final Match",
                 "Dummy",
                 "Remove all Matches");
         EXIT_OPTION = EXIT_VALUE;
@@ -51,27 +52,22 @@ public class MatchManagement extends Menu
         switch (option)
         {
             case 1:
-                viewOpeningRounds();
-                pause();
+                scheduleOpeningRounds();                
                 break;
             case 2:
-                viewQuarterfinals();
+                scheduleQuarterFinals();
                 break;
             case 3:
-                viewSemifinals();
+                scheduleSemiFinals();
                 break;
             case 4:
-                viewFinalMatch();
+                scheduleFinals();
                 pause();
                 break;
             case 5:
-                scheduleMatches();
+                dummyMethod();
                 break;
             case 6:
-                dummyMethod();
-                pause();
-                break;
-            case 7:
                 removeAllMatches();
                 pause();
                 break;
@@ -80,7 +76,7 @@ public class MatchManagement extends Menu
         }
     }
 
-    private void scheduleMatches()
+    private void scheduleOpeningRounds()
     {
 
         try
@@ -89,6 +85,7 @@ public class MatchManagement extends Menu
             {
                 mmgr.scheduleMatches();
                 System.out.println(mmgr.NumberOfMatches() + " Have been added.");
+                mmgr.updateMatchRounds();
             }
             else
             {
@@ -143,7 +140,7 @@ public class MatchManagement extends Menu
                 {
                     System.out.printf("%-5d%-20sVS%20s \n", round2.get(i).getId(), tmgr.getTeamById(round2.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round2.get(i).getGuestTeamId()).getSchoolName());
                 }
-                 else
+                else
                 {
                     System.out.printf("%-5d%-20sVS%20s%11d-%1d \n", round2.get(i).getId(), tmgr.getTeamById(round2.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round2.get(i).getGuestTeamId()).getSchoolName(), round2.get(i).getHomeGoals(), round2.get(i).getGuestGoals());
                 }
@@ -157,7 +154,7 @@ public class MatchManagement extends Menu
                 {
                     System.out.printf("%-5d%-20sVS%20s \n", round3.get(i).getId(), tmgr.getTeamById(round3.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round3.get(i).getGuestTeamId()).getSchoolName());
                 }
-                 else
+                else
                 {
                     System.out.printf("%-5d%-20sVS%20s%11d-%1d \n", round3.get(i).getId(), tmgr.getTeamById(round3.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round3.get(i).getGuestTeamId()).getSchoolName(), round3.get(i).getHomeGoals(), round3.get(i).getGuestGoals());
                 }
@@ -172,7 +169,7 @@ public class MatchManagement extends Menu
                 {
                     System.out.printf("%-5d%-20sVS%20s \n", round4.get(i).getId(), tmgr.getTeamById(round4.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round4.get(i).getGuestTeamId()).getSchoolName());
                 }
-                 else
+                else
                 {
                     System.out.printf("%-5d%-20sVS%20s%11d-%1d \n", round4.get(i).getId(), tmgr.getTeamById(round4.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round4.get(i).getGuestTeamId()).getSchoolName(), round4.get(i).getHomeGoals(), round4.get(i).getGuestGoals());
                 }
@@ -186,7 +183,7 @@ public class MatchManagement extends Menu
                 {
                     System.out.printf("%-5d%-20sVS%20s \n", round5.get(i).getId(), tmgr.getTeamById(round5.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round5.get(i).getGuestTeamId()).getSchoolName());
                 }
-                 else
+                else
                 {
                     System.out.printf("%-5d%-20sVS%20s%11d-%1d \n", round5.get(i).getId(), tmgr.getTeamById(round5.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round5.get(i).getGuestTeamId()).getSchoolName(), round5.get(i).getHomeGoals(), round5.get(i).getGuestGoals());
                 }
@@ -200,7 +197,7 @@ public class MatchManagement extends Menu
                 {
                     System.out.printf("%-5d%-20sVS%20s \n", round6.get(i).getId(), tmgr.getTeamById(round6.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round6.get(i).getGuestTeamId()).getSchoolName());
                 }
-                 else
+                else
                 {
                     System.out.printf("%-5d%-20sVS%20s%11d-%1d \n", round6.get(i).getId(), tmgr.getTeamById(round6.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round6.get(i).getGuestTeamId()).getSchoolName(), round6.get(i).getHomeGoals(), round6.get(i).getGuestGoals());
                 }
@@ -224,20 +221,63 @@ public class MatchManagement extends Menu
 
     private void dummyMethod()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        try
+        {
+            mmgr.scheduleQuaterFinals();
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+        }
     }
 
-    private void viewQuarterfinals()
+    private void scheduleQuarterFinals()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+
+        try
+        {
+            if (mmgr.NumberOfMatches() == 48)
+            {
+                mmgr.scheduleQuaterFinals();
+                System.out.println(mmgr.NumberOfMatches() + " Have been added.");
+            }
+            else
+            {
+                System.out.println("Opening matches haven't been added yet");
+            }
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+        }
+
+        pause();
     }
 
-    private void viewSemifinals()
+    private void scheduleSemiFinals()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+
+        try
+        {
+            if (mmgr.NumberOfMatches() == 52)
+            {
+                mmgr.scheduleSemiFinals();
+                System.out.println(mmgr.NumberOfMatches() + " Have been added.");
+            }
+            else
+            {
+                System.out.println("Quater finals matches haven't been added yet");
+            }
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+        }
+
+        pause();
     }
 
-    private void viewFinalMatch()
+    private void scheduleFinals()
     {
         throw new UnsupportedOperationException("Not yet implemented");
     }
