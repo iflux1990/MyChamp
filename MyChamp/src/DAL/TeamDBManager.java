@@ -111,7 +111,7 @@ public class TeamDBManager extends ConnectionDBManager
         {
             Connection con = dataSource.getConnection();
 
-            String sql = "SELECT TOP 2 * FROM Match, Team WHERE Match.ID IN (49, 52) ORDER BY Team.Points";
+            String sql = "SELECT TOP 2 * FROM Match WHERE ID >= ? AND ID <= 52";
             PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setInt(1, groupId);
@@ -136,7 +136,6 @@ public class TeamDBManager extends ConnectionDBManager
     }
     
     
-
     public Team getTeamByName(String teamName) throws SQLException
     {
         {
