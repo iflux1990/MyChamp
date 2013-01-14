@@ -234,23 +234,35 @@ public class MatchManager
     {
         for (int i = 0; i < 8; i++)
         {
-            round1().get(i).setMatchRound(1);
-            mdb.update(round1().get(i));
+            ArrayList<Match> matches1 = round1();
             
-            round2().get(i).setMatchRound(2);
-            mdb.update(round2().get(i));
+            matches1.get(i).setMatchRound(1);
+            mdb.updateMatchRound(matches1.get(i));
             
-            round3().get(i).setMatchRound(3);
-            mdb.update(round3().get(i));
+            ArrayList<Match> matches2= round2();
             
-            round4().get(i).setMatchRound(4);
-            mdb.update(round4().get(i));
+            matches2.get(i).setMatchRound(2);
+            mdb.updateMatchRound(matches2.get(i));
             
-            round5().get(i).setMatchRound(5);
-            mdb.update(round5().get(i));
+            ArrayList<Match> matches3 = round3();
             
-            round6().get(i).setMatchRound(6);
-            mdb.update(round6().get(i));
+            matches3.get(i).setMatchRound(3);
+            mdb.updateMatchRound(matches3.get(i));
+            
+            ArrayList<Match> matches4 = round4();
+            
+            matches4.get(i).setMatchRound(4);
+            mdb.updateMatchRound(matches4.get(i));
+            
+            ArrayList<Match> matches5 = round5();
+            
+            matches5.get(i).setMatchRound(5);
+            mdb.updateMatchRound(matches5.get(i));
+            
+            ArrayList<Match> matches6 = round6();
+            
+            matches6.get(i).setMatchRound(6);
+            mdb.updateMatchRound(matches6.get(i));
         }
     }
 }

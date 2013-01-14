@@ -163,4 +163,21 @@ public class MatchDBManager extends ConnectionDBManager
             throw new SQLException("Unable to update Match");
         }
     }
+    
+       public void updateMatchRound(Match m) throws SQLException
+    {
+        String sql = "UPDATE Match SET MatchRound = ? WHERE ID = ?";
+
+        Connection con = dataSource.getConnection();
+
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, m.getMatchRound());
+        ps.setInt(2, m.getId());
+
+        int affectedRows = ps.executeUpdate();
+        if (affectedRows == 0)
+        {
+            throw new SQLException("Unable to update Match");
+        }
+    }
 }

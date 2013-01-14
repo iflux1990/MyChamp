@@ -225,7 +225,7 @@ public class MatchManagement extends Menu
     {
         try
         {
-            mmgr.scheduleQuaterFinals();
+            mmgr.updateMatchRounds();
         }
         catch (SQLException ex)
         {
