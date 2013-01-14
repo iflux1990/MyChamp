@@ -5,6 +5,7 @@
 package BLL;
 
 import BE.Group;
+import BE.Match;
 import BE.Team;
 import DAL.GroupDBManager;
 import java.io.IOException;
@@ -35,8 +36,4 @@ public class GroupManager
         return gdb.getGroupId(groupId);
     }
     
-    public Team getTeamsInGroup(int groupId) throws SQLException
-    {
-        return gdb.getTeamsInGroup(groupId);
-    }
 }

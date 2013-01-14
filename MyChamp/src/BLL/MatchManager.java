@@ -136,6 +136,16 @@ public class MatchManager
     {
         return mdb.getMatchById(Id);
     }
+    
+    public ArrayList<Match> getMatchesInGroup(int groupId) throws SQLException
+    {
+        return mdb.getMatchesInGroup(groupId);
+    }
+    
+    public ArrayList<Match> getMatchesByTeam(int teamId) throws SQLException
+    {
+        return mdb.getMatchesByTeam(teamId);
+    }
 
     public ArrayList<Match> round1() throws SQLException
     {
@@ -232,7 +242,7 @@ public class MatchManager
 
     public void updateMatchRounds() throws SQLException
     {
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 8; i++)
         {
             ArrayList<Match> matches1 = round1();
             

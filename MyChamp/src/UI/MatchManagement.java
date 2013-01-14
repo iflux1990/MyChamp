@@ -83,10 +83,10 @@ public class MatchManagement extends Menu
         {
             if (mmgr.NumberOfMatches() == 0)
             {
-                mmgr.scheduleMatches();
+                mmgr.scheduleMatches();                
                 System.out.println(mmgr.NumberOfMatches() + " Have been added.");   
                 System.out.println("Please wait while matches are being updated");
-                
+                mmgr.updateMatchRounds();
                 pause();
             }
             else

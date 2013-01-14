@@ -36,6 +36,7 @@ public class viewSchedules extends Menu
         super("View Schedules",
                 "Total Schedule",
                 "Group Schedule",
+                "Team Schedule",
                 "Final Schedule");
         EXIT_OPTION = EXIT_VALUE;
         try
@@ -61,8 +62,12 @@ public class viewSchedules extends Menu
                 break;
             case 2:
                 groupSchedule();
+                pause();
                 break;
             case 3:
+                teamSchedule();
+                break;
+            case 4:
                 finalSchedule();
                 break;
             case EXIT_VALUE:
@@ -177,18 +182,46 @@ public class viewSchedules extends Menu
                 System.out.printf("%-10s%-5s \n", gmgr.listAllGroups().get(i).getGroupId(), gmgr.listAllGroups().get(i).getGroupName());
             }
             System.out.println("Select the group ID to view the group's schedule");
-            int groupId = sc.nextInt();
+            int groupId = sc.nextInt();       
             
-            Group group = new Group(groupId);
-            group = gmgr.getGroupById(groupId);
-           
             
-//            System.out.println(gmgr.getTeamsInGroup(groupId));
+            ArrayList<Match> matches = mmgr.getMatchesInGroup(groupId);
+            System.out.printf("%-5s %-20s VS %20s \n", "ID", "HomeTeam", "GuestTeam");
+            System.out.println("");
+            for(int i = 0; i < 12; i++)
+            {
+            System.out.printf("%-5d %-20s VS %20s \n",matches.get(i).getId(),tmgr.getTeamById(matches.get(i).getHomeTeamId()).getSchoolName(),tmgr.getTeamById(matches.get(i).getGuestTeamId()).getSchoolName());
+            }
+      
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+        }
+    }
+    
+    private void teamSchedule()
+    {
+          try
+        {
+            System.out.printf("%-10s%-5s \n", "Team ID", "School Name");
+            Scanner sc = new Scanner(System.in, "ISO-8859-1");
+            for (int i = 0; i <= tmgr.listAllTeams().size() - 1; i++)
+            {
+                System.out.printf("%-10s%-5s \n", tmgr.listAllTeams().get(i).getTeamId(),tmgr.listAllTeams().get(i).getSchoolName());
+            }
+            System.out.println("Select the Team ID to view the team's schedule");
+            int teamId = sc.nextInt();       
             
-
-            System.out.println(group);
             
-           
+            ArrayList<Match> matches = mmgr.getMatchesByTeam(teamId);
+            System.out.printf("%-5s %-20s VS %20s \n", "ID", "HomeTeam", "GuestTeam");
+            System.out.println("");
+            for(int i = 0; i < matches.size(); i++)
+            {
+            System.out.printf("%-5d %-20s VS %20s \n",matches.get(i).getId(),tmgr.getTeamById(matches.get(i).getHomeTeamId()).getSchoolName(),tmgr.getTeamById(matches.get(i).getGuestTeamId()).getSchoolName());
+            }
+      
         }
         catch (SQLException ex)
         {
