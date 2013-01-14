@@ -86,7 +86,9 @@ public class MatchManagement extends Menu
                 mmgr.scheduleMatches();
                 System.out.println(mmgr.NumberOfMatches() + " Have been added.");   
                 System.out.println("Please wait while matches are being updated");
+                System.out.print("Loading : ");
                 mmgr.updateMatchRounds();
+                System.out.print("   DONE");
                 pause();
             }
             else
