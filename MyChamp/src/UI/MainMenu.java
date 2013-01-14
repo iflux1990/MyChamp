@@ -40,6 +40,7 @@ public class MainMenu extends Menu
                 break;
             case 3:
                 goToViewSchedules();
+                break;
             case 4:
                 goToMatchResult();          //go to Match Result
                 break;
