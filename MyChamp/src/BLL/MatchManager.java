@@ -121,9 +121,9 @@ public class MatchManager
     
     public void scheduleSemiFinals() throws SQLException
     {
-        Match semiFinal1 = new Match(53, 8, tdb.getWinnerSecondSemi(1).get(0).getTeamId(), tdb.getWinnerSecondSemi(2).get(1).getTeamId());
+        Match semiFinal1 = new Match(53, 8, tdb.getWinnerQuarter(49).getTeamId(), tdb.getWinnerQuarter(50).getTeamId());
         mdb.addMatches(semiFinal1);
-        Match semiFinal2 = new Match(54, 8, tdb.getWinnerSecondSemi(2).get(0).getTeamId(), tdb.getWinnerSecondSemi(1).get(1).getTeamId());
+        Match semiFinal2 = new Match(54, 8, tdb.getWinnerQuarter(51).getTeamId(), tdb.getWinnerQuarter(52).getTeamId());
         mdb.addMatches(semiFinal2);        
     }
 
