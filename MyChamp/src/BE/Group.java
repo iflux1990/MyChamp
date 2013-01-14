@@ -71,7 +71,7 @@ public class Group
     @Override
     public String toString()
     {
-        return String.format(" %-30s", groupName);
+        return String.format(" %-10d%-5s \n", groupId,groupName);
     }
 
     /**
