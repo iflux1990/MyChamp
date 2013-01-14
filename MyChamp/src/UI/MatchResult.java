@@ -73,7 +73,7 @@ public class MatchResult extends Menu
             if (sc.hasNextInt() == true)
             {
                 int matchId = sc.nextInt();
-                m = mmgr.getMatchById(matchId);
+                m = mmgr.getMatchById(matchId);       
             }
             else
             {

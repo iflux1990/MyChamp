@@ -203,6 +203,12 @@ public class TeamDBManager extends ConnectionDBManager
 
         String sql = "UPDATE Team SET Points = 0";
         PreparedStatement ps = con.prepareStatement(sql);
+        
+        int affectedRows = ps.executeUpdate();
+            if (affectedRows == 0)
+            {
+                throw new SQLException("Unable to update Team");
+            }
 
 
     }

@@ -4,12 +4,18 @@
  */
 package UI;
 
+import BE.Group;
 import BE.Match;
+import BE.Team;
+import BLL.GroupManager;
 import BLL.MatchManager;
 import BLL.TeamManager;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,9 +25,11 @@ public class viewSchedules extends Menu
 {
 
     private static final int EXIT_VALUE = 0;
-     private MatchManager mmgr;
+    private MatchManager mmgr;
     private Match m;
+    private Group g;
     private TeamManager tmgr;
+    private GroupManager gmgr;
 
     public viewSchedules()
     {
@@ -34,6 +42,7 @@ public class viewSchedules extends Menu
         {
             mmgr = new MatchManager();
             tmgr = new TeamManager();
+            gmgr = new GroupManager();
         }
         catch (IOException | SQLException ex)
         {
@@ -48,6 +57,7 @@ public class viewSchedules extends Menu
         {
             case 1:
                 totalSchedule();
+                pause();
                 break;
             case 2:
                 groupSchedule();
@@ -62,7 +72,7 @@ public class viewSchedules extends Menu
 
     private void totalSchedule()
     {
-         try
+        try
         {
             System.out.println("Round 1: ");
             System.out.printf("%-5s%-20sVS%20s \n", "ID", "HomeTeam", "GuestTeam");
@@ -87,7 +97,7 @@ public class viewSchedules extends Menu
                 {
                     System.out.printf("%-5d%-20sVS%20s \n", round2.get(i).getId(), tmgr.getTeamById(round2.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round2.get(i).getGuestTeamId()).getSchoolName());
                 }
-                 else
+                else
                 {
                     System.out.printf("%-5d%-20sVS%20s%11d-%1d \n", round2.get(i).getId(), tmgr.getTeamById(round2.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round2.get(i).getGuestTeamId()).getSchoolName(), round2.get(i).getHomeGoals(), round2.get(i).getGuestGoals());
                 }
@@ -101,7 +111,7 @@ public class viewSchedules extends Menu
                 {
                     System.out.printf("%-5d%-20sVS%20s \n", round3.get(i).getId(), tmgr.getTeamById(round3.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round3.get(i).getGuestTeamId()).getSchoolName());
                 }
-                 else
+                else
                 {
                     System.out.printf("%-5d%-20sVS%20s%11d-%1d \n", round3.get(i).getId(), tmgr.getTeamById(round3.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round3.get(i).getGuestTeamId()).getSchoolName(), round3.get(i).getHomeGoals(), round3.get(i).getGuestGoals());
                 }
@@ -116,7 +126,7 @@ public class viewSchedules extends Menu
                 {
                     System.out.printf("%-5d%-20sVS%20s \n", round4.get(i).getId(), tmgr.getTeamById(round4.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round4.get(i).getGuestTeamId()).getSchoolName());
                 }
-                 else
+                else
                 {
                     System.out.printf("%-5d%-20sVS%20s%11d-%1d \n", round4.get(i).getId(), tmgr.getTeamById(round4.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round4.get(i).getGuestTeamId()).getSchoolName(), round4.get(i).getHomeGoals(), round4.get(i).getGuestGoals());
                 }
@@ -130,7 +140,7 @@ public class viewSchedules extends Menu
                 {
                     System.out.printf("%-5d%-20sVS%20s \n", round5.get(i).getId(), tmgr.getTeamById(round5.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round5.get(i).getGuestTeamId()).getSchoolName());
                 }
-                 else
+                else
                 {
                     System.out.printf("%-5d%-20sVS%20s%11d-%1d \n", round5.get(i).getId(), tmgr.getTeamById(round5.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round5.get(i).getGuestTeamId()).getSchoolName(), round5.get(i).getHomeGoals(), round5.get(i).getGuestGoals());
                 }
@@ -144,7 +154,7 @@ public class viewSchedules extends Menu
                 {
                     System.out.printf("%-5d%-20sVS%20s \n", round6.get(i).getId(), tmgr.getTeamById(round6.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round6.get(i).getGuestTeamId()).getSchoolName());
                 }
-                 else
+                else
                 {
                     System.out.printf("%-5d%-20sVS%20s%11d-%1d \n", round6.get(i).getId(), tmgr.getTeamById(round6.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round6.get(i).getGuestTeamId()).getSchoolName(), round6.get(i).getHomeGoals(), round6.get(i).getGuestGoals());
                 }
@@ -158,7 +168,31 @@ public class viewSchedules extends Menu
 
     private void groupSchedule()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        try
+        {
+            System.out.printf("%-10s%-5s \n", "Group ID", "Group Name");
+            Scanner sc = new Scanner(System.in, "ISO-8859-1");
+            for (int i = 0; i <= gmgr.listAllGroups().size() - 1; i++)
+            {
+                System.out.printf("%-10s%-5s \n", gmgr.listAllGroups().get(i).getGroupId(), gmgr.listAllGroups().get(i).getGroupName());
+            }
+            System.out.println("Select the group ID to view the group's schedule");
+            int groupId = sc.nextInt();
+            
+            Group group = new Group(groupId);
+            group = gmgr.getGroupById(groupId);
+            
+//            System.out.println(gmgr.getTeamsInGroup(groupId));
+            
+
+            System.out.println(group);
+            
+           
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+        }
     }
 
     private void finalSchedule()
@@ -168,6 +202,6 @@ public class viewSchedules extends Menu
 
     private void doActionExit()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        System.out.println("You selected to exit.");
     }
 }
