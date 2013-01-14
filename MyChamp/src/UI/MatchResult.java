@@ -66,7 +66,6 @@ public class MatchResult extends Menu
         {
             mmui.viewOpeningRounds();
 
-
             Scanner sc = new Scanner(System.in, "ISO-8859-1");
 
             System.out.println("Match id or the two teams playing seperated by \":\" (HomeTeam:GuestTeam) :");

@@ -232,7 +232,7 @@ public class MatchManager
 
     public void updateMatchRounds() throws SQLException
     {
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 7; i++)
         {
             round1().get(i).setMatchRound(1);
             mdb.update(round1().get(i));

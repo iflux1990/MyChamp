@@ -181,6 +181,7 @@ public class viewSchedules extends Menu
             
             Group group = new Group(groupId);
             group = gmgr.getGroupById(groupId);
+           
             
 //            System.out.println(gmgr.getTeamsInGroup(groupId));
             
