@@ -127,9 +127,9 @@ public class MatchManager
         mdb.addMatches(semiFinal2);        
     }
 
-    public void removeAllMatches(Match m) throws SQLException
+    public void removeAllMatches() throws SQLException
     {
-        mdb.removeAllMatches(m);
+        mdb.removeAllMatches();
     }
 
     public Match getMatchById(int Id) throws SQLException
@@ -247,33 +247,33 @@ public class MatchManager
             ArrayList<Match> matches1 = round1();
             
             matches1.get(i).setMatchRound(1);
-            mdb.updateMatchRound(matches1.get(i));
+            mdb.update(matches1.get(i));
             System.out.print("--");
             
             ArrayList<Match> matches2= round2();
             
             matches2.get(i).setMatchRound(2);
-            mdb.updateMatchRound(matches2.get(i));
+            mdb.update(matches2.get(i));
             
             ArrayList<Match> matches3 = round3();
             
             matches3.get(i).setMatchRound(3);
-            mdb.updateMatchRound(matches3.get(i));
+            mdb.update(matches3.get(i));
             
             ArrayList<Match> matches4 = round4();
             
             matches4.get(i).setMatchRound(4);
-            mdb.updateMatchRound(matches4.get(i));
+            mdb.update(matches4.get(i));
             
             ArrayList<Match> matches5 = round5();
             
             matches5.get(i).setMatchRound(5);
-            mdb.updateMatchRound(matches5.get(i));
+            mdb.update(matches5.get(i));
             
             ArrayList<Match> matches6 = round6();
             
             matches6.get(i).setMatchRound(6);
-            mdb.updateMatchRound(matches6.get(i));
+            mdb.update(matches6.get(i));
         }
     }
 }

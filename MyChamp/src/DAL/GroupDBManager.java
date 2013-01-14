@@ -5,7 +5,6 @@
 package DAL;
 
 import BE.Group;
-import BE.Match;
 import BE.Team;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
@@ -28,6 +27,12 @@ public class GroupDBManager extends ConnectionDBManager
     {
     }
 
+    /**
+     * Henter alle grupper fra databasen
+     *
+     * @return retunere et ArrayList grupper
+     * @throws SQLException smider SQLExceptions videre.
+     */
     public ArrayList<Group> listAllGroups() throws SQLException
     {
         Connection con = dataSource.getConnection();
@@ -50,60 +55,41 @@ public class GroupDBManager extends ConnectionDBManager
         return Group;
     }
 
+    /**
+     * Henter en gruppe fra databasen med et givet Id
+     *
+     * @param groupId Gruppe Id
+     * @return
+     * @throws SQLException smider SQLExceptions videre
+     */
     public Group getGroupId(int groupId) throws SQLException
     {
-        try (Connection con = dataSource.getConnection())
+        Connection con = dataSource.getConnection();
+
+        String sql = ("SELECT * FROM [Group] WHERE ID Like ?");
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, groupId);
+
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next())
         {
+            String name = rs.getString("GroupName");
+            int Id = rs.getInt("ID");
 
-            String sql = ("SELECT * FROM [Group] WHERE ID Like ?");
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, groupId);
-
-
-
-
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next())
-            {
-                String name = rs.getString("GroupName");
-                int Id = rs.getInt("ID");
-
-                Group g1 = new Group(Id, name);
-                return g;
-            }
-            return null;
+            Group g1 = new Group(Id, name);
+            return g1;
         }
+        return null;
     }
 
-    public void updateGroup(int groupId) throws SQLException
-    {
-        {
-
-            String sql = "UPDATE Team SET GroupID = ? WHERE ";
-
-            Connection con;
-            try
-            {
-                con = dataSource.getConnection();
-            }
-            catch (SQLServerException ex)
-            {
-                throw new SQLException("Unable to connect to server.");
-            }
-
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, g.getGroupId());
-
-            int affectedRows = ps.executeUpdate();
-            if (affectedRows == 0)
-            {
-                throw new SQLException("Unable to update Group");
-            }
-        }
-    }
-
-    public void assign(Team t, int g) throws SQLException
+    /**
+     * opdatere databasen af teams med et givet groupId 
+     * @param t et Team objekt
+     * @param groupId
+     * @throws SQLException smider SQLExceptions videre.
+     */
+    public void assign(Team t, int groupId) throws SQLException
     {
         String sql = "UPDATE Team SET School = ?, TeamCaptain = ?, Email = ?, GroupId = ? WHERE Id = ?";
 
@@ -113,7 +99,7 @@ public class GroupDBManager extends ConnectionDBManager
         ps.setString(1, t.getSchoolName());
         ps.setString(2, t.getCaptain());
         ps.setString(3, t.getTeamEmail());
-        ps.setInt(4, g);
+        ps.setInt(4, groupId);
         ps.setInt(5, t.getTeamId());
 
         int affectedRows = ps.executeUpdate();
