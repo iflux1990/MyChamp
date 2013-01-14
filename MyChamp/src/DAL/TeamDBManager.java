@@ -106,19 +106,18 @@ public class TeamDBManager extends ConnectionDBManager
         }
     }
     
-    public ArrayList<Team> getWinnerSecondSemi(int groupId) throws SQLException
+  public Team getWinnerQuarter(int matchId) throws SQLException
     {
         {
             Connection con = dataSource.getConnection();
 
-            String sql = "SELECT TOP 1 * FROM Match WHERE ID >= ? AND ID <= 52 order by team.points";
+            String sql = "SELECT Team.*, [Group].GroupName FROM Team, [Group] WHERE [Group].ID = Team.GroupID AND Team.Points IN (SELECT MAX(Team.Points)'Points' FROM Team, Match WHERE Match.ID = ?)";
             PreparedStatement ps = con.prepareStatement(sql);
 
-            ps.setInt(1, groupId);
+            ps.setInt(1, matchId);
             ResultSet rs = ps.executeQuery();
 
-            ArrayList<Team> Team = new ArrayList<>();
-            while (rs.next())
+            if (rs.next())
             {
                 int teamId = rs.getInt("ID");
                 String school = rs.getString("School");
@@ -128,11 +127,11 @@ public class TeamDBManager extends ConnectionDBManager
                 String groupName = rs.getString("GroupName");
                 int points = rs.getInt("Points");
 
-                Team t = new Team(teamId, school, teamcaptain, email, new Group(GroupId, groupName), points);
-                Team.add(t);              
-            }
-            return Team;
+                Team team = new Team(teamId, school, teamcaptain, email, new Group(GroupId, groupName), points);
+                return team;
+            }          
         }
+        return null;
     }
     
     
