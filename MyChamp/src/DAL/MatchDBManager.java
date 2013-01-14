@@ -24,7 +24,12 @@ public class MatchDBManager extends ConnectionDBManager
     {
     }
 
-    public Match addMatches(Match m) throws SQLException
+    /**
+     * Tilføjer en kamp til SQL serveren med dataene fra objektet "m"
+     * @param m Match
+     * @throws SQLException kaster SQLExceptions videre til Buissness logic laget.
+     */
+    public void addMatches(Match m) throws SQLException
     {
         Connection con = dataSource.getConnection();
         
@@ -43,15 +48,14 @@ public class MatchDBManager extends ConnectionDBManager
         {
             throw new SQLException("Unable to add Match");
         }
-
-        ResultSet keys = ps.getGeneratedKeys();
-        keys.next();
-        int Id = keys.getInt(1);
-
-        return new Match(Id, m);
     }
 
-    public void removeAllMatches(Match m) throws SQLException
+    /**
+     * Fjerner alle matches fra databasen, og resetter IDs til nul.
+     * @param m Match
+     * @throws SQLException sendes videre til buissness laget.
+     */
+    public void removeAllMatches() throws SQLException
     {
         String sql = "DELETE FROM Match" + " DBCC CHECKIDENT (Match, RESEED, 0)";
 
@@ -63,10 +67,16 @@ public class MatchDBManager extends ConnectionDBManager
         int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)
         {
-            throw new SQLException();
+            throw new SQLException("The list of matches is already empty");
         }
     }
 
+    /**
+     * Henter et objekt fra databasen med parameteret Id
+     * @param Id et Match Id
+     * @return Retunere den match med der passer med Id'et
+     * @throws SQLException
+     */
     public Match getMatchById(int Id) throws SQLException
     {
         Connection con = dataSource.getConnection();
@@ -94,6 +104,13 @@ public class MatchDBManager extends ConnectionDBManager
         return null;
     }
 
+    /**
+     * Henter en kamp fra databasen med de to parametre
+     * @param homeTeamId
+     * @param guestTeamId
+     * @return et enkelt objekt "m"
+     * @throws SQLException smider SQLExceptions videre.
+     */
     public Match getMatchByTeams(int homeTeamId, int guestTeamId) throws SQLException
     {
         Connection con = dataSource.getConnection();
@@ -121,6 +138,12 @@ public class MatchDBManager extends ConnectionDBManager
         return null;
     }
 
+    /**
+     * Henter alle kampe i en givet gruppe
+     * @param groupId
+     * @return Match retunere et ArrayList af kampe. 
+     * @throws SQLException smider SQLExceptions videre.
+     */
     public ArrayList<Match> getMatchesInGroup(int groupId) throws SQLException
     {
         Connection con = dataSource.getConnection();
@@ -152,6 +175,12 @@ public class MatchDBManager extends ConnectionDBManager
 
     }
 
+    /**
+     * Henter alle de matches fra databasen, som et givet team deltager i.
+     * @param teamId
+     * @return retunere et ArrayList af Matches
+     * @throws SQLException smider SQLExceptions videre.
+     */
     public ArrayList<Match> getMatchesByTeam(int teamId) throws SQLException
     {
         Connection con = dataSource.getConnection();
@@ -181,6 +210,11 @@ public class MatchDBManager extends ConnectionDBManager
 
     }
 
+    /**
+     * Tæller hvor mange matches der er i databasen
+     * @return retunere en int.
+     * @throws SQLException smider SQLExceptions videre.
+     */
     public int count() throws SQLException
     {
         Connection con = dataSource.getConnection();
@@ -200,6 +234,11 @@ public class MatchDBManager extends ConnectionDBManager
 
     }
 
+    /**
+     * Opdatere databasen til de værdier som objektet "m" indeholder.
+     * @param m en Match
+     * @throws SQLException smider SQLExceptions videre.
+     */
     public void update(Match m) throws SQLException
     {
         Connection con = dataSource.getConnection();
@@ -212,23 +251,6 @@ public class MatchDBManager extends ConnectionDBManager
         ps.setInt(3, m.getGuestGoals());
         ps.setBoolean(4, m.isIsPlayed());
         ps.setInt(5, m.getId());
-
-        int affectedRows = ps.executeUpdate();
-        if (affectedRows == 0)
-        {
-            throw new SQLException("Unable to update Match");
-        }
-    }
-
-    public void updateMatchRound(Match m) throws SQLException
-    {
-        Connection con = dataSource.getConnection();
-        
-        String sql = "UPDATE Match SET MatchRound = ? WHERE ID = ?";
-      
-        PreparedStatement ps = con.prepareStatement(sql);
-        ps.setInt(1, m.getMatchRound());
-        ps.setInt(2, m.getId());
 
         int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)

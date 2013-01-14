@@ -109,7 +109,7 @@ public class MatchManagement extends Menu
         try
         {
             tmgr.resetPoints();
-            mmgr.removeAllMatches(m);
+            mmgr.removeAllMatches();
         }
         catch (SQLException ex)
         {
