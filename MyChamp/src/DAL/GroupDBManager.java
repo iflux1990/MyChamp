@@ -5,7 +5,6 @@
 package DAL;
 
 import BE.Group;
-import BE.Match;
 import BE.Team;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
@@ -52,28 +51,28 @@ public class GroupDBManager extends ConnectionDBManager
 
     public Group getGroupId(int groupId) throws SQLException
     {
-        try (Connection con = dataSource.getConnection())
-        {
+        Connection con = dataSource.getConnection();
+        
 
             String sql = ("SELECT * FROM [Group] WHERE ID Like ?");
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, groupId);
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, groupId);
 
 
 
 
-            ResultSet rs = ps.executeQuery();
+        ResultSet rs = ps.executeQuery();
 
-            if (rs.next())
-            {
-                String name = rs.getString("GroupName");
-                int Id = rs.getInt("ID");
+        if (rs.next())
+        {
+            String name = rs.getString("GroupName");
+            int Id = rs.getInt("ID");
 
-                Group g1 = new Group(Id, name);
-                return g;
-            }
-            return null;
+            Group g1 = new Group(Id, name);
+            return g;
         }
+        return null;
+
     }
 
     public void updateGroup(int groupId) throws SQLException
@@ -86,8 +85,7 @@ public class GroupDBManager extends ConnectionDBManager
             try
             {
                 con = dataSource.getConnection();
-            }
-            catch (SQLServerException ex)
+            } catch (SQLServerException ex)
             {
                 throw new SQLException("Unable to connect to server.");
             }
