@@ -52,7 +52,7 @@ public class MatchManagement extends Menu
         switch (option)
         {
             case 1:
-                scheduleOpeningRounds();
+                scheduleOpeningRounds();                
                 break;
             case 2:
                 scheduleQuarterFinals();
@@ -257,7 +257,25 @@ public class MatchManagement extends Menu
 
     private void scheduleSemiFinals()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+
+        try
+        {
+            if (mmgr.NumberOfMatches() == 52)
+            {
+                mmgr.scheduleSemiFinals();
+                System.out.println(mmgr.NumberOfMatches() + " Have been added.");
+            }
+            else
+            {
+                System.out.println("Quater finals matches haven't been added yet");
+            }
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+        }
+
+        pause();
     }
 
     private void scheduleFinals()
