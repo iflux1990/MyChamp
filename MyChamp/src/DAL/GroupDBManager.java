@@ -6,7 +6,6 @@ package DAL;
 
 import BE.Group;
 import BE.Team;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

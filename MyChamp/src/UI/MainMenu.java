@@ -39,7 +39,7 @@ public class MainMenu extends Menu
                 goToView();                 //go to MatchManagement
                 break;
             case 3:
-                goToViewSchedules();
+                goToViewSchedules();        //go to View Schedules
                 break;
             case 4:
                 goToMatchResult();          //go to Match Result

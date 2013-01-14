@@ -33,30 +33,48 @@ public class TeamManager
         gdb = new GroupDBManager();
         mmgr = new MatchManager();
     }
-
+    /**
+     * Lister alle teams
+     * @return listall
+     * @throws SQLException 
+     */
     public ArrayList<Team> listAllTeams() throws SQLException
     {
         return tdb.listAll();
     }
-
+    /**
+     * Returnere addTeam
+     * @param t     
+     * @throws SQLException 
+     */
     public Team addTeam(Team t) throws SQLException
     {
         return tdb.addTeam(t);
     }
-
+    /**
+     * 
+     * @param t
+     * @throws SQLException 
+     */
     public void updateTeam(Team t) throws SQLException
     {
         tdb.updateTeam(t);
     }
-
+    /**
+     * 
+     * @param school
+     * @throws SQLException 
+     */
     public void removeTeam(String school) throws SQLException
     {
         tdb.removeTeam(school);
     }
-
+    /**
+     * returnere count
+     * @throws SQLException 
+     */
     public int showNumber() throws SQLException
     {
-
         return tdb.count();
     }
     
@@ -64,7 +82,10 @@ public class TeamManager
     {
         return tdb.getTeamById(id);
     }
-    
+    /**
+     * Resetter points
+     * @throws SQLException 
+     */
     public void resetPoints() throws SQLException
     {
         tdb.resetPoints();
@@ -74,7 +95,12 @@ public class TeamManager
     {
         return tdb.getTeamByName(teamName);
     }
-    
+    /**
+     * Tilføjer Teams til 4 grupper, fra listAll.
+     * Hvis under 16 er tilmeldt, laves det manglende antal som "No One"
+     * @throws SQLServerException
+     * @throws SQLException 
+     */
     public void assignGroups() throws SQLServerException, SQLException
     {
         int maxGroups = 4;
