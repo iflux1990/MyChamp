@@ -53,7 +53,6 @@ public class MatchManagement extends Menu
         {
             case 1:
                 scheduleOpeningRounds();
-                pause();
                 break;
             case 2:
                 scheduleQuarterFinals();
@@ -85,8 +84,9 @@ public class MatchManagement extends Menu
             if (mmgr.NumberOfMatches() == 0)
             {
                 mmgr.scheduleMatches();
-                System.out.println(mmgr.NumberOfMatches() + " Have been added.");
+                System.out.println(mmgr.NumberOfMatches() + " Have been added.");               
                 mmgr.updateMatchRounds();
+                pause();
             }
             else
             {
@@ -98,7 +98,7 @@ public class MatchManagement extends Menu
             System.out.println("ERROR - " + ex.getMessage());
         }
 
-        pause();
+        
     }
 
     private void removeAllMatches()
