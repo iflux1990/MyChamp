@@ -56,7 +56,8 @@ public class GroupDBManager extends ConnectionDBManager
 
             String sql = ("SELECT * FROM [Group] WHERE ID Like ?");
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, 5);
+            ps.setInt(1, groupId);
+           
 
 
 
@@ -72,6 +73,37 @@ public class GroupDBManager extends ConnectionDBManager
             }
             return null;
         }
+    }
+    
+    public Team getTeamsInGroup(int groupId) throws SQLException
+    {
+         try (Connection con = dataSource.getConnection())
+        {
+
+            String sql = ("SELECT * FROM Team, [Group] WHERE GroupName = ?");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, 5);
+
+
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next())
+            {
+                int teamId = rs.getInt("ID");
+                String schoolName = rs.getString("School");
+                String captain = rs.getString("TeamCaptain");
+                String teamEmail = rs.getString("Email");
+//                int GroupId = rs.getInt("GroupId");
+//                String groupName = rs.getString("GroupName");
+//                int points = rs.getInt("Points");
+
+                Team t = new Team(teamId, schoolName, captain, teamEmail);
+                return t;
+            }
+            return null;
+        }
+        
     }
 
     public void updateGroup(int groupId) throws SQLException

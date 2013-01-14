@@ -52,7 +52,8 @@ public class MatchManagement extends Menu
         switch (option)
         {
             case 1:
-                scheduleOpeningRounds();                
+                scheduleOpeningRounds();      
+                pause();
                 break;
             case 2:
                 scheduleQuarterFinals();
@@ -97,15 +98,15 @@ public class MatchManagement extends Menu
             System.out.println("ERROR - " + ex.getMessage());
         }
 
-        pause();
+       
     }
 
     private void removeAllMatches()
     {
         try
         {
-            mmgr.removeAllMatches(m);
             tmgr.resetPoints();
+            mmgr.removeAllMatches(m);
         }
         catch (SQLException ex)
         {
