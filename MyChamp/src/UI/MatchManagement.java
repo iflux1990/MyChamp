@@ -83,7 +83,7 @@ public class MatchManagement extends Menu
         {
             if (mmgr.NumberOfMatches() == 0)
             {
-                mmgr.scheduleMatches();
+                mmgr.scheduleMatches();                
                 System.out.println(mmgr.NumberOfMatches() + " Have been added.");   
                 System.out.println("Please wait while matches are being updated");
                 System.out.print("Loading : ");
@@ -205,7 +205,8 @@ public class MatchManagement extends Menu
                 {
                     System.out.printf("%-5d%-20sVS%20s%11d-%1d \n", round6.get(i).getId(), tmgr.getTeamById(round6.get(i).getHomeTeamId()).getSchoolName(), tmgr.getTeamById(round6.get(i).getGuestTeamId()).getSchoolName(), round6.get(i).getHomeGoals(), round6.get(i).getGuestGoals());
                 }
-            }
+            }  
+            
         }
         catch (SQLException ex)
         {
@@ -228,6 +229,7 @@ public class MatchManagement extends Menu
         try
         {
             mmgr.updateMatchRounds();
+            
         }
         catch (SQLException ex)
         {
