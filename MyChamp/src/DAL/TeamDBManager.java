@@ -82,7 +82,7 @@ public class TeamDBManager extends ConnectionDBManager
         {
             Connection con = dataSource.getConnection();
 
-            String sql = "SELECT TOP 2 * FROM Team, [Group] WHERE Team.GroupID = [Group].ID AND [Group].ID = ? ORDER BY Team.Points";
+            String sql = "SELECT TOP 2 Team.*, [Group].GroupName FROM Team, [Group], Match WHERE Team.GroupID = [Group].ID AND [Group].ID = ? ORDER BY Team.Points, (Match.HomeGoals-Match.GuestGoals)";
             PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setInt(1, groupId);
