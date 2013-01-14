@@ -161,7 +161,7 @@ public class Match
         try
         {
             tdb = new TeamDBManager();
-            return String.format("%-5d%-20sVS%20s \n", getId(), tdb.getTeamById(homeTeamId).getSchoolName(), tdb.getTeamById(guestTeamId).getSchoolName());
+            return String.format("%-5d%-20sVS%20s", getId(), tdb.getTeamById(homeTeamId).getSchoolName(), tdb.getTeamById(guestTeamId).getSchoolName());
         }
         catch (SQLException | IOException ex)
         {

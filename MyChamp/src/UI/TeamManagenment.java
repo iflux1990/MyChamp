@@ -7,6 +7,7 @@ package UI;
 import BE.Group;
 import BE.Team;
 import BLL.GroupManager;
+import BLL.MatchManager;
 import BLL.TeamManager;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -21,6 +22,7 @@ public class TeamManagenment extends Menu
 
     private TeamManager tmgr;
     private GroupManager gmgr;
+    private MatchManager mmgr;
     private static final int EXIT_VALUE = 0;
 
     public TeamManagenment()
@@ -31,6 +33,7 @@ public class TeamManagenment extends Menu
         {
             tmgr = new TeamManager();
             gmgr = new GroupManager();
+            mmgr = new MatchManager();
         }
         catch (Exception ex)
         {
@@ -68,30 +71,36 @@ public class TeamManagenment extends Menu
 
     private void addTeam()      //Creates a new team
     {
-        clear();
-
-        System.out.println("Add Team");
-        System.out.println();
-
         try
         {
-            Scanner sc = new Scanner(System.in, "ISO-8859-1");
+            if (mmgr.NumberOfMatches() == 0)
+            {
+                clear();
 
-            System.out.print("School: ");
-            String schoolName = sc.nextLine();
+                System.out.println("Add Team");
+                System.out.println();
+                Scanner sc = new Scanner(System.in, "ISO-8859-1");
 
-            System.out.print("Team Captain: ");
-            String captain = sc.nextLine();
+                System.out.print("School: ");
+                String schoolName = sc.nextLine();
 
-            System.out.print("Email: ");
-            String TeamEmail = sc.nextLine();
+                System.out.print("Team Captain: ");
+                String captain = sc.nextLine();
+
+                System.out.print("Email: ");
+                String TeamEmail = sc.nextLine();
 
 
-            Team team = new Team(-1, schoolName, captain, TeamEmail);
-            team = tmgr.addTeam(team);
+                Team team = new Team(-1, schoolName, captain, TeamEmail);
+                team = tmgr.addTeam(team);
 
-            System.out.println();
-            System.out.println("Team added with ID : " + team.getTeamId());
+                System.out.println();
+                System.out.println("Team added with ID : " + team.getTeamId());
+            }
+            else
+            {
+                System.out.println("The Tournament has already started and new teams cannot be added");
+            }
         }
         catch (Exception ex)
         {
@@ -102,7 +111,7 @@ public class TeamManagenment extends Menu
         pause();
     }
 
-    private void updateTeams()  //List all Teams, Select School id to edite
+private void updateTeams()  //List all Teams, Select School id to edite
     {
         clear();
         System.out.println("Update Team: ");
