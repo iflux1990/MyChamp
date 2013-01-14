@@ -111,7 +111,7 @@ public class TeamDBManager extends ConnectionDBManager
         {
             Connection con = dataSource.getConnection();
 
-            String sql = "SELECT TOP 2 * FROM Match WHERE ID >= ? AND ID <= 52";
+            String sql = "SELECT TOP 1 * FROM Match WHERE ID >= ? AND ID <= 52 order by team.points";
             PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setInt(1, groupId);

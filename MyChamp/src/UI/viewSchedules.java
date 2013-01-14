@@ -66,7 +66,7 @@ public class viewSchedules extends Menu
                 finalSchedule();
                 break;
             case EXIT_VALUE:
-                doActionExit();
+                doActionExit();               
         }
     }
 
