@@ -66,7 +66,7 @@ public class MatchManager
  * Henter alle teams fra databasen, en gruppe af gangen. laver en ny match hvis,
  * homeTeam ikke er magen til guestTeam og tilføjer den til databasen.
  * Laver alle matches for en gruppe af gangen.
- * @throws SQLException 
+ * @throws SQLException smider SQLExceptions videre.
  */
     
     public void scheduleMatches() throws SQLException
