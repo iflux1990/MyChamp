@@ -26,6 +26,7 @@ public class Team
      * @param captain
      * @param teamEmail
      * @param group
+     * @param points  
      */
     public Team(int teamId, String schoolName, String captain, String teamEmail, Group group, int points)
     {
@@ -38,6 +39,14 @@ public class Team
         
     }    
     
+    /**
+     *
+     * @param teamId
+     * @param schoolName
+     * @param captain
+     * @param teamEmail
+     * @param group
+     */
     public Team(int teamId, String schoolName, String captain, String teamEmail, Group group) //Constructor
     {
         this.teamId = teamId;
@@ -58,6 +67,13 @@ public class Team
     }
     
    
+    /**
+     *
+     * @param TeamId
+     * @param SchoolName
+     * @param Captain
+     * @param TeamEmail
+     */
     public Team(int TeamId, String SchoolName, String Captain, String TeamEmail)
     {
         this.teamId = TeamId;
@@ -137,17 +153,25 @@ public class Team
         return group;
     }
     /**
-     * @param GroupId the GroupId to set
+     * @param groupId 
      */
     public void setGroupId(int groupId)
     {
         this.groupId = groupId;
     }
     
+    /**
+     *
+     * @param p
+     */
     public void addPoints(int p)
     {
         this.points = points + p;
     }
+    /**
+     *
+     * @param p
+     */
     public void setPoints(int p)
     {
         points += p;
@@ -159,6 +183,10 @@ public class Team
         return String.format("%-5d %-20s %-20s %-29s %-29s", teamId, schoolName, captain, teamEmail, group);
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPoints()
     {
         return points;

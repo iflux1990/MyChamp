@@ -32,8 +32,8 @@ public class MatchManager
         mdb = new MatchDBManager();
     }
 /**
- * 
- * @return
+ * Henter count metoden fra DAL laget.
+ * @return retunere en Int med antallet af kampe i databasen.
  * @throws SQLException 
  */
     public int NumberOfMatches() throws SQLException
@@ -41,26 +41,38 @@ public class MatchManager
         return mdb.count();
     }
 
+    /**
+     * Henter update metoden fra DAL laget.
+     * @param m bruger værdierne fra objektet "m" til at opdatere databasen
+     * @throws SQLException smider SQLExceptions videre.
+     */
     public void update(Match m) throws SQLException
     {
         mdb.update(m);
     }
 
+    /**
+     * Henter getMatchByTeams metoden fra databasen.
+     * @param homeTeamId
+     * @param guestTeamId
+     * @return retuenere et enkelt match objekt med de to teams
+     * @throws SQLException smider SQLExceptions videre
+     */
     public Match getMatchByTeams(int homeTeamId, int guestTeamId) throws SQLException
     {
         return mdb.getMatchByTeams(homeTeamId, guestTeamId);
     }
 /**
- * 
- * @throws SQLException 
+ * Henter alle teams fra databasen, en gruppe af gangen. laver en ny match hvis,
+ * homeTeam ikke er magen til guestTeam og tilføjer den til databasen.
+ * Laver alle matches for en gruppe af gangen.
+ * @throws SQLException smider SQLExceptions videre.
  */
     
     public void scheduleMatches() throws SQLException
     {
 
         //Round 1
-
-
         ArrayList<Team> group1 = tdb.getTeamsByGroupId(1);
         ArrayList<Team> group2 = tdb.getTeamsByGroupId(2);
         ArrayList<Team> group3 = tdb.getTeamsByGroupId(3);
