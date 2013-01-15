@@ -106,15 +106,15 @@ public class TeamDBManager extends ConnectionDBManager
         }
     }
     
-  public Team getWinnerQuarter(int matchId) throws SQLException
+  public Team getWinnerQuarter(int matchRound) throws SQLException
     {
         {
             Connection con = dataSource.getConnection();
 
-            String sql = "SELECT Team.*, [Group].GroupName FROM Team, [Group] WHERE [Group].ID = Team.GroupID AND Team.Points IN (SELECT MAX(Team.Points)'Points' FROM Team, Match WHERE Match.ID = ?)";
+            String sql = "SELECT TOP 1 Team.* FROM Team WHERE Team.Points IN( SELECT(Team.Points)'Points' FROM Team, Match WHERE Match.MatchRound = ?))";
             PreparedStatement ps = con.prepareStatement(sql);
 
-            ps.setInt(1, matchId);
+            ps.setInt(1, matchRound);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next())
