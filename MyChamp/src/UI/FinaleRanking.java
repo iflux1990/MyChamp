@@ -30,12 +30,16 @@ public class FinaleRanking extends Menu
             case EXIT_VALUE: doActionExit();
         }
     }
-
+    /**
+     * Printer at du har valgt finale ranking
+     */
     private void doActionSuboption1()
     {
         System.out.println("Finale Ranking");        
     }
-
+    /**
+     * Printer exit besked
+     */
     private void doActionExit()
     {
         System.out.println("You selected to exit.");

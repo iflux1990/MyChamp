@@ -10,8 +10,6 @@ import BLL.TeamManager;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -109,7 +107,7 @@ public class MatchManagement extends Menu
         try
         {
             tmgr.resetPoints();
-            mmgr.removeAllMatches(m);
+            mmgr.removeAllMatches();
         }
         catch (SQLException ex)
         {

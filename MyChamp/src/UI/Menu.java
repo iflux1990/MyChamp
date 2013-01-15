@@ -23,8 +23,10 @@ public abstract class Menu
         this.header = header;
         this.menuItems = menuItems;
     }
-
-    public void run()       //runs and calls showMenu
+    /**
+     * Runs and calls showmenu
+     */
+    public void run()       
     {
         boolean done = false;
         while (!done)
@@ -38,8 +40,10 @@ public abstract class Menu
             }
         }
     }
-
-    private void showMenu()     //shows menu
+    /**
+     * Shows menu
+     */
+    private void showMenu()     
     {
         clear();
         System.out.println();
@@ -79,22 +83,28 @@ public abstract class Menu
             }
         }
     }
-    
-    protected void clear()      //clear by making 50 empty lines
+    /**
+     * laver 50 tomme linjer
+     */
+    protected void clear()      
     {
         for (int i = 0; i < 50; i++)
         {
             System.out.println();
         }
     }
-    
-    protected void pause()      //pauses
+    /**
+     * Pauser programmet, enter for at fortsætte
+     */
+    protected void pause()      
     {
         System.out.println("\nPress ENTER to continue...");
         new Scanner(System.in).nextLine();
     }
-    
-     protected void printTeamHeader()            //Prints the Team header
+    /**
+     * Printer Team header
+     */
+     protected void printTeamHeader()            
     {
         System.out.println();
         System.out.println(String.format("%-5s %-20s %-20s %-30s %-30s",

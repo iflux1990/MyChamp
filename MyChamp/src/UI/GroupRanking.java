@@ -7,7 +7,6 @@ package UI;
 import BLL.MatchManager;
 import DAL.TeamDBManager;
 import java.io.IOException;
-import java.sql.SQLException;
 
 /**
  * controlling the viewing of the Group Ranking
@@ -53,18 +52,23 @@ public class GroupRanking extends Menu
             case EXIT_VALUE: doActionExit();
         }
     }
-
+    /**
+     * Printer du har valgt Group Ranking
+     */
     private void groupRanking()
-    {
-       
-        pause();
+    {       
+        System.out.println("Group Ranking");
     }
-    
+    /**
+     * Printer du har valgt Team Ranking
+     */
     private void teamRanking()
     {
         System.out.println("Team Ranking");
     }
-
+    /**
+     * Printer du har valgt exit
+     */
     private void doActionExit()
     {
         System.out.println("You selected to exit.");

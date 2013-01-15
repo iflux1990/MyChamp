@@ -6,7 +6,6 @@ package UI;
 
 import BE.Group;
 import BE.Match;
-import BE.Team;
 import BLL.GroupManager;
 import BLL.MatchManager;
 import BLL.TeamManager;
@@ -14,8 +13,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -71,7 +68,7 @@ public class viewSchedules extends Menu
                 finalSchedule();
                 break;
             case EXIT_VALUE:
-                doActionExit();
+                doActionExit();               
         }
     }
 

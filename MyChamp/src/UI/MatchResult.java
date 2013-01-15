@@ -59,7 +59,10 @@ public class MatchResult extends Menu
                 doActionExit();
         }
     }
-
+    /**
+     * Tilføjer målscore via enten match ID eller Hometeam og GuestTeam
+     * Tilføjer 3 point til det vindene hold, og 1 point til begge hold ved uafgjort.
+     */
     private void matchResult()
     {
         try
@@ -119,29 +122,21 @@ public class MatchResult extends Menu
                 Team thome = tmgr.getTeamById(m.getHomeTeamId());
                 thome.addPoints(3);
                 tmgr.updateTeam(thome);
-
                 
             }
 
             m.setIsPlayed(true);
             mmgr.update(m);
 
-//
-//            if (m.getId() == matchId)
-//            {
-//                mmgr.update(m);
-//            }
-//            else
-//            {
-//                System.out.println("Match IDs did not fit.");
-//            }
         }
         catch (SQLException ex)
         {
             System.out.println("ERROR - " + ex.getMessage());
         }
     }
-
+    /**
+     * Printer resultatet med målscore 
+     */
     private void viewResults()
     {
         try
@@ -215,7 +210,9 @@ public class MatchResult extends Menu
         }
         pause();
     }
-
+    /**
+     * Printer du har valgt exit
+     */
     private void doActionExit()
     {
         System.out.println("You selected to exit.");

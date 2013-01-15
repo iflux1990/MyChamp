@@ -4,7 +4,6 @@
  */
 package UI;
 
-import BE.Group;
 import BE.Team;
 import BLL.GroupManager;
 import BLL.MatchManager;

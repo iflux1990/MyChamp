@@ -4,7 +4,6 @@
  */
 package BLL;
 
-import BE.Group;
 import BE.Match;
 import BE.Team;
 import DAL.MatchDBManager;
@@ -105,6 +104,7 @@ public class MatchManager
     }
 /**
  * Schedules the Quater final round
+ * Laver 4 nye kampe, med 1. og 2 plads fra de indledende runder
  * @throws SQLException 
  */
     public void scheduleQuaterFinals() throws SQLException
@@ -118,7 +118,11 @@ public class MatchManager
         Match quarterFinal4 = new Match(52, 7, tdb.getWinnerSecond(4).get(0).getTeamId(), tdb.getWinnerSecond(3).get(1).getTeamId());
         mdb.addMatches(quarterFinal4);
     }
-    
+  /**
+   * Schedules the semi final round
+   * Laver 2 nye kampe, med vinderne fra Quater finale
+   * @throws SQLException 
+   */  
     public void scheduleSemiFinals() throws SQLException
     {
         Match semiFinal1 = new Match(53, 8, tdb.getWinnerQuarter(49).getTeamId(), tdb.getWinnerQuarter(50).getTeamId());
@@ -127,11 +131,21 @@ public class MatchManager
         mdb.addMatches(semiFinal2);        
     }
 
-    public void removeAllMatches(Match m) throws SQLException
+   /**
+    * Henter funktionen Remove all matches fra MatchDBManager
+    * @throws SQLException 
+    */
+    public void removeAllMatches() throws SQLException
     {
-        mdb.removeAllMatches(m);
+        mdb.removeAllMatches();
     }
 
+    /**
+     * Henter funktionen get match by ID fra MatchDBManager
+     * @param Id
+     * @return match by ID
+     * @throws SQLException 
+     */
     public Match getMatchById(int Id) throws SQLException
     {
         return mdb.getMatchById(Id);
@@ -147,6 +161,11 @@ public class MatchManager
         return mdb.getMatchesByTeam(teamId);
     }
 
+    /**
+     * Laver Round 1, ud fra Match ID
+     * @return
+     * @throws SQLException 
+     */
     public ArrayList<Match> round1() throws SQLException
     {
         ArrayList<Match> round1 = new ArrayList();
@@ -160,11 +179,13 @@ public class MatchManager
         round1.add(mdb.getMatchById(32));
         round1.add(mdb.getMatchById(12));
 
-
-
         return round1;
     }
-
+    /**
+     * Laver Round 2, ud fra Match ID
+     * @return
+     * @throws SQLException 
+     */
     public ArrayList<Match> round2() throws SQLException
     {
         ArrayList<Match> round2 = new ArrayList();
@@ -179,7 +200,11 @@ public class MatchManager
 
         return round2;
     }
-
+     /**
+     * Laver Round 3, ud fra Match ID
+     * @return
+     * @throws SQLException 
+     */
     public ArrayList<Match> round3() throws SQLException
     {
         ArrayList<Match> round3 = new ArrayList();
@@ -194,7 +219,11 @@ public class MatchManager
 
         return round3;
     }
-
+    /**
+     * Laver Round 4, ud fra Match ID
+     * @return
+     * @throws SQLException 
+     */
     public ArrayList<Match> round4() throws SQLException
     {
         ArrayList<Match> round4 = new ArrayList();
@@ -209,7 +238,11 @@ public class MatchManager
 
         return round4;
     }
-
+    /**
+     * Laver Round 5, ud fra Match ID
+     * @return
+     * @throws SQLException 
+     */
     public ArrayList<Match> round5() throws SQLException
     {
         ArrayList<Match> round5 = new ArrayList();
@@ -224,7 +257,11 @@ public class MatchManager
 
         return round5;
     }
-
+    /**
+     * Laver Round 6, ud fra Match ID
+     * @return
+     * @throws SQLException 
+     */
     public ArrayList<Match> round6() throws SQLException
     {
         ArrayList<Match> round6 = new ArrayList();
@@ -239,7 +276,10 @@ public class MatchManager
 
         return round6;
     }
-
+    /**
+     * Updater match rounds
+     * @throws SQLException 
+     */
     public void updateMatchRounds() throws SQLException
     {
         for (int i = 0; i < 8; i++)
@@ -247,33 +287,33 @@ public class MatchManager
             ArrayList<Match> matches1 = round1();
             
             matches1.get(i).setMatchRound(1);
-            mdb.updateMatchRound(matches1.get(i));
+            mdb.update(matches1.get(i));
             System.out.print("--");
             
             ArrayList<Match> matches2= round2();
             
             matches2.get(i).setMatchRound(2);
-            mdb.updateMatchRound(matches2.get(i));
+            mdb.update(matches2.get(i));
             
             ArrayList<Match> matches3 = round3();
             
             matches3.get(i).setMatchRound(3);
-            mdb.updateMatchRound(matches3.get(i));
+            mdb.update(matches3.get(i));
             
             ArrayList<Match> matches4 = round4();
             
             matches4.get(i).setMatchRound(4);
-            mdb.updateMatchRound(matches4.get(i));
+            mdb.update(matches4.get(i));
             
             ArrayList<Match> matches5 = round5();
             
             matches5.get(i).setMatchRound(5);
-            mdb.updateMatchRound(matches5.get(i));
+            mdb.update(matches5.get(i));
             
             ArrayList<Match> matches6 = round6();
             
             matches6.get(i).setMatchRound(6);
-            mdb.updateMatchRound(matches6.get(i));
+            mdb.update(matches6.get(i));
         }
     }
 }

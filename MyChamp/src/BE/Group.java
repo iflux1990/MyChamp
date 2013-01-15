@@ -32,7 +32,6 @@ public class Group
     public Group(String groupName)
     {
         this(-1, groupName);
-
     }
 
     /**
