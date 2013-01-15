@@ -63,6 +63,7 @@ public class viewSchedules extends Menu
                 break;
             case 3:
                 teamSchedule();
+                pause();
                 break;
             case 4:
                 finalSchedule();
