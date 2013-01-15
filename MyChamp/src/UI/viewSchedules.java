@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
- * @author Mak
+ * The UI layer of the View Schedules
+ * @author Daniel, Marco, Mak & Jonas
  */
 public class viewSchedules extends Menu
 {
@@ -54,25 +54,29 @@ public class viewSchedules extends Menu
         switch (option)
         {
             case 1:
-                totalSchedule();
+                totalSchedule();    // henter total schedule
                 pause();
                 break;
             case 2:
-                groupSchedule();
+                groupSchedule();    // henter group schedule
                 pause();
                 break;
             case 3:
-                teamSchedule();
+                teamSchedule();     // henter team schedule
                 pause();
                 break;
             case 4:
-                finalSchedule();
+                finalSchedule();    // henter final schedule
                 break;
             case EXIT_VALUE:
                 doActionExit();               
         }
     }
-
+    /**
+     * Total Schedule
+     * Henter arraylisterne round 1-6 fra Matchmanager
+     * Printer dem ud.
+     */
     private void totalSchedule()
     {
         try
@@ -168,9 +172,13 @@ public class viewSchedules extends Menu
             System.out.println("ERROR - " + ex.getMessage());
         }
     }
-
+    /**
+     * Group Schedule
+     * Henter alle grupper med listall group fra Groupmanager
+     * Printer dem ud når Group id er valgt.
+     */
     private void groupSchedule()
-    {
+    { 
         try
         {
             System.out.printf("%-10s%-5s \n", "Group ID", "Group Name");
@@ -197,7 +205,11 @@ public class viewSchedules extends Menu
             System.out.println("ERROR - " + ex.getMessage());
         }
     }
-    
+    /**
+     * Team Schedule
+     * Henter list all team fra team manager
+     * printer ud, når team id er valgt.
+     */
     private void teamSchedule()
     {
           try
@@ -226,12 +238,17 @@ public class viewSchedules extends Menu
             System.out.println("ERROR - " + ex.getMessage());
         }
     }
-
+    /**
+     * Finale schedule
+     * Not yet implemented
+     */
     private void finalSchedule()
     {
         throw new UnsupportedOperationException("Not yet implemented");
     }
-
+    /**
+     * Udfører en metode, når man går tilbage/exit.
+     */
     private void doActionExit()
     {
         System.out.println("You selected to exit.");
